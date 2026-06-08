@@ -416,7 +416,7 @@ export default function LenderKybVerificationPage() {
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium z-10 ${
                       isCompleted
-                        ? "bg-green-500 text-white"
+                        ? "bg-emerald-500 text-white"
                         : isCurrent
                         ? "bg-primary text-white"
                         : "bg-muted text-muted-foreground"
@@ -431,7 +431,7 @@ export default function LenderKybVerificationPage() {
                   <span
                     className={`text-xs mt-2 text-center ${
                       isCompleted
-                        ? "text-green-600 font-medium"
+                        ? "text-emerald-600 font-medium"
                         : isCurrent
                         ? "text-primary font-medium"
                         : "text-muted-foreground"
@@ -444,10 +444,10 @@ export default function LenderKybVerificationPage() {
             })}
           </div>
           {/* Progress Line */}
-          <div className="absolute top-4 left-0 right-0 h-0.5 bg-muted -z-0 mx-16" />
+          <div className="absolute top-4 left-0 right-0 mx-16 h-0.5 bg-border" />
           <div
             className={`absolute top-4 left-0 h-0.5 -z-0 mx-16 transition-all ${
-              kybStatus === "approved" ? "bg-green-500" : "bg-primary"
+              kybStatus === "approved" ? "bg-emerald-500" : "bg-primary"
             }`}
             style={{
               width: kybStatus === "approved"
@@ -536,7 +536,7 @@ export default function LenderKybVerificationPage() {
       {/* Approved State */}
       {kybStatus === "approved" && (
         <div className="rounded-xl border bg-green-50 border-green-200 p-8 shadow-sm text-center">
-          <CheckCircle2 className="h-16 w-16 text-green-500 mx-auto mb-4" />
+          <CheckCircle2 className="h-16 w-16 text-emerald-600 mx-auto mb-4" />
           <h2 className="text-xl font-semibold mb-2 text-green-800">
             Business Verified
           </h2>
@@ -563,7 +563,7 @@ export default function LenderKybVerificationPage() {
               >
                 <div className="flex items-center gap-3">
                   {doc.status === "verified" ? (
-                    <CheckCircle2 className="h-5 w-5 text-green-500" />
+                    <CheckCircle2 className="h-5 w-5 text-emerald-600" />
                   ) : doc.status === "rejected" ? (
                     <AlertCircle className="h-5 w-5 text-red-500" />
                   ) : (
