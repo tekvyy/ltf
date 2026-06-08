@@ -101,7 +101,7 @@ export default function ProjectsPage() {
       <div className="space-y-6">
         <DeveloperHeader title="Projects" />
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -115,11 +115,11 @@ export default function ProjectsPage() {
         <div className="rounded-xl border bg-amber-50 border-amber-200 p-8 text-center">
           <AlertCircle className="h-12 w-12 text-amber-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold mb-2">Complete KYB Verification</h2>
-          <p className="text-gray-600 max-w-md mx-auto mb-6">
+          <p className="text-muted-foreground max-w-md mx-auto mb-6">
             You need to complete your business verification before you can create and submit projects.
           </p>
           <Link href="/developer/dashboard/kyb">
-            <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+            <Button className="bg-primary hover:bg-primary/90">
               Start KYB Verification
             </Button>
           </Link>
@@ -152,7 +152,7 @@ export default function ProjectsPage() {
         <div className="flex flex-1 gap-4">
           {/* Search */}
           <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search projects..."
               value={searchQuery}
@@ -164,7 +164,7 @@ export default function ProjectsPage() {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as ProjectStatus | "all")}
-            className="px-4 py-2 border rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#E86A33]"
+            className="px-4 py-2 border rounded-lg text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary"
           >
             {statusFilters.map((filter) => (
               <option key={filter.value} value={filter.value}>
@@ -175,7 +175,7 @@ export default function ProjectsPage() {
         </div>
         {/* Create Button */}
         <Link href="/developer/dashboard/projects/new">
-          <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+          <Button className="bg-primary hover:bg-primary/90">
             <Plus className="mr-2 h-4 w-4" />
             Create Project
           </Button>
@@ -185,8 +185,8 @@ export default function ProjectsPage() {
       {/* Loading indicator for filtering */}
       {isLoading && (
         <div className="flex items-center justify-center py-4">
-          <Loader2 className="h-5 w-5 animate-spin text-[#E86A33]" />
-          <span className="ml-2 text-sm text-gray-500">Loading...</span>
+          <Loader2 className="h-5 w-5 animate-spin text-primary" />
+          <span className="ml-2 text-sm text-muted-foreground">Loading...</span>
         </div>
       )}
 
@@ -196,8 +196,8 @@ export default function ProjectsPage() {
           {projects.map((project) => (
             <div key={project.id} className="relative">
               {isDeleting === project.id && (
-                <div className="absolute inset-0 bg-white/50 flex items-center justify-center z-10 rounded-xl">
-                  <Loader2 className="h-6 w-6 animate-spin text-[#E86A33]" />
+                <div className="absolute inset-0 bg-card/50 flex items-center justify-center z-10 rounded-xl">
+                  <Loader2 className="h-6 w-6 animate-spin text-primary" />
                 </div>
               )}
               <ProjectCard {...mapProjectToCardProps(project)} />
@@ -206,10 +206,10 @@ export default function ProjectsPage() {
         </div>
       ) : !isLoading && searchQuery || statusFilter !== "all" ? (
         // No results from filter
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <Search className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h2 className="text-lg font-semibold mb-2">No projects found</h2>
-          <p className="text-gray-500 mb-4">
+          <p className="text-muted-foreground mb-4">
             No projects match your search criteria. Try adjusting your filters.
           </p>
           <Button variant="outline" onClick={() => { setSearchQuery(""); setStatusFilter("all"); }}>
@@ -218,14 +218,14 @@ export default function ProjectsPage() {
         </div>
       ) : !isLoading ? (
         // Empty state - no projects at all
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <Building2 className="h-16 w-16 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <Building2 className="h-16 w-16 text-muted-foreground/60 mx-auto mb-4" />
           <h2 className="text-xl font-semibold mb-2">No projects yet</h2>
-          <p className="text-gray-500 max-w-md mx-auto mb-6">
+          <p className="text-muted-foreground max-w-md mx-auto mb-6">
             You haven&apos;t created any projects yet. Create your first project to start the funding process.
           </p>
           <Link href="/developer/dashboard/projects/new">
-            <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+            <Button className="bg-primary hover:bg-primary/90">
               <Plus className="mr-2 h-4 w-4" />
               Create Your First Project
             </Button>
@@ -235,27 +235,27 @@ export default function ProjectsPage() {
 
       {/* Stats Summary */}
       {!isLoading && projects.length > 0 && (
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-4">Project Summary</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="p-4 rounded-lg bg-gray-50">
-              <p className="text-sm text-gray-500">Total Projects</p>
+            <div className="p-4 rounded-lg bg-muted">
+              <p className="text-sm text-muted-foreground">Total Projects</p>
               <p className="text-2xl font-bold">{projects.length}</p>
             </div>
             <div className="p-4 rounded-lg bg-yellow-50">
-              <p className="text-sm text-gray-500">Pending Review</p>
+              <p className="text-sm text-muted-foreground">Pending Review</p>
               <p className="text-2xl font-bold text-yellow-600">
                 {projects.filter((p) => p.status === "submitted" || p.status === "under_review").length}
               </p>
             </div>
             <div className="p-4 rounded-lg bg-green-50">
-              <p className="text-sm text-gray-500">Approved</p>
+              <p className="text-sm text-muted-foreground">Approved</p>
               <p className="text-2xl font-bold text-green-600">
                 {projects.filter((p) => ["approved", "funded", "completed"].includes(p.status)).length}
               </p>
             </div>
             <div className="p-4 rounded-lg bg-blue-50">
-              <p className="text-sm text-gray-500">Total Loan Amount</p>
+              <p className="text-sm text-muted-foreground">Total Loan Amount</p>
               <p className="text-2xl font-bold text-blue-600">
                 ${projects.reduce((sum, p) => sum + p.loan_amount, 0).toLocaleString()}
               </p>

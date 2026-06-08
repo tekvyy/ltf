@@ -191,35 +191,35 @@ export function LoanProposalModal({
             <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
               <CheckCircle2 className="h-8 w-8 text-green-600" />
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-foreground mb-2">
               Proposal Submitted!
             </h3>
-            <p className="text-sm text-gray-600 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Your loan proposal for <span className="font-medium">{projectName}</span> has been submitted successfully and is now under review by the developer.
             </p>
-            <div className="w-full p-4 bg-gray-50 rounded-lg mb-6">
+            <div className="w-full p-4 bg-muted rounded-lg mb-6">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-gray-500">Status</span>
+                <span className="text-muted-foreground">Status</span>
                 <span className="font-medium text-amber-600 bg-amber-50 px-2 py-1 rounded">
                   Submitted for Review
                 </span>
               </div>
               <div className="flex items-center justify-between text-sm mt-2">
-                <span className="text-gray-500">Project ID</span>
+                <span className="text-muted-foreground">Project ID</span>
                 <span className="font-medium">{projectId}</span>
               </div>
               <div className="flex items-center justify-between text-sm mt-2">
-                <span className="text-gray-500">Amount Offered</span>
+                <span className="text-muted-foreground">Amount Offered</span>
                 <span className="font-medium">${Number(formData.amountOffered).toLocaleString()}</span>
               </div>
               <div className="flex items-center justify-between text-sm mt-2">
-                <span className="text-gray-500">Interest Rate</span>
+                <span className="text-muted-foreground">Interest Rate</span>
                 <span className="font-medium">{formData.interestRate}%</span>
               </div>
             </div>
             <Button
               onClick={handleClose}
-              className="bg-[#E86A33] hover:bg-[#d55a25] text-white rounded-full px-8"
+              className="bg-primary hover:bg-primary/90 text-white rounded-full px-8"
             >
               Done
             </Button>
@@ -237,7 +237,7 @@ export function LoanProposalModal({
         </DialogHeader>
 
         {/* Project Info Card */}
-        <div className="mx-6 flex items-center gap-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
+        <div className="mx-6 flex items-center gap-4 p-3 rounded-lg bg-muted border border-border">
           <div className="relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
             <Image
               src={projectImage}
@@ -248,10 +248,10 @@ export function LoanProposalModal({
             />
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 truncate">{projectName}</p>
+            <p className="text-sm font-semibold text-foreground truncate">{projectName}</p>
             <div className="mt-1">
-              <p className="text-xs text-gray-500">Requested Loan Amount</p>
-              <p className="text-base font-bold text-[#E86A33]">
+              <p className="text-xs text-muted-foreground">Requested Loan Amount</p>
+              <p className="text-base font-bold text-primary">
                 ${loanValue.toLocaleString()}
               </p>
             </div>
@@ -338,7 +338,7 @@ export function LoanProposalModal({
                   />
                   <label
                     htmlFor={`security-${option.id}`}
-                    className="text-sm text-gray-700 cursor-pointer"
+                    className="text-sm text-foreground cursor-pointer"
                   >
                     {option.label}
                   </label>
@@ -376,7 +376,7 @@ export function LoanProposalModal({
               min={new Date().toISOString().split("T")[0]}
               required
             />
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               This offer will expire on the selected date if not accepted
             </p>
           </div>
@@ -386,7 +386,7 @@ export function LoanProposalModal({
             <Label>
               Loan Term Agreement <span className="text-red-500">*</span>
             </Label>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               Upload the loan term agreement document (PDF or image file)
             </p>
             {errors.loan_term_agreement && (
@@ -399,8 +399,8 @@ export function LoanProposalModal({
               className={cn(
                 "border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors",
                 isDragging
-                  ? "border-[#E86A33] bg-orange-50"
-                  : "border-gray-300 hover:border-gray-400"
+                  ? "border-primary bg-orange-50"
+                  : "border-border hover:border-border"
               )}
               onClick={handleFileClick}
               onDragOver={handleDragOver}
@@ -415,11 +415,11 @@ export function LoanProposalModal({
                 multiple
                 onChange={handleFileChange}
               />
-              <Upload className="h-6 w-6 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-600">
-                <span className="text-[#E86A33] font-medium">Click to upload</span> or drag and drop
+              <Upload className="h-6 w-6 text-muted-foreground mx-auto mb-2" />
+              <p className="text-sm text-muted-foreground">
+                <span className="text-primary font-medium">Click to upload</span> or drag and drop
               </p>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-muted-foreground mt-1">
                 PDF, DOC, DOCX, JPG, PNG (max 10MB each)
               </p>
             </div>
@@ -429,12 +429,12 @@ export function LoanProposalModal({
                 {documents.map((file, index) => (
                   <div
                     key={`${file.name}-${index}`}
-                    className="flex items-center gap-3 p-2 bg-gray-50 rounded-lg border"
+                    className="flex items-center gap-3 p-2 bg-muted rounded-lg border"
                   >
-                    <File className="h-5 w-5 text-[#E86A33] flex-shrink-0" />
+                    <File className="h-5 w-5 text-primary flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium truncate">{file.name}</p>
-                      <p className="text-xs text-gray-500">{formatFileSize(file.size)}</p>
+                      <p className="text-xs text-muted-foreground">{formatFileSize(file.size)}</p>
                     </div>
                     <button
                       type="button"
@@ -442,9 +442,9 @@ export function LoanProposalModal({
                         e.stopPropagation();
                         handleRemoveFile(index);
                       }}
-                      className="p-1 hover:bg-gray-200 rounded transition-colors"
+                      className="p-1 hover:bg-muted rounded transition-colors"
                     >
-                      <X className="h-4 w-4 text-gray-500" />
+                      <X className="h-4 w-4 text-muted-foreground" />
                     </button>
                   </div>
                 ))}
@@ -455,7 +455,7 @@ export function LoanProposalModal({
           {/* Conditions */}
           <div className="space-y-2">
             <Label htmlFor="conditions">
-              Additional Conditions <span className="text-gray-400">(optional)</span>
+              Additional Conditions <span className="text-muted-foreground">(optional)</span>
             </Label>
             <Textarea
               id="conditions"
@@ -482,7 +482,7 @@ export function LoanProposalModal({
             type="submit"
             onClick={handleSubmit}
             disabled={!isFormValid || isSubmitting}
-            className="bg-[#E86A33] hover:bg-[#d55a25] text-white rounded-full"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full"
           >
             {isSubmitting ? "Submitting..." : "Submit Proposal"}
           </Button>

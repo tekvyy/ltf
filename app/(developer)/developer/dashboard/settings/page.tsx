@@ -40,7 +40,7 @@ type PasswordFormData = z.infer<typeof passwordSchema>;
 
 // KYB Status configuration
 const kybStatusConfig: Record<string, { label: string; icon: React.ReactNode; color: string; bgColor: string }> = {
-  not_started: { label: "Not Started", icon: <AlertCircle className="h-5 w-5" />, color: "text-gray-600", bgColor: "bg-gray-100" },
+  not_started: { label: "Not Started", icon: <AlertCircle className="h-5 w-5" />, color: "text-muted-foreground", bgColor: "bg-muted" },
   pending: { label: "Pending", icon: <Clock className="h-5 w-5" />, color: "text-amber-600", bgColor: "bg-amber-100" },
   under_review: { label: "Under Review", icon: <Clock className="h-5 w-5" />, color: "text-blue-600", bgColor: "bg-blue-100" },
   approved: { label: "Approved", icon: <CheckCircle2 className="h-5 w-5" />, color: "text-green-600", bgColor: "bg-green-100" },
@@ -161,7 +161,7 @@ export default function DeveloperSettingsPage() {
       <div className="space-y-6">
         <DeveloperHeader title="Settings" />
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -177,7 +177,7 @@ export default function DeveloperSettingsPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">KYB Status</p>
+                <p className="text-sm font-medium text-muted-foreground">KYB Status</p>
                 <div className={`mt-1 flex items-center gap-2 ${kybConfig.color}`}>
                   {kybConfig.icon}
                   <span className="font-semibold">{kybConfig.label}</span>
@@ -194,13 +194,13 @@ export default function DeveloperSettingsPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Projects</p>
-                <p className="mt-1 text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium text-muted-foreground">Projects</p>
+                <p className="mt-1 text-2xl font-bold text-foreground">
                   {profile?.total_projects_completed || 0}
                 </p>
               </div>
               <div className="rounded-full bg-orange-100 p-3">
-                <Building2 className="h-5 w-5 text-[#E86A33]" />
+                <Building2 className="h-5 w-5 text-primary" />
               </div>
             </div>
           </CardContent>
@@ -210,8 +210,8 @@ export default function DeveloperSettingsPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Years in Business</p>
-                <p className="mt-1 text-2xl font-bold text-gray-900">
+                <p className="text-sm font-medium text-muted-foreground">Years in Business</p>
+                <p className="mt-1 text-2xl font-bold text-foreground">
                   {profile?.years_in_business || 0}
                 </p>
               </div>
@@ -226,8 +226,8 @@ export default function DeveloperSettingsPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Member Since</p>
-                <p className="mt-1 text-lg font-bold text-gray-900">
+                <p className="text-sm font-medium text-muted-foreground">Member Since</p>
+                <p className="mt-1 text-lg font-bold text-foreground">
                   {profile?.created_at
                     ? format(new Date(profile.created_at), "MMM yyyy")
                     : "N/A"}
@@ -248,7 +248,7 @@ export default function DeveloperSettingsPage() {
           <Card>
             <CardHeader className="border-b bg-gradient-to-r from-orange-50 to-transparent">
               <div className="flex items-center gap-3">
-                <div className="rounded-lg bg-[#E86A33] p-2">
+                <div className="rounded-lg bg-primary p-2">
                   <User className="h-5 w-5 text-white" />
                 </div>
                 <div>
@@ -261,7 +261,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="name">Full Name</Label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="name"
                     {...profileForm.register("name")}
@@ -279,21 +279,21 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="email">Email Address</Label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="email"
                     value={profile?.user?.email || ""}
                     disabled
-                    className="bg-gray-50 pl-10"
+                    className="bg-muted pl-10"
                   />
                 </div>
-                <p className="text-xs text-gray-500">Email cannot be changed</p>
+                <p className="text-xs text-muted-foreground">Email cannot be changed</p>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="phone">Phone Number</Label>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Phone className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="phone"
                     {...profileForm.register("phone")}
@@ -327,7 +327,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="company_name">Company Name</Label>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Building2 className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="company_name"
                     {...profileForm.register("company_name")}
@@ -340,7 +340,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="company_registration_number">Registration Number</Label>
                 <div className="relative">
-                  <FileText className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <FileText className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="company_registration_number"
                     {...profileForm.register("company_registration_number")}
@@ -353,7 +353,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="address">Company Address</Label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <MapPin className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="address"
                     {...profileForm.register("address")}
@@ -371,7 +371,7 @@ export default function DeveloperSettingsPage() {
           <Button
             type="submit"
             disabled={isSavingProfile}
-            className="bg-[#E86A33] hover:bg-[#d55a25]"
+            className="bg-primary hover:bg-primary/90"
           >
             {isSavingProfile ? (
               <>
@@ -392,7 +392,7 @@ export default function DeveloperSettingsPage() {
       <Card>
         <CardHeader className="border-b bg-gradient-to-r from-gray-50 to-transparent">
           <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-gray-700 p-2">
+            <div className="rounded-lg bg-foreground p-2">
               <Lock className="h-5 w-5 text-white" />
             </div>
             <div>
@@ -407,7 +407,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="current_password">Current Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="current_password"
                     type={showCurrentPassword ? "text" : "password"}
@@ -418,7 +418,7 @@ export default function DeveloperSettingsPage() {
                   <button
                     type="button"
                     onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                   >
                     {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -433,7 +433,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="password">New Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="password"
                     type={showNewPassword ? "text" : "password"}
@@ -444,7 +444,7 @@ export default function DeveloperSettingsPage() {
                   <button
                     type="button"
                     onClick={() => setShowNewPassword(!showNewPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                   >
                     {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -459,7 +459,7 @@ export default function DeveloperSettingsPage() {
               <div className="space-y-2">
                 <Label htmlFor="password_confirmation">Confirm Password</Label>
                 <div className="relative">
-                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
                   <Input
                     id="password_confirmation"
                     type={showConfirmPassword ? "text" : "password"}
@@ -470,7 +470,7 @@ export default function DeveloperSettingsPage() {
                   <button
                     type="button"
                     onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                   >
                     {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
@@ -488,7 +488,7 @@ export default function DeveloperSettingsPage() {
                 type="submit"
                 disabled={isSavingPassword}
                 variant="outline"
-                className="border-gray-300"
+                className="border-border"
               >
                 {isSavingPassword ? (
                   <>

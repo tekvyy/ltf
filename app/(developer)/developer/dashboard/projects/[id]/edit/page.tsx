@@ -278,7 +278,7 @@ export default function EditProjectPage() {
       <div className="space-y-6">
         <DeveloperHeader title="Edit Project" />
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -288,8 +288,8 @@ export default function EditProjectPage() {
     return (
       <div className="space-y-6">
         <DeveloperHeader title="Edit Project" />
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <AlertCircle className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <AlertCircle className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h2 className="text-lg font-semibold mb-2">Project not found</h2>
           <Link href="/developer/dashboard/projects">
             <Button variant="outline">Back to Projects</Button>
@@ -306,7 +306,7 @@ export default function EditProjectPage() {
       {/* Back Link */}
       <Link
         href={`/developer/dashboard/projects/${projectId}`}
-        className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4 mr-1" />
         Back to Project Details
@@ -331,12 +331,12 @@ export default function EditProjectPage() {
       {/* Form Sections */}
       <div className="space-y-6">
         {/* Basic Information */}
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-1 flex items-center gap-2">
-            <Building2 className="h-5 w-5 text-[#E86A33]" />
+            <Building2 className="h-5 w-5 text-primary" />
             Basic Information
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Update the basic details about your project.
           </p>
 
@@ -362,7 +362,7 @@ export default function EditProjectPage() {
                 value={formData.projectType}
                 onChange={(e) => updateFormData("projectType", e.target.value)}
                 className={cn(
-                  "w-full px-3 py-2 border rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#E86A33]",
+                  "w-full px-3 py-2 border rounded-md text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary",
                   errors.projectType ? "border-red-500" : "border-input"
                 )}
               >
@@ -420,12 +420,12 @@ export default function EditProjectPage() {
         </div>
 
         {/* Project Photos */}
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-1 flex items-center gap-2">
-            <ImageIcon className="h-5 w-5 text-[#E86A33]" />
+            <ImageIcon className="h-5 w-5 text-primary" />
             Project Photos
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Add photos to showcase your project. The cover photo will be displayed prominently.
           </p>
 
@@ -433,7 +433,7 @@ export default function EditProjectPage() {
             {/* Existing photos */}
             {photos.length > 0 && (
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                <h3 className="text-sm font-medium text-foreground mb-3">
                   Current Photos ({photos.length}/10)
                 </h3>
                 <ProjectPhotoGallery
@@ -449,7 +449,7 @@ export default function EditProjectPage() {
             {/* Upload new photos */}
             {photos.length < 10 && (
               <div>
-                <h3 className="text-sm font-medium text-gray-700 mb-3">
+                <h3 className="text-sm font-medium text-foreground mb-3">
                   Add More Photos
                 </h3>
                 <ProjectPhotoUpload
@@ -464,12 +464,12 @@ export default function EditProjectPage() {
         </div>
 
         {/* Location */}
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-1 flex items-center gap-2">
-            <MapPin className="h-5 w-5 text-[#E86A33]" />
+            <MapPin className="h-5 w-5 text-primary" />
             Project Location
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Where is your project located?
           </p>
 
@@ -521,12 +521,12 @@ export default function EditProjectPage() {
         </div>
 
         {/* Financial Details */}
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-1 flex items-center gap-2">
-            <DollarSign className="h-5 w-5 text-[#E86A33]" />
+            <DollarSign className="h-5 w-5 text-primary" />
             Financial Details
           </h2>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             Update the financial information for your project.
           </p>
 
@@ -569,7 +569,7 @@ export default function EditProjectPage() {
                   value={formData.currency}
                   onChange={(e) => updateFormData("currency", e.target.value)}
                   className={cn(
-                    "w-full px-3 py-2 border rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#E86A33]",
+                    "w-full px-3 py-2 border rounded-md text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary",
                     errors.currency ? "border-red-500" : "border-input"
                   )}
                 >
@@ -630,7 +630,7 @@ export default function EditProjectPage() {
           <Button variant="outline">Cancel</Button>
         </Link>
         <Button
-          className="bg-[#E86A33] hover:bg-[#d55a25]"
+          className="bg-primary hover:bg-primary/90"
           onClick={handleSubmit}
           disabled={isSubmitting}
         >

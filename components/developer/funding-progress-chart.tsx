@@ -98,15 +98,15 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
     : 0;
 
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border bg-card p-6 shadow-sm">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-lg font-semibold">Funding Progress</h2>
-          <p className="text-sm text-gray-500">Cumulative funding over time</p>
+          <p className="text-sm text-muted-foreground">Cumulative funding over time</p>
         </div>
         <div className="text-right">
-          <p className="text-2xl font-bold text-[#E86A33]">{formatCurrency(totalFunding)}</p>
-          <p className="text-sm text-gray-500">
+          <p className="text-2xl font-bold text-primary">{formatCurrency(totalFunding)}</p>
+          <p className="text-sm text-muted-foreground">
             of {formatCurrency(totalTarget)} target ({fundingPercentage}%)
           </p>
           {(totalFunding > 0 || Number(percentageChange) > 0) && (
@@ -119,7 +119,7 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
               <span className={trend === "up" ? "text-green-600" : "text-red-600"}>
                 {percentageChange}%
               </span>
-              <span className="text-gray-500">vs last month</span>
+              <span className="text-muted-foreground">vs last month</span>
             </div>
           )}
         </div>
@@ -133,34 +133,36 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
           >
             <defs>
               <linearGradient id="colorRaised" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#E86A33" stopOpacity={0.3} />
-                <stop offset="95%" stopColor="#E86A33" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+                <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
               </linearGradient>
               <linearGradient id="colorTarget" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.2} />
-                <stop offset="95%" stopColor="#3B82F6" stopOpacity={0} />
+                <stop offset="5%" stopColor="var(--chart-3)" stopOpacity={0.2} />
+                <stop offset="95%" stopColor="var(--chart-3)" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+            <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="var(--border)" />
             <XAxis
               dataKey="month"
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#9CA3AF", fontSize: 12 }}
+              tick={{ fill: "var(--muted-foreground)", fontSize: 12 }}
             />
             <YAxis
               axisLine={false}
               tickLine={false}
-              tick={{ fill: "#9CA3AF", fontSize: 12 }}
+              tick={{ fill: "var(--muted-foreground)", fontSize: 12 }}
               tickFormatter={formatCurrency}
               width={60}
             />
             <Tooltip
+              cursor={{ stroke: "var(--primary)", strokeWidth: 1, strokeOpacity: 0.4 }}
               contentStyle={{
-                backgroundColor: "white",
-                border: "1px solid #e5e7eb",
-                borderRadius: "8px",
-                boxShadow: "0 4px 6px -1px rgb(0 0 0 / 0.1)",
+                backgroundColor: "var(--popover)",
+                border: "1px solid var(--border)",
+                borderRadius: "10px",
+                color: "var(--popover-foreground)",
+                boxShadow: "0 8px 24px -8px rgb(0 0 0 / 0.18)",
               }}
               formatter={(value, name) => [
                 formatCurrency(value as number),
@@ -171,7 +173,7 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
             <Area
               type="monotone"
               dataKey="target"
-              stroke="#3B82F6"
+              stroke="var(--chart-3)"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorTarget)"
@@ -180,7 +182,7 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
             <Area
               type="monotone"
               dataKey="raised"
-              stroke="#E86A33"
+              stroke="var(--primary)"
               strokeWidth={2}
               fillOpacity={1}
               fill="url(#colorRaised)"
@@ -192,12 +194,12 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
 
       <div className="flex items-center justify-center gap-6 mt-4 text-sm">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-[#E86A33]" />
-          <span className="text-gray-600">Amount Raised</span>
+          <div className="h-3 w-3 rounded-full bg-primary" />
+          <span className="text-muted-foreground">Amount Raised</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="h-3 w-3 rounded-full bg-blue-500" />
-          <span className="text-gray-600">Target Amount</span>
+          <span className="text-muted-foreground">Target Amount</span>
         </div>
       </div>
     </div>

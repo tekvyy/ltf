@@ -49,11 +49,11 @@ export function WalletSetupModal({ isOpen, onClose, onSuccess }: WalletSetupModa
       <div className="absolute inset-0 bg-black/50" onClick={onClose} />
 
       {/* Modal */}
-      <div className="relative bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-6">
+      <div className="relative bg-card rounded-2xl shadow-xl max-w-md w-full mx-4 p-6">
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600"
+          className="absolute top-4 right-4 text-muted-foreground hover:text-muted-foreground"
         >
           <X className="h-5 w-5" />
         </button>
@@ -62,16 +62,16 @@ export function WalletSetupModal({ isOpen, onClose, onSuccess }: WalletSetupModa
         <div className="text-center">
           {/* Icon */}
           <div className="mx-auto w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mb-4">
-            <Fingerprint className="h-8 w-8 text-[#E86A33]" />
+            <Fingerprint className="h-8 w-8 text-primary" />
           </div>
 
           {/* Title */}
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
+          <h2 className="text-xl font-semibold text-foreground mb-2">
             Set Up Your XRPL Wallet
           </h2>
 
           {/* Description */}
-          <p className="text-gray-600 mb-6">
+          <p className="text-muted-foreground mb-6">
             Create a secure wallet using your device&apos;s biometrics (Face ID, Touch ID, or fingerprint).
             Your private key is stored securely on this device.
           </p>
@@ -99,15 +99,15 @@ export function WalletSetupModal({ isOpen, onClose, onSuccess }: WalletSetupModa
           <div className="text-left mb-6 space-y-2">
             <div className="flex items-start gap-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm text-gray-600">Secured by your device biometrics</span>
+              <span className="text-sm text-muted-foreground">Secured by your device biometrics</span>
             </div>
             <div className="flex items-start gap-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm text-gray-600">Non-custodial - only you have access</span>
+              <span className="text-sm text-muted-foreground">Non-custodial - only you have access</span>
             </div>
             <div className="flex items-start gap-2">
               <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm text-gray-600">Device-bound security</span>
+              <span className="text-sm text-muted-foreground">Device-bound security</span>
             </div>
           </div>
 
@@ -116,7 +116,7 @@ export function WalletSetupModal({ isOpen, onClose, onSuccess }: WalletSetupModa
             <Button
               onClick={handleSetup}
               disabled={isConnecting || success}
-              className="w-full bg-[#E86A33] hover:bg-[#d55a25] py-6"
+              className="w-full bg-primary hover:bg-primary/90 py-6"
             >
               {isConnecting ? (
                 <>

@@ -11,7 +11,7 @@ import {
 import { cn } from "@/lib/utils";
 
 // Default status config for unknown statuses
-const defaultStatusConfig = { label: 'Unknown', color: 'text-gray-700', bgColor: 'bg-gray-100' };
+const defaultStatusConfig = { label: 'Unknown', color: 'text-foreground', bgColor: 'bg-muted' };
 
 interface ProposalCardProps {
   proposal: DeveloperProjectProposal;
@@ -92,7 +92,7 @@ export function ProposalCard({
   return (
     <div
       className={cn(
-        "rounded-xl border bg-white overflow-hidden transition-shadow hover:shadow-md",
+        "rounded-xl border bg-card overflow-hidden transition-shadow hover:shadow-md",
         isAccepted && "border-green-200 bg-green-50/30",
         isRejected && "border-red-200 bg-red-50/30"
       )}
@@ -102,12 +102,12 @@ export function ProposalCard({
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3">
           {/* Lender Info */}
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
-              <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-gray-500" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
+              <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-muted-foreground" />
             </div>
             <div>
-              <h3 className="font-semibold text-gray-900">{lenderName}</h3>
-              <p className="text-xs text-gray-500">
+              <h3 className="font-semibold text-foreground">{lenderName}</h3>
+              <p className="text-xs text-muted-foreground">
                 Submitted {formatDate(proposal.created_at)}
               </p>
             </div>
@@ -128,36 +128,36 @@ export function ProposalCard({
         {/* Key Stats - Grid */}
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
           {/* Amount */}
-          <div className="bg-gray-50 rounded-lg p-3">
-            <p className="text-xs text-gray-500 mb-1">Amount Offered</p>
-            <p className="text-sm sm:text-base font-bold text-[#E86A33]">
+          <div className="bg-muted rounded-lg p-3">
+            <p className="text-xs text-muted-foreground mb-1">Amount Offered</p>
+            <p className="text-sm sm:text-base font-bold text-primary">
               {formatCurrency(proposal.loan_amount_offered, proposal.currency)}
             </p>
           </div>
 
           {/* Interest Rate */}
-          <div className="bg-gray-50 rounded-lg p-3">
+          <div className="bg-muted rounded-lg p-3">
             <div className="flex items-center gap-1 mb-1">
-              <Percent className="h-3 w-3 text-gray-400" />
-              <p className="text-xs text-gray-500">Interest Rate</p>
+              <Percent className="h-3 w-3 text-muted-foreground" />
+              <p className="text-xs text-muted-foreground">Interest Rate</p>
             </div>
             <p className="text-sm sm:text-base font-bold">{proposal.interest_rate}% p.a.</p>
           </div>
 
           {/* Max LTV */}
-          <div className="bg-gray-50 rounded-lg p-3">
+          <div className="bg-muted rounded-lg p-3">
             <div className="flex items-center gap-1 mb-1">
-              <Shield className="h-3 w-3 text-gray-400" />
-              <p className="text-xs text-gray-500">Max LTV</p>
+              <Shield className="h-3 w-3 text-muted-foreground" />
+              <p className="text-xs text-muted-foreground">Max LTV</p>
             </div>
             <p className="text-sm sm:text-base font-bold">{proposal.max_ltv_accepted}%</p>
           </div>
 
           {/* Maturity */}
-          <div className="bg-gray-50 rounded-lg p-3">
+          <div className="bg-muted rounded-lg p-3">
             <div className="flex items-center gap-1 mb-1">
-              <Calendar className="h-3 w-3 text-gray-400" />
-              <p className="text-xs text-gray-500">Maturity</p>
+              <Calendar className="h-3 w-3 text-muted-foreground" />
+              <p className="text-xs text-muted-foreground">Maturity</p>
             </div>
             <p className="text-sm sm:text-base font-bold">{formatDate(proposal.loan_maturity_date)}</p>
           </div>
@@ -186,13 +186,13 @@ export function ProposalCard({
                 "p-3 rounded-lg border",
                 proposal.developer_signed_at
                   ? "bg-green-100 border-green-300"
-                  : "bg-white border-gray-200"
+                  : "bg-card border-border"
               )}>
                 <div className="flex items-center gap-2 mb-2">
                   {proposal.developer_signed_at ? (
                     <CheckCircle2 className="h-4 w-4 text-green-600" />
                   ) : (
-                    <Circle className="h-4 w-4 text-gray-300" />
+                    <Circle className="h-4 w-4 text-muted-foreground/60" />
                   )}
                   <span className="text-sm font-medium">Your Signature</span>
                 </div>
@@ -202,13 +202,13 @@ export function ProposalCard({
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-500">You need to sign the agreement</p>
+                    <p className="text-xs text-muted-foreground">You need to sign the agreement</p>
                     {onSign && (
                       <Button
                         size="sm"
                         onClick={() => onSign(proposal.id)}
                         disabled={isSigning}
-                        className="bg-[#E86A33] hover:bg-[#d55a25] text-white"
+                        className="bg-primary hover:bg-primary/90 text-white"
                       >
                         {isSigning ? (
                           <>
@@ -232,13 +232,13 @@ export function ProposalCard({
                 "p-3 rounded-lg border",
                 proposal.lender_signed_at
                   ? "bg-green-100 border-green-300"
-                  : "bg-white border-gray-200"
+                  : "bg-card border-border"
               )}>
                 <div className="flex items-center gap-2 mb-2">
                   {proposal.lender_signed_at ? (
                     <CheckCircle2 className="h-4 w-4 text-green-600" />
                   ) : (
-                    <Circle className="h-4 w-4 text-gray-300" />
+                    <Circle className="h-4 w-4 text-muted-foreground/60" />
                   )}
                   <span className="text-sm font-medium">Lender&apos;s Signature</span>
                 </div>
@@ -247,7 +247,7 @@ export function ProposalCard({
                     Signed on {formatDate(proposal.lender_signed_at)}
                   </p>
                 ) : (
-                  <p className="text-xs text-gray-500">Waiting for lender to sign</p>
+                  <p className="text-xs text-muted-foreground">Waiting for lender to sign</p>
                 )}
               </div>
             </div>
@@ -267,7 +267,7 @@ export function ProposalCard({
         {/* Expandable Details */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-3 flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          className="mt-3 flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           {isExpanded ? (
             <>
@@ -284,15 +284,15 @@ export function ProposalCard({
 
         {/* Expanded Content */}
         {isExpanded && (
-          <div className="mt-4 pt-4 border-t border-gray-100 space-y-4">
+          <div className="mt-4 pt-4 border-t border-border space-y-4">
             {/* Security Package */}
             <div>
-              <p className="text-xs text-gray-500 mb-2">Security Package</p>
+              <p className="text-xs text-muted-foreground mb-2">Security Package</p>
               <div className="flex flex-wrap gap-2">
                 {proposal.security_packages.map((pkg) => (
                   <span
                     key={pkg}
-                    className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-700"
+                    className="inline-flex items-center px-2 py-1 rounded-md bg-muted text-xs font-medium text-foreground"
                   >
                     {developerSecurityPackageLabels[pkg]}
                   </span>
@@ -302,7 +302,7 @@ export function ProposalCard({
 
             {/* Bid Expiry */}
             <div>
-              <p className="text-xs text-gray-500 mb-1">Bid Expiry Date</p>
+              <p className="text-xs text-muted-foreground mb-1">Bid Expiry Date</p>
               <p className="text-sm font-medium">
                 {formatDate(proposal.bid_expiry_date)}
                 {isExpired && (
@@ -314,42 +314,42 @@ export function ProposalCard({
             {/* Conditions */}
             {proposal.additional_conditions && (
               <div>
-                <p className="text-xs text-gray-500 mb-1">Additional Conditions</p>
-                <p className="text-sm text-gray-700">{proposal.additional_conditions}</p>
+                <p className="text-xs text-muted-foreground mb-1">Additional Conditions</p>
+                <p className="text-sm text-foreground">{proposal.additional_conditions}</p>
               </div>
             )}
 
             {/* Supporting Documents */}
             {proposal.documents && proposal.documents.length > 0 && (
               <div>
-                <p className="text-xs text-gray-500 mb-2">Supporting Documents</p>
+                <p className="text-xs text-muted-foreground mb-2">Supporting Documents</p>
                 <div className="space-y-2">
                   {proposal.documents.map((doc) => (
                     <div
                       key={doc.id}
-                      className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg"
+                      className="flex items-center gap-2 p-2 bg-muted rounded-lg"
                     >
-                      <FileText className="h-4 w-4 text-gray-400 flex-shrink-0" />
+                      <FileText className="h-4 w-4 text-muted-foreground flex-shrink-0" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{doc.title}</p>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-xs text-muted-foreground">
                           {doc.file_size_formatted}
                         </p>
                       </div>
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => handleViewDocument(doc.file_url)}
-                          className="p-1.5 hover:bg-gray-200 rounded transition-colors"
+                          className="p-1.5 hover:bg-muted rounded transition-colors"
                           title="View document"
                         >
-                          <Eye className="h-4 w-4 text-gray-500" />
+                          <Eye className="h-4 w-4 text-muted-foreground" />
                         </button>
                         <button
                           onClick={() => handleDownloadDocument(doc.file_url, doc.file_name)}
-                          className="p-1.5 hover:bg-gray-200 rounded transition-colors"
+                          className="p-1.5 hover:bg-muted rounded transition-colors"
                           title="Download document"
                         >
-                          <Download className="h-4 w-4 text-gray-500" />
+                          <Download className="h-4 w-4 text-muted-foreground" />
                         </button>
                       </div>
                     </div>
@@ -371,7 +371,7 @@ export function ProposalCard({
 
       {/* Action Buttons - For Pending Proposals */}
       {isActionable && !isExpired && (
-        <div className="px-4 sm:px-5 py-3 bg-gray-50 border-t border-gray-100 flex flex-col sm:flex-row gap-2 sm:justify-end">
+        <div className="px-4 sm:px-5 py-3 bg-muted border-t border-border flex flex-col sm:flex-row gap-2 sm:justify-end">
           <Button
             variant="outline"
             size="sm"
@@ -385,7 +385,7 @@ export function ProposalCard({
             size="sm"
             onClick={() => onAccept?.(proposal.id)}
             disabled={isAccepting || isRejecting}
-            className="bg-[#E86A33] hover:bg-[#d55a25] text-white rounded-full order-1 sm:order-2"
+            className="bg-primary hover:bg-primary/90 text-white rounded-full order-1 sm:order-2"
           >
             {isAccepting ? "Accepting..." : "Accept Proposal"}
           </Button>

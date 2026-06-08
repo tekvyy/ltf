@@ -40,7 +40,7 @@ interface LenderProposalCardProps {
 }
 
 // Default status config for unknown statuses
-const defaultStatusConfig = { label: 'Unknown', color: 'text-gray-700', bgColor: 'bg-gray-100' };
+const defaultStatusConfig = { label: 'Unknown', color: 'text-foreground', bgColor: 'bg-muted' };
 
 export function LenderProposalCard({ proposal, onSign, isSigning = false }: LenderProposalCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -91,7 +91,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
   return (
     <div
       className={cn(
-        "rounded-xl border bg-white overflow-hidden transition-shadow hover:shadow-md",
+        "rounded-xl border bg-card overflow-hidden transition-shadow hover:shadow-md",
         isAccepted && "border-green-200",
         isRejected && "border-red-200",
         isFullyExecuted && "border-emerald-300"
@@ -101,7 +101,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
       <div className="p-4 sm:p-5">
         <div className="flex flex-col sm:flex-row sm:items-start gap-4">
           {/* Project Image */}
-          <div className="w-full sm:w-24 h-32 sm:h-24 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
+          <div className="w-full sm:w-24 h-32 sm:h-24 rounded-lg overflow-hidden bg-muted flex-shrink-0">
             {project?.cover_photo_url ? (
               <Image
                 src={project.cover_photo_url}
@@ -113,7 +113,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">
-                <Building2 className="h-8 w-8 text-gray-400" />
+                <Building2 className="h-8 w-8 text-muted-foreground" />
               </div>
             )}
           </div>
@@ -122,17 +122,17 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
           <div className="flex-1 min-w-0">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
               <div>
-                <h3 className="font-semibold text-gray-900 text-lg">
+                <h3 className="font-semibold text-foreground text-lg">
                   {project?.title || "Project"}
                 </h3>
                 {project?.city && project?.country && (
-                  <p className="text-sm text-gray-500 flex items-center gap-1 mt-0.5">
+                  <p className="text-sm text-muted-foreground flex items-center gap-1 mt-0.5">
                     <MapPin className="h-3.5 w-3.5" />
                     {project.city}, {project.country}
                   </p>
                 )}
                 {developer?.company_name && (
-                  <p className="text-sm text-gray-500 flex items-center gap-1 mt-0.5">
+                  <p className="text-sm text-muted-foreground flex items-center gap-1 mt-0.5">
                     <User className="h-3.5 w-3.5" />
                     {developer.company_name}
                   </p>
@@ -163,7 +163,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
             </div>
 
             {/* Submission Date */}
-            <p className="text-xs text-gray-400 mt-2">
+            <p className="text-xs text-muted-foreground mt-2">
               Submitted {formatDate(proposal.created_at)}
             </p>
           </div>
@@ -180,35 +180,35 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
         )}
 
         {/* Your Proposal Details */}
-        <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-          <p className="text-xs text-gray-500 mb-3 font-medium uppercase tracking-wide">
+        <div className="mt-4 p-4 bg-muted rounded-lg">
+          <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wide">
             Your Proposal
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             <div>
-              <p className="text-xs text-gray-500 mb-1">Amount Offered</p>
-              <p className="text-sm font-bold text-[#E86A33]">
+              <p className="text-xs text-muted-foreground mb-1">Amount Offered</p>
+              <p className="text-sm font-bold text-primary">
                 {formatCurrency(proposal.loan_amount_offered, proposal.currency)}
               </p>
             </div>
             <div>
               <div className="flex items-center gap-1 mb-1">
-                <Percent className="h-3 w-3 text-gray-400" />
-                <p className="text-xs text-gray-500">Interest Rate</p>
+                <Percent className="h-3 w-3 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">Interest Rate</p>
               </div>
               <p className="text-sm font-bold">{proposal.interest_rate}% p.a.</p>
             </div>
             <div>
               <div className="flex items-center gap-1 mb-1">
-                <Shield className="h-3 w-3 text-gray-400" />
-                <p className="text-xs text-gray-500">Max LTV</p>
+                <Shield className="h-3 w-3 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">Max LTV</p>
               </div>
               <p className="text-sm font-bold">{proposal.max_ltv_accepted}%</p>
             </div>
             <div>
               <div className="flex items-center gap-1 mb-1">
-                <Calendar className="h-3 w-3 text-gray-400" />
-                <p className="text-xs text-gray-500">Maturity</p>
+                <Calendar className="h-3 w-3 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">Maturity</p>
               </div>
               <p className="text-sm font-bold">
                 {formatDate(proposal.loan_maturity_date)}
@@ -241,14 +241,14 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                   "p-3 rounded-lg border",
                   proposal.lender_signed_at
                     ? "bg-green-100 border-green-200"
-                    : "bg-white border-gray-200"
+                    : "bg-card border-border"
                 )}
               >
                 <div className="flex items-center gap-2 mb-2">
                   {proposal.lender_signed_at ? (
                     <CheckCircle2 className="h-4 w-4 text-green-600" />
                   ) : (
-                    <Circle className="h-4 w-4 text-gray-300" />
+                    <Circle className="h-4 w-4 text-muted-foreground/60" />
                   )}
                   <span className="text-sm font-medium">Your Signature</span>
                 </div>
@@ -258,13 +258,13 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                   </p>
                 ) : (
                   <div className="space-y-2">
-                    <p className="text-xs text-gray-500">You need to sign the agreement</p>
+                    <p className="text-xs text-muted-foreground">You need to sign the agreement</p>
                     {onSign && (
                       <Button
                         size="sm"
                         onClick={() => onSign(proposal.id)}
                         disabled={isSigning}
-                        className="bg-[#E86A33] hover:bg-[#d55a25] text-white"
+                        className="bg-primary hover:bg-primary/90 text-white"
                       >
                         {isSigning ? (
                           <>
@@ -289,14 +289,14 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                   "p-3 rounded-lg border",
                   proposal.developer_signed_at
                     ? "bg-green-100 border-green-200"
-                    : "bg-gray-50 border-gray-200"
+                    : "bg-muted border-border"
                 )}
               >
                 <div className="flex items-center gap-2 mb-2">
                   {proposal.developer_signed_at ? (
                     <CheckCircle2 className="h-4 w-4 text-green-600" />
                   ) : (
-                    <Circle className="h-4 w-4 text-gray-300" />
+                    <Circle className="h-4 w-4 text-muted-foreground/60" />
                   )}
                   <span className="text-sm font-medium">Developer&apos;s Signature</span>
                 </div>
@@ -305,7 +305,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                     Signed {formatDate(proposal.developer_signed_at)}
                   </p>
                 ) : (
-                  <p className="text-xs text-gray-500">Waiting for developer</p>
+                  <p className="text-xs text-muted-foreground">Waiting for developer</p>
                 )}
               </div>
             </div>
@@ -325,7 +325,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
         {/* Expandable Details */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-3 flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 transition-colors"
+          className="mt-3 flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
         >
           {isExpanded ? (
             <>
@@ -342,17 +342,17 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
 
         {/* Expanded Content */}
         {isExpanded && (
-          <div className="mt-4 pt-4 border-t border-gray-100 space-y-4">
+          <div className="mt-4 pt-4 border-t border-border space-y-4">
             {/* Project Details */}
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <p className="text-xs text-gray-500 mb-1">Project Type</p>
+                <p className="text-xs text-muted-foreground mb-1">Project Type</p>
                 <p className="text-sm font-medium">
                   {project?.project_type_label || project?.project_type || "N/A"}
                 </p>
               </div>
               <div>
-                <p className="text-xs text-gray-500 mb-1">Requested Loan</p>
+                <p className="text-xs text-muted-foreground mb-1">Requested Loan</p>
                 <p className="text-sm font-medium">
                   {project
                     ? formatCurrency(project.loan_amount, proposal.currency)
@@ -363,12 +363,12 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
 
             {/* Security Package */}
             <div>
-              <p className="text-xs text-gray-500 mb-2">Security Package</p>
+              <p className="text-xs text-muted-foreground mb-2">Security Package</p>
               <div className="flex flex-wrap gap-2">
                 {proposal.security_packages.map((pkg) => (
                   <span
                     key={pkg}
-                    className="inline-flex items-center px-2 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-700"
+                    className="inline-flex items-center px-2 py-1 rounded-md bg-muted text-xs font-medium text-foreground"
                   >
                     {lenderSecurityPackageLabels[pkg as LenderSecurityPackageType] || pkg}
                   </span>
@@ -378,7 +378,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
 
             {/* Bid Expiry */}
             <div>
-              <p className="text-xs text-gray-500 mb-1">Bid Expiry Date</p>
+              <p className="text-xs text-muted-foreground mb-1">Bid Expiry Date</p>
               <p className="text-sm font-medium">
                 {formatDate(proposal.bid_expiry_date)}
               </p>
@@ -387,8 +387,8 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
             {/* Conditions */}
             {proposal.additional_conditions && (
               <div>
-                <p className="text-xs text-gray-500 mb-1">Your Conditions</p>
-                <p className="text-sm text-gray-700">
+                <p className="text-xs text-muted-foreground mb-1">Your Conditions</p>
+                <p className="text-sm text-foreground">
                   {proposal.additional_conditions}
                 </p>
               </div>
@@ -397,19 +397,19 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
             {/* Uploaded Documents */}
             {proposal.documents && proposal.documents.length > 0 && (
               <div>
-                <p className="text-xs text-gray-500 mb-2">
+                <p className="text-xs text-muted-foreground mb-2">
                   Supporting Documents ({proposal.documents_count})
                 </p>
                 <div className="space-y-2">
                   {proposal.documents.map((doc) => (
                     <div
                       key={doc.id}
-                      className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                      className="flex items-center gap-2 p-2 bg-muted rounded-lg hover:bg-muted transition-colors group"
                     >
-                      <FileText className="h-4 w-4 text-gray-400" />
+                      <FileText className="h-4 w-4 text-muted-foreground" />
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{doc.title}</p>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-xs text-muted-foreground">
                           {doc.document_type_label} • {doc.file_size_formatted || `${(doc.file_size / 1024).toFixed(1)} KB`}
                         </p>
                       </div>
@@ -418,7 +418,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                           href={doc.file_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="p-1.5 rounded-md hover:bg-gray-200 text-gray-500 hover:text-[#E86A33] transition-colors"
+                          className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-primary transition-colors"
                           title="View document"
                         >
                           <Eye className="h-4 w-4" />
@@ -426,7 +426,7 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
                         <a
                           href={doc.file_url}
                           download={doc.file_name}
-                          className="p-1.5 rounded-md hover:bg-gray-200 text-gray-500 hover:text-[#E86A33] transition-colors"
+                          className="p-1.5 rounded-md hover:bg-muted text-muted-foreground hover:text-primary transition-colors"
                           title="Download document"
                         >
                           <Download className="h-4 w-4" />
@@ -442,10 +442,10 @@ export function LenderProposalCard({ proposal, onSign, isSigning = false }: Lend
       </div>
 
       {/* Footer - View Project Link */}
-      <div className="px-4 sm:px-5 py-3 bg-gray-50 border-t border-gray-100 flex justify-end">
+      <div className="px-4 sm:px-5 py-3 bg-muted border-t border-border flex justify-end">
         <Link
           href={`/dashboard/marketplace/${project?.id}`}
-          className="text-sm text-[#E86A33] hover:text-[#d55a25] font-medium inline-flex items-center gap-1"
+          className="text-sm text-primary hover:text-primary/90 font-medium inline-flex items-center gap-1"
         >
           View Project
           <ExternalLink className="h-3.5 w-3.5" />

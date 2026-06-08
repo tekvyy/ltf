@@ -65,7 +65,7 @@ export function WalletConnected() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">My Wallet</h2>
-        <div className="flex items-center gap-2 text-xs text-gray-500">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <span className="inline-flex items-center gap-1 px-2 py-1 bg-green-100 text-green-700 rounded-full">
             <span className="w-2 h-2 bg-green-500 rounded-full" />
             Connected
@@ -73,17 +73,17 @@ export function WalletConnected() {
         </div>
       </div>
 
-      <Separator className="my-4 bg-[#B9C2CA]" />
+      <Separator className="my-4" />
 
       {/* Wallet Card */}
       <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-xl p-6 text-white">
         <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 bg-card/10 rounded-full flex items-center justify-center">
             <Wallet className="h-5 w-5" />
           </div>
           <div>
-            <p className="text-sm text-gray-400">{walletData?.label || "Primary Wallet"}</p>
-            <p className="text-xs text-gray-500">
+            <p className="text-sm text-muted-foreground">{walletData?.label || "Primary Wallet"}</p>
+            <p className="text-xs text-muted-foreground">
               XRPL {XRPL_NETWORK.charAt(0).toUpperCase() + XRPL_NETWORK.slice(1)}
             </p>
           </div>
@@ -91,13 +91,13 @@ export function WalletConnected() {
 
         {/* Balance */}
         <div className="mb-4">
-          <p className="text-sm text-gray-400 mb-1">Balance</p>
+          <p className="text-sm text-muted-foreground mb-1">Balance</p>
           <div className="flex items-center gap-2">
             <p className="text-2xl font-bold">{balance} XRP</p>
             <button
               onClick={fetchBalance}
               disabled={isLoadingBalance}
-              className="text-gray-400 hover:text-white transition-colors"
+              className="text-muted-foreground hover:text-white transition-colors"
             >
               <RefreshCw className={`h-4 w-4 ${isLoadingBalance ? "animate-spin" : ""}`} />
             </button>
@@ -105,14 +105,14 @@ export function WalletConnected() {
         </div>
 
         {/* Address */}
-        <div className="bg-white/10 rounded-lg p-3">
-          <p className="text-xs text-gray-400 mb-1">Wallet Address</p>
+        <div className="bg-card/10 rounded-lg p-3">
+          <p className="text-xs text-muted-foreground mb-1">Wallet Address</p>
           <div className="flex items-center justify-between gap-2">
             <code className="text-sm font-mono">{formatAddress(address)}</code>
             <div className="flex gap-1">
               <button
                 onClick={copyAddress}
-                className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                className="p-1.5 hover:bg-card/10 rounded transition-colors"
                 title="Copy address"
               >
                 {copied ? (
@@ -125,7 +125,7 @@ export function WalletConnected() {
                 href={getExplorerUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-1.5 hover:bg-white/10 rounded transition-colors"
+                className="p-1.5 hover:bg-card/10 rounded transition-colors"
                 title="View on explorer"
               >
                 <ExternalLink className="h-4 w-4" />
@@ -177,7 +177,7 @@ export function WalletConnected() {
       </div>
 
       {/* Info text */}
-      <p className="text-xs text-gray-500 text-center">
+      <p className="text-xs text-muted-foreground text-center">
         {XRPL_NETWORK !== "mainnet" && (
           <>
             This is a {XRPL_NETWORK} wallet. Funds are not real XRP.

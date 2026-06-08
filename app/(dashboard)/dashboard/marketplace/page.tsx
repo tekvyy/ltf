@@ -87,14 +87,14 @@ function KybBlockedMessage({ kybStatus }: { kybStatus: KybStatus }) {
     <div className="space-y-6">
       <DashboardHeader title="Marketplace" subtitle="Browse investment opportunities" />
 
-      <div className="rounded-xl border bg-white p-8 shadow-sm text-center max-w-lg mx-auto mt-12">
+      <div className="rounded-xl border bg-card p-8 shadow-sm text-center max-w-lg mx-auto mt-12">
         <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
-          <AlertCircle className="h-8 w-8 text-[#E86A33]" />
+          <AlertCircle className="h-8 w-8 text-primary" />
         </div>
         <h2 className="text-xl font-semibold mb-2">{message.title}</h2>
-        <p className="text-gray-500 mb-6">{message.description}</p>
+        <p className="text-muted-foreground mb-6">{message.description}</p>
         <Link href="/dashboard/kyb">
-          <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+          <Button className="bg-primary hover:bg-primary/90">
             {message.buttonText}
           </Button>
         </Link>
@@ -205,7 +205,7 @@ export default function MarketplacePage() {
       <div className="space-y-6">
         <DashboardHeader title="Marketplace" subtitle="Browse investment opportunities" />
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -237,7 +237,7 @@ export default function MarketplacePage() {
       {/* Search and Filter Bar */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Search projects by name, location..."
             value={searchQuery}
@@ -253,7 +253,7 @@ export default function MarketplacePage() {
 
       {/* Results Count */}
       <div className="flex items-center justify-between">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-muted-foreground">
           {isLoadingProjects ? (
             <span className="flex items-center gap-2">
               <Loader2 className="h-3 w-3 animate-spin" />
@@ -268,12 +268,12 @@ export default function MarketplacePage() {
       {/* Projects Grid */}
       {isLoadingProjects ? (
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       ) : cardProjects.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {cardProjects.map((project) => (
-            <div key={project.id} className="bg-white rounded-xl border p-4 shadow-sm">
+            <div key={project.id} className="bg-card rounded-xl border p-4 shadow-sm">
               <ProjectCard
                 project={project}
                 proposalStatus={proposalStatuses[project.id] || null}
@@ -282,22 +282,22 @@ export default function MarketplacePage() {
           ))}
         </div>
       ) : searchQuery ? (
-        <div className="text-center py-12 bg-white rounded-xl border">
-          <Search className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-          <p className="text-gray-500">No projects found matching your search.</p>
+        <div className="text-center py-12 bg-card rounded-xl border">
+          <Search className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
+          <p className="text-muted-foreground">No projects found matching your search.</p>
           <Button
             variant="link"
             onClick={() => setSearchQuery("")}
-            className="text-[#E86A33] mt-2"
+            className="text-primary mt-2"
           >
             Clear search
           </Button>
         </div>
       ) : (
-        <div className="text-center py-12 bg-white rounded-xl border">
-          <Building2 className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="text-center py-12 bg-card rounded-xl border">
+          <Building2 className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">No projects available</h3>
-          <p className="text-gray-500">
+          <p className="text-muted-foreground">
             There are no investment opportunities available at the moment. Check back later.
           </p>
         </div>

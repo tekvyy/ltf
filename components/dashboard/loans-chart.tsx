@@ -72,12 +72,12 @@ export function LoansChart({ data }: LoansChartProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <Card className="shadow-none border-none bg-white">
+    <Card className="bg-card">
       <CardHeader className="pb-2 flex flex-row items-center justify-between">
-        <CardTitle className="text-base font-semibold">
+        <CardTitle className="text-base font-semibold tracking-tight">
           Approved loans value
         </CardTitle>
-        <span className="text-sm text-muted-foreground">
+        <span className="rounded-md bg-muted px-2 py-0.5 text-xs font-medium text-muted-foreground">
           {currentYear}
         </span>
       </CardHeader>
@@ -90,40 +90,43 @@ export function LoansChart({ data }: LoansChartProps) {
             >
               <defs>
                 <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#E86A33" stopOpacity={0.3} />
-                  <stop offset="95%" stopColor="#E86A33" stopOpacity={0} />
+                  <stop offset="5%" stopColor="var(--primary)" stopOpacity={0.3} />
+                  <stop offset="95%" stopColor="var(--primary)" stopOpacity={0} />
                 </linearGradient>
               </defs>
-              <CartesianGrid strokeDasharray="0" vertical={true} horizontal={true} stroke="#E5E7EB" />
+              <CartesianGrid strokeDasharray="4 4" vertical={false} horizontal={true} stroke="var(--border)" />
               <XAxis
                 dataKey="date"
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: "#888" }}
+                tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
               />
               <YAxis
                 axisLine={false}
                 tickLine={false}
-                tick={{ fontSize: 12, fill: "#888" }}
+                tick={{ fontSize: 12, fill: "var(--muted-foreground)" }}
                 width={50}
                 domain={[0, maxValue]}
                 ticks={ticks}
                 tickFormatter={formatYAxisValue}
               />
               <Tooltip
+                cursor={{ stroke: "var(--primary)", strokeWidth: 1, strokeOpacity: 0.4 }}
                 contentStyle={{
-                  backgroundColor: "#fff",
-                  border: "1px solid #e5e7eb",
-                  borderRadius: "8px",
+                  backgroundColor: "var(--popover)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "10px",
                   fontSize: "12px",
+                  color: "var(--popover-foreground)",
+                  boxShadow: "0 8px 24px -8px rgba(0,0,0,0.18)",
                 }}
                 formatter={(value) => [formatCurrency(value as number), "Approved Loans"]}
-                labelStyle={{ fontWeight: 600, marginBottom: 4 }}
+                labelStyle={{ fontWeight: 600, marginBottom: 4, color: "var(--foreground)" }}
               />
               <Area
                 type="monotone"
                 dataKey="value"
-                stroke="#E86A33"
+                stroke="var(--primary)"
                 strokeWidth={2}
                 fillOpacity={1}
                 fill="url(#colorValue)"

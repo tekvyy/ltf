@@ -177,7 +177,7 @@ export function DocumentAISummary({
       {/* Content */}
       {isExpanded && (
         <div className="px-3 pb-3">
-          <div className="bg-white/70 backdrop-blur-sm rounded-lg p-3 border border-violet-100">
+          <div className="bg-card/70 backdrop-blur-sm rounded-lg p-3 border border-violet-100">
             <div className="prose prose-sm prose-violet max-w-none">
               {state.summary?.split("\n").map((line, index) => {
                 const trimmedLine = line.trim();
@@ -188,7 +188,7 @@ export function DocumentAISummary({
                   return (
                     <div key={index} className="flex items-start gap-2 py-0.5">
                       <span className="text-violet-400 mt-1.5">•</span>
-                      <span className="text-sm text-gray-700">{trimmedLine.slice(1).trim()}</span>
+                      <span className="text-sm text-foreground">{trimmedLine.slice(1).trim()}</span>
                     </div>
                   );
                 }
@@ -196,7 +196,7 @@ export function DocumentAISummary({
                 // Check if it's a numbered point
                 if (/^\d+\./.test(trimmedLine)) {
                   return (
-                    <p key={index} className="text-sm text-gray-800 font-medium py-1">
+                    <p key={index} className="text-sm text-foreground font-medium py-1">
                       {trimmedLine}
                     </p>
                   );
@@ -204,7 +204,7 @@ export function DocumentAISummary({
 
                 // Regular text
                 return (
-                  <p key={index} className="text-sm text-gray-700 py-0.5">
+                  <p key={index} className="text-sm text-foreground py-0.5">
                     {trimmedLine}
                   </p>
                 );

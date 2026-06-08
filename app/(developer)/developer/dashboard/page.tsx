@@ -60,7 +60,7 @@ export default function DeveloperDashboardPage() {
       <div className="space-y-6">
         <DeveloperHeader title="Developer Dashboard" />
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -113,36 +113,36 @@ export default function DeveloperDashboardPage() {
 
       {/* Stats Cards */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100">
               <Building2 className="h-6 w-6 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Active Projects</p>
+              <p className="text-sm font-medium text-muted-foreground">Active Projects</p>
               <p className="text-2xl font-bold">{stats.activeProjects}</p>
             </div>
           </div>
         </div>
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-green-100">
               <DollarSign className="h-6 w-6 text-green-600" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Total Funding</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Funding</p>
               <p className="text-2xl font-bold">${stats.totalFunding.toLocaleString()}</p>
             </div>
           </div>
         </div>
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100">
-              <Clock className="h-6 w-6 text-[#E86A33]" />
+              <Clock className="h-6 w-6 text-primary" />
             </div>
             <div>
-              <p className="text-sm font-medium text-gray-500">Pending Requests</p>
-              <p className="text-2xl font-bold text-[#E86A33]">{stats.pendingRequests}</p>
+              <p className="text-sm font-medium text-muted-foreground">Pending Requests</p>
+              <p className="text-2xl font-bold text-primary">{stats.pendingRequests}</p>
             </div>
           </div>
         </div>
@@ -150,11 +150,11 @@ export default function DeveloperDashboardPage() {
 
       {/* Quick Actions */}
       {isKybApproved && (
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
           <div className="flex flex-wrap gap-4">
             <Link href="/developer/dashboard/projects/new">
-              <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+              <Button className="bg-primary hover:bg-primary/90">
                 <Plus className="mr-2 h-4 w-4" />
                 Create New Project
               </Button>
@@ -178,11 +178,11 @@ export default function DeveloperDashboardPage() {
       <RecentActivityFeed projects={recentProjects} />
 
       {/* Recent Projects */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold">Recent Projects</h2>
           {recentProjects.length > 0 && (
-            <Link href="/developer/dashboard/projects" className="text-sm text-[#E86A33] hover:underline">
+            <Link href="/developer/dashboard/projects" className="text-sm text-primary hover:underline">
               View all
             </Link>
           )}
@@ -193,11 +193,11 @@ export default function DeveloperDashboardPage() {
               <Link
                 key={project.id}
                 href={`/developer/dashboard/projects/${project.id}`}
-                className="flex items-center justify-between p-4 rounded-lg border hover:bg-gray-50 transition-colors"
+                className="flex items-center justify-between p-4 rounded-lg border hover:bg-muted transition-colors"
               >
                 <div>
                   <h3 className="font-medium">{project.title}</h3>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-muted-foreground">
                     ${project.loan_amount.toLocaleString()} loan
                   </p>
                 </div>
@@ -209,22 +209,22 @@ export default function DeveloperDashboardPage() {
           </div>
         ) : (
           <div className="text-center py-12">
-            <Building2 className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500 mb-4">
+            <Building2 className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
+            <p className="text-muted-foreground mb-4">
               {isKybApproved
                 ? "No projects yet. Create your first project to get started."
                 : "Complete your KYB verification to start creating projects."}
             </p>
             {isKybApproved ? (
               <Link href="/developer/dashboard/projects/new">
-                <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+                <Button className="bg-primary hover:bg-primary/90">
                   <Plus className="mr-2 h-4 w-4" />
                   Create Your First Project
                 </Button>
               </Link>
             ) : (
               <Link href="/developer/dashboard/kyb">
-                <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+                <Button className="bg-primary hover:bg-primary/90">
                   Start KYB Verification
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -239,7 +239,7 @@ export default function DeveloperDashboardPage() {
 
 function getStatusStyle(status: string): string {
   const styles: Record<string, string> = {
-    draft: "bg-gray-100 text-gray-600",
+    draft: "bg-muted text-muted-foreground",
     submitted: "bg-blue-100 text-blue-600",
     under_review: "bg-yellow-100 text-yellow-700",
     approved: "bg-green-100 text-green-600",
@@ -247,7 +247,7 @@ function getStatusStyle(status: string): string {
     funded: "bg-purple-100 text-purple-600",
     completed: "bg-emerald-100 text-emerald-600",
   };
-  return styles[status] || "bg-gray-100 text-gray-600";
+  return styles[status] || "bg-muted text-muted-foreground";
 }
 
 function formatStatus(status: string): string {

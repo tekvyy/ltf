@@ -91,7 +91,7 @@ const handlePageChange = (page: number) => {
 
             {/* Actions Bar */}
             <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                     View your complete activity history including KYB approvals, proposals, and XRPL
                     transactions
                 </p>
@@ -146,7 +146,7 @@ const handlePageChange = (page: number) => {
                                     onClick={() => handlePageChange(pageNum)}
                                     className={
                                         currentPage === pageNum
-                                            ? "bg-[#E86A33] hover:bg-[#d55a25]"
+                                            ? "bg-primary hover:bg-primary/90"
                                             : ""
                                     }
                                 >

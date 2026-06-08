@@ -80,9 +80,9 @@ export function ProjectPhotoGallery({
 
   if (photos.length === 0) {
     return (
-      <div className="text-center py-12 bg-gray-50 rounded-xl border-2 border-dashed border-gray-200">
-        <ImageIcon className="h-12 w-12 text-gray-300 mx-auto mb-3" />
-        <p className="text-gray-500">No photos uploaded yet</p>
+      <div className="text-center py-12 bg-muted rounded-xl border-2 border-dashed border-border">
+        <ImageIcon className="h-12 w-12 text-muted-foreground/60 mx-auto mb-3" />
+        <p className="text-muted-foreground">No photos uploaded yet</p>
       </div>
     );
   }
@@ -101,8 +101,8 @@ export function ProjectPhotoGallery({
           <div
             key={photo.id}
             className={cn(
-              "relative rounded-lg border-2 overflow-hidden bg-gray-50 group",
-              photo.is_featured ? "border-[#E86A33]" : "border-gray-200"
+              "relative rounded-lg border-2 overflow-hidden bg-muted group",
+              photo.is_featured ? "border-primary" : "border-border"
             )}
           >
             {/* Image */}
@@ -115,7 +115,7 @@ export function ProjectPhotoGallery({
 
               {/* Featured badge */}
               {photo.is_featured && (
-                <div className="absolute top-2 left-2 bg-[#E86A33] text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                <div className="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                   <Star className="h-3 w-3 fill-current" />
                   Cover
                 </div>
@@ -137,7 +137,7 @@ export function ProjectPhotoGallery({
                         type="button"
                         variant="secondary"
                         size="icon"
-                        className="h-8 w-8 bg-white/90 hover:bg-white"
+                        className="h-8 w-8 bg-card/90 hover:bg-card"
                         onClick={() => handleSetFeatured(photo.id)}
                         title="Set as cover photo"
                       >
@@ -149,7 +149,7 @@ export function ProjectPhotoGallery({
                         type="button"
                         variant="secondary"
                         size="icon"
-                        className="h-8 w-8 bg-white/90 hover:bg-white"
+                        className="h-8 w-8 bg-card/90 hover:bg-card"
                         onClick={() => handleStartEdit(photo)}
                         title="Edit title"
                       >
@@ -161,7 +161,7 @@ export function ProjectPhotoGallery({
                         type="button"
                         variant="secondary"
                         size="icon"
-                        className="h-8 w-8 bg-white/90 hover:bg-red-50 hover:text-red-600"
+                        className="h-8 w-8 bg-card/90 hover:bg-red-50 hover:text-red-600"
                         onClick={() => handleDelete(photo.id)}
                         title="Delete photo"
                       >
@@ -203,13 +203,13 @@ export function ProjectPhotoGallery({
                     onClick={handleCancelEdit}
                     disabled={loadingId === photo.id}
                   >
-                    <X className="h-4 w-4 text-gray-500" />
+                    <X className="h-4 w-4 text-muted-foreground" />
                   </Button>
                 </div>
               ) : (
-                <p className="text-sm text-gray-700 truncate">
+                <p className="text-sm text-foreground truncate">
                   {photo.title || (
-                    <span className="text-gray-400 italic">No title</span>
+                    <span className="text-muted-foreground italic">No title</span>
                   )}
                 </p>
               )}

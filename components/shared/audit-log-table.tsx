@@ -35,21 +35,21 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
 
     if (isLoading) {
         return (
-            <div className="rounded-xl border bg-white overflow-hidden">
+            <div className="rounded-xl border bg-card overflow-hidden">
                 <div className="overflow-x-auto">
                     <table className="w-full">
-                        <thead className="bg-gray-50 border-b">
+                        <thead className="bg-muted border-b">
                             <tr>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     Date & Time
                                 </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     Event
                                 </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     Description
                                 </th>
-                                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                     Transaction
                                 </th>
                             </tr>
@@ -58,16 +58,16 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                             {[1, 2, 3].map((i) => (
                                 <tr key={i} className="border-b">
                                     <td className="px-6 py-4">
-                                        <div className="h-4 bg-gray-200 rounded animate-pulse w-32" />
+                                        <div className="h-4 bg-muted rounded animate-pulse w-32" />
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="h-6 bg-gray-200 rounded animate-pulse w-24" />
+                                        <div className="h-6 bg-muted rounded animate-pulse w-24" />
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="h-4 bg-gray-200 rounded animate-pulse w-48" />
+                                        <div className="h-4 bg-muted rounded animate-pulse w-48" />
                                     </td>
                                     <td className="px-6 py-4">
-                                        <div className="h-4 bg-gray-200 rounded animate-pulse w-32" />
+                                        <div className="h-4 bg-muted rounded animate-pulse w-32" />
                                     </td>
                                 </tr>
                             ))}
@@ -80,11 +80,11 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
 
     if (logs.length === 0) {
         return (
-            <div className="rounded-xl border bg-white p-12 text-center">
+            <div className="rounded-xl border bg-card p-12 text-center">
                 <div className="flex flex-col items-center justify-center">
-                    <div className="rounded-full bg-gray-100 p-3 mb-4">
+                    <div className="rounded-full bg-muted p-3 mb-4">
                         <svg
-                            className="h-8 w-8 text-gray-400"
+                            className="h-8 w-8 text-muted-foreground"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"
@@ -97,8 +97,8 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                             />
                         </svg>
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-1">No audit logs yet</h3>
-                    <p className="text-sm text-gray-500">
+                    <h3 className="text-lg font-semibold text-foreground mb-1">No audit logs yet</h3>
+                    <p className="text-sm text-muted-foreground">
                         Your activity will be tracked and displayed here
                     </p>
                 </div>
@@ -107,25 +107,25 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
     }
 
     return (
-        <div className="rounded-xl border bg-white overflow-hidden">
+        <div className="rounded-xl border bg-card overflow-hidden">
             {/* Desktop Table View */}
             <div className="hidden md:block overflow-x-auto">
                 <table className="w-full">
-                    <thead className="bg-gray-50 border-b">
+                    <thead className="bg-muted border-b">
                         <tr>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                 Date & Time
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                 Event
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                 Description
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
                                 Transaction
                             </th>
-                            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider w-12">
+                            <th className="px-6 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider w-12">
                             </th>
                         </tr>
                     </thead>
@@ -136,14 +136,14 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
 
                             return (
                                 <Fragment key={log.id}>
-                                    <tr className="hover:bg-gray-50 transition-colors">
+                                    <tr className="hover:bg-muted transition-colors">
                                         <td className="px-6 py-4 whitespace-nowrap">
-                                            <div className="text-sm text-gray-900">{formatTimestamp(log.occurred_at)}</div>
-                                            <div className="text-xs text-gray-500">{getRelativeTime(log.occurred_at)}</div>
+                                            <div className="text-sm text-foreground">{formatTimestamp(log.occurred_at)}</div>
+                                            <div className="text-xs text-muted-foreground">{getRelativeTime(log.occurred_at)}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             <div className="flex items-center gap-2">
-                                                <Icon className="h-4 w-4 text-gray-400" />
+                                                <Icon className="h-4 w-4 text-muted-foreground" />
                                                 <span
                                                     className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getEventCategoryColor(
                                                         log.event_category
@@ -154,12 +154,12 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
-                                            <div className="text-sm text-gray-900">{log.description}</div>
+                                            <div className="text-sm text-foreground">{log.description}</div>
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap">
                                             {log.xrpl_txn_hash ? (
                                                 <div className="flex items-center gap-2">
-                                                    <code className="text-xs bg-gray-100 px-2 py-1 rounded">
+                                                    <code className="text-xs bg-muted px-2 py-1 rounded">
                                                         {truncateHash(log.xrpl_txn_hash)}
                                                     </code>
                                                     <Button
@@ -182,7 +182,7 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                                                     </Button>
                                                 </div>
                                             ) : (
-                                                <span className="text-xs text-gray-400">—</span>
+                                                <span className="text-xs text-muted-foreground">—</span>
                                             )}
                                         </td>
                                         <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -204,10 +204,10 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                                     </tr>
                                     {isExpanded && log.metadata && (
                                         <tr>
-                                            <td colSpan={5} className="px-6 py-4 bg-gray-50">
+                                            <td colSpan={5} className="px-6 py-4 bg-muted">
                                                 <div className="text-sm">
-                                                    <div className="font-medium text-gray-700 mb-2">Additional Details:</div>
-                                                    <pre className="bg-white p-3 rounded border text-xs overflow-auto">
+                                                    <div className="font-medium text-foreground mb-2">Additional Details:</div>
+                                                    <pre className="bg-card p-3 rounded border text-xs overflow-auto">
                                                         {JSON.stringify(log.metadata, null, 2)}
                                                     </pre>
                                                 </div>
@@ -231,7 +231,7 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                         <div key={log.id} className="p-4">
                             <div className="flex items-start justify-between mb-2">
                                 <div className="flex items-center gap-2">
-                                    <Icon className="h-4 w-4 text-gray-400" />
+                                    <Icon className="h-4 w-4 text-muted-foreground" />
                                     <span
                                         className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium border ${getEventCategoryColor(
                                             log.event_category
@@ -240,13 +240,13 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                                         {formatEventType(log.event_type)}
                                     </span>
                                 </div>
-                                <span className="text-xs text-gray-500">{getRelativeTime(log.occurred_at)}</span>
+                                <span className="text-xs text-muted-foreground">{getRelativeTime(log.occurred_at)}</span>
                             </div>
-                            <p className="text-sm text-gray-900 mb-2">{log.description}</p>
-                            <div className="text-xs text-gray-500 mb-2">{formatTimestamp(log.occurred_at)}</div>
+                            <p className="text-sm text-foreground mb-2">{log.description}</p>
+                            <div className="text-xs text-muted-foreground mb-2">{formatTimestamp(log.occurred_at)}</div>
                             {log.xrpl_txn_hash && (
                                 <div className="flex items-center gap-2 mb-2">
-                                    <code className="text-xs bg-gray-100 px-2 py-1 rounded flex-1 truncate">
+                                    <code className="text-xs bg-muted px-2 py-1 rounded flex-1 truncate">
                                         {truncateHash(log.xrpl_txn_hash)}
                                     </code>
                                     <Button
@@ -285,7 +285,7 @@ export function AuditLogTable({ logs, isLoading = false, network = "testnet" }: 
                                         )}
                                     </Button>
                                     {isExpanded && (
-                                        <pre className="mt-2 bg-gray-50 p-2 rounded border text-xs overflow-auto">
+                                        <pre className="mt-2 bg-muted p-2 rounded border text-xs overflow-auto">
                                             {JSON.stringify(log.metadata, null, 2)}
                                         </pre>
                                     )}

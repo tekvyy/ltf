@@ -168,12 +168,12 @@ export function ProjectPhotoUpload({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="font-semibold text-gray-900">Project Photos</h3>
-          <p className="text-sm text-gray-500">
+          <h3 className="font-semibold text-foreground">Project Photos</h3>
+          <p className="text-sm text-muted-foreground">
             Upload up to {maxPhotos} photos. The first photo will be the cover photo.
           </p>
         </div>
-        <span className="text-sm text-gray-500">
+        <span className="text-sm text-muted-foreground">
           {existingPhotoCount + pendingPhotos.length}/{maxPhotos} photos
         </span>
       </div>
@@ -191,8 +191,8 @@ export function ProjectPhotoUpload({
           className={cn(
             "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors",
             isDragging
-              ? "border-[#E86A33] bg-orange-50"
-              : "border-gray-300 hover:border-gray-400 bg-white"
+              ? "border-primary bg-orange-50"
+              : "border-border hover:border-border bg-card"
           )}
           onClick={handleClick}
           onDragOver={handleDragOver}
@@ -207,12 +207,12 @@ export function ProjectPhotoUpload({
             multiple
             onChange={handleFileChange}
           />
-          <Upload className="h-10 w-10 text-gray-400 mx-auto mb-3" />
-          <p className="text-sm text-gray-600 mb-1">
-            <span className="text-[#E86A33] font-medium">Click to upload</span> or
+          <Upload className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+          <p className="text-sm text-muted-foreground mb-1">
+            <span className="text-primary font-medium">Click to upload</span> or
             drag and drop
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             JPG, PNG, WebP (max {maxSizeMB}MB each)
           </p>
         </div>
@@ -226,8 +226,8 @@ export function ProjectPhotoUpload({
               <div
                 key={photo.id}
                 className={cn(
-                  "relative rounded-lg border-2 overflow-hidden bg-gray-50",
-                  photo.is_featured ? "border-[#E86A33]" : "border-gray-200"
+                  "relative rounded-lg border-2 overflow-hidden bg-muted",
+                  photo.is_featured ? "border-primary" : "border-border"
                 )}
               >
                 {/* Image preview */}
@@ -240,7 +240,7 @@ export function ProjectPhotoUpload({
 
                   {/* Featured badge */}
                   {photo.is_featured && (
-                    <div className="absolute top-2 left-2 bg-[#E86A33] text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                    <div className="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                       <Star className="h-3 w-3 fill-current" />
                       Cover
                     </div>
@@ -253,7 +253,7 @@ export function ProjectPhotoUpload({
                         type="button"
                         variant="secondary"
                         size="icon"
-                        className="h-7 w-7 bg-white/90 hover:bg-white"
+                        className="h-7 w-7 bg-card/90 hover:bg-card"
                         onClick={(e) => {
                           e.stopPropagation();
                           setFeatured(photo.id);
@@ -267,7 +267,7 @@ export function ProjectPhotoUpload({
                       type="button"
                       variant="secondary"
                       size="icon"
-                      className="h-7 w-7 bg-white/90 hover:bg-red-50 hover:text-red-600"
+                      className="h-7 w-7 bg-card/90 hover:bg-red-50 hover:text-red-600"
                       onClick={(e) => {
                         e.stopPropagation();
                         removePhoto(photo.id);
@@ -307,7 +307,7 @@ export function ProjectPhotoUpload({
               type="button"
               onClick={handleUpload}
               disabled={isUploading || pendingPhotos.length === 0}
-              className="bg-[#E86A33] hover:bg-[#d55a28]"
+              className="bg-primary hover:bg-primary/90"
             >
               {isUploading ? (
                 <>

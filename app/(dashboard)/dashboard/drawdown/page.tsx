@@ -60,7 +60,7 @@ type MilestoneStatus = "pending" | "proof_submitted" | "approved" | "rejected" |
 const statusConfig: Record<MilestoneStatus, { label: string; className: string }> = {
   pending: {
     label: "Pending",
-    className: "bg-gray-100 text-gray-700",
+    className: "bg-muted text-foreground",
   },
   proof_submitted: {
     label: "Awaiting Review",
@@ -389,7 +389,7 @@ export default function LenderDrawdownPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
@@ -398,8 +398,8 @@ export default function LenderDrawdownPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Progress Payments</h1>
-        <p className="text-gray-600 mt-1">
+        <h1 className="text-2xl font-bold text-foreground">Progress Payments</h1>
+        <p className="text-muted-foreground mt-1">
           Review milestone invoices and confirm payments
         </p>
       </div>
@@ -411,7 +411,7 @@ export default function LenderDrawdownPage() {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-sm font-medium text-muted-foreground">
                     Pending Review
                   </p>
                   <p className="text-2xl font-bold text-amber-600">
@@ -422,7 +422,7 @@ export default function LenderDrawdownPage() {
                   <Clock className="h-6 w-6 text-amber-600" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 {formatCurrency(statistics.pending_amount)} awaiting review
               </p>
             </CardContent>
@@ -432,7 +432,7 @@ export default function LenderDrawdownPage() {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-sm font-medium text-muted-foreground">
                     Approved
                   </p>
                   <p className="text-2xl font-bold text-green-600">
@@ -443,7 +443,7 @@ export default function LenderDrawdownPage() {
                   <CheckCircle className="h-6 w-6 text-green-600" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 {formatCurrency(statistics.approved_amount)} pending payment
               </p>
             </CardContent>
@@ -453,7 +453,7 @@ export default function LenderDrawdownPage() {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">Paid</p>
+                  <p className="text-sm font-medium text-muted-foreground">Paid</p>
                   <p className="text-2xl font-bold text-emerald-600">
                     {statistics.paid}
                   </p>
@@ -462,7 +462,7 @@ export default function LenderDrawdownPage() {
                   <DollarSign className="h-6 w-6 text-emerald-600" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 {formatCurrency(statistics.paid_amount)} disbursed
               </p>
             </CardContent>
@@ -472,18 +472,18 @@ export default function LenderDrawdownPage() {
             <CardContent className="pt-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-500">
+                  <p className="text-sm font-medium text-muted-foreground">
                     Total Amount
                   </p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-2xl font-bold text-foreground">
                     {formatCurrency(statistics.total_amount)}
                   </p>
                 </div>
-                <div className="h-12 w-12 rounded-full bg-gray-100 flex items-center justify-center">
-                  <Building2 className="h-6 w-6 text-gray-600" />
+                <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+                  <Building2 className="h-6 w-6 text-muted-foreground" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500 mt-2">
+              <p className="text-sm text-muted-foreground mt-2">
                 {statistics.total_milestones} total milestones
               </p>
             </CardContent>
@@ -496,7 +496,7 @@ export default function LenderDrawdownPage() {
         <CardContent className="pt-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
-              <label className="text-sm font-medium text-gray-700 mb-1 block">
+              <label className="text-sm font-medium text-foreground mb-1 block">
                 Project
               </label>
               <Select value={selectedProject} onValueChange={setSelectedProject}>
@@ -514,7 +514,7 @@ export default function LenderDrawdownPage() {
               </Select>
             </div>
             <div className="flex-1">
-              <label className="text-sm font-medium text-gray-700 mb-1 block">
+              <label className="text-sm font-medium text-foreground mb-1 block">
                 Status
               </label>
               <Select value={selectedStatus} onValueChange={setSelectedStatus}>
@@ -545,11 +545,11 @@ export default function LenderDrawdownPage() {
         <CardContent>
           {filteredMilestones.length === 0 ? (
             <div className="text-center py-12">
-              <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <FileText className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-foreground mb-2">
                 No invoices found
               </h3>
-              <p className="text-gray-500">
+              <p className="text-muted-foreground">
                 {milestones.length === 0
                   ? "No milestone invoices have been submitted yet."
                   : "No invoices match your current filters."}
@@ -576,14 +576,14 @@ export default function LenderDrawdownPage() {
                     return (
                       <Fragment key={rowKey}>
                         <TableRow
-                          className="cursor-pointer hover:bg-gray-50"
+                          className="cursor-pointer hover:bg-muted"
                           onClick={() => toggleRow(rowKey)}
                         >
                           <TableCell>
                             {expandedRows.has(rowKey) ? (
-                              <ChevronUp className="h-4 w-4 text-gray-400" />
+                              <ChevronUp className="h-4 w-4 text-muted-foreground" />
                             ) : (
-                              <ChevronDown className="h-4 w-4 text-gray-400" />
+                              <ChevronDown className="h-4 w-4 text-muted-foreground" />
                             )}
                           </TableCell>
                           <TableCell className="font-medium">
@@ -591,13 +591,13 @@ export default function LenderDrawdownPage() {
                           </TableCell>
                           <TableCell>
                             <div>
-                              <span className="text-gray-500 text-sm">
+                              <span className="text-muted-foreground text-sm">
                                 #{milestone.sequence}
                               </span>{" "}
                               {milestone.title}
                             </div>
                           </TableCell>
-                          <TableCell className="text-gray-600">
+                          <TableCell className="text-muted-foreground">
                             {milestone.project.developer?.company_name ||
                               milestone.project.developer?.user?.name ||
                               "-"}
@@ -608,7 +608,7 @@ export default function LenderDrawdownPage() {
                           <TableCell>
                             <MilestoneStatusBadge status={milestone.status} />
                           </TableCell>
-                          <TableCell className="text-gray-500">
+                          <TableCell className="text-muted-foreground">
                             {formatDate(milestone.proof_submitted_at)}
                           </TableCell>
                           <TableCell onClick={(e) => e.stopPropagation()}>
@@ -639,7 +639,7 @@ export default function LenderDrawdownPage() {
                               {milestone.status === "approved" && (
                                 <Button
                                   size="sm"
-                                  className="bg-[#E86A33] hover:bg-[#d55a23]"
+                                  className="bg-primary hover:bg-primary/90"
                                   onClick={() => setPaymentDialog(milestone)}
                                 >
                                   <Upload className="h-4 w-4 mr-1" />
@@ -653,15 +653,15 @@ export default function LenderDrawdownPage() {
                         {/* Expanded Row */}
                         {expandedRows.has(rowKey) && (
                           <TableRow>
-                            <TableCell colSpan={8} className="bg-gray-50 p-4">
+                            <TableCell colSpan={8} className="bg-muted p-4">
                               <div className="space-y-4">
                                 {/* Description */}
                                 {milestone.description && (
                                   <div>
-                                    <h4 className="text-sm font-medium text-gray-700">
+                                    <h4 className="text-sm font-medium text-foreground">
                                       Description
                                     </h4>
-                                    <p className="text-sm text-gray-600 mt-1">
+                                    <p className="text-sm text-muted-foreground mt-1">
                                       {milestone.description}
                                     </p>
                                   </div>
@@ -669,7 +669,7 @@ export default function LenderDrawdownPage() {
 
                                 {/* Submitted Proofs */}
                                 <div>
-                                  <h4 className="text-sm font-medium text-gray-700 mb-2">
+                                  <h4 className="text-sm font-medium text-foreground mb-2">
                                     Submitted Proofs
                                   </h4>
                                   {(() => {
@@ -682,15 +682,15 @@ export default function LenderDrawdownPage() {
                                       {developerProofs.map((proof: LenderMilestoneProof) => (
                                         <div
                                           key={proof.id}
-                                          className="flex items-center justify-between p-3 bg-white border rounded-lg"
+                                          className="flex items-center justify-between p-3 bg-card border rounded-lg"
                                         >
                                           <div className="flex items-center gap-3">
-                                            <FileText className="h-5 w-5 text-gray-400" />
+                                            <FileText className="h-5 w-5 text-muted-foreground" />
                                             <div>
                                               <p className="font-medium text-sm">
                                                 {proof.title}
                                               </p>
-                                              <p className="text-xs text-gray-500">
+                                              <p className="text-xs text-muted-foreground">
                                                 {proof.proof_type_label} •{" "}
                                                 {formatFileSize(proof.file_size)}
                                               </p>
@@ -700,7 +700,7 @@ export default function LenderDrawdownPage() {
                                             href={proof.file_url}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-[#E86A33] hover:underline text-sm flex items-center gap-1"
+                                            className="text-primary hover:underline text-sm flex items-center gap-1"
                                           >
                                             <Download className="h-4 w-4" />
                                           </a>
@@ -708,7 +708,7 @@ export default function LenderDrawdownPage() {
                                       ))}
                                     </div>
                                   ) : (
-                                    <p className="text-gray-500 text-sm">
+                                    <p className="text-muted-foreground text-sm">
                                       No proofs available
                                     </p>
                                   );
@@ -760,7 +760,7 @@ export default function LenderDrawdownPage() {
                                             {paymentProofsList.map((proof: LenderMilestoneProof) => (
                                               <div
                                                 key={proof.id}
-                                                className="flex items-center justify-between p-2 bg-white/50 rounded"
+                                                className="flex items-center justify-between p-2 bg-card/50 rounded"
                                               >
                                                 <span className="text-sm">
                                                   {proof.title}
@@ -787,14 +787,14 @@ export default function LenderDrawdownPage() {
                                 {/* Dates */}
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
                                   <div>
-                                    <span className="text-gray-500">Due Date:</span>
+                                    <span className="text-muted-foreground">Due Date:</span>
                                     <span className="ml-2 font-medium">
                                       {formatDate(milestone.due_date)}
                                     </span>
                                   </div>
                                   {milestone.approved_at && (
                                     <div>
-                                      <span className="text-gray-500">Approved:</span>
+                                      <span className="text-muted-foreground">Approved:</span>
                                       <span className="ml-2 font-medium">
                                         {formatDate(milestone.approved_at)}
                                       </span>
@@ -802,7 +802,7 @@ export default function LenderDrawdownPage() {
                                   )}
                                   {milestone.paid_at && (
                                     <div>
-                                      <span className="text-gray-500">Paid:</span>
+                                      <span className="text-muted-foreground">Paid:</span>
                                       <span className="ml-2 font-medium">
                                         {formatDate(milestone.paid_at)}
                                       </span>
@@ -836,14 +836,14 @@ export default function LenderDrawdownPage() {
 
           {rejectDialog && (
             <div className="space-y-4 px-6 py-4">
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-muted rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium">{rejectDialog.project.title}</span>
-                  <span className="text-lg font-bold text-[#E86A33]">
+                  <span className="text-lg font-bold text-primary">
                     {formatCurrency(rejectDialog.amount)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   Milestone #{rejectDialog.sequence}: {rejectDialog.title}
                 </p>
               </div>
@@ -895,14 +895,14 @@ export default function LenderDrawdownPage() {
 
           {paymentDialog && (
             <div className="space-y-4 py-4 px-6">
-              <div className="bg-gray-50 rounded-lg p-4">
+              <div className="bg-muted rounded-lg p-4">
                 <div className="flex items-center justify-between mb-2">
                   <span className="font-medium">{paymentDialog.project.title}</span>
-                  <span className="text-lg font-bold text-[#E86A33]">
+                  <span className="text-lg font-bold text-primary">
                     {formatCurrency(paymentDialog.amount)}
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-muted-foreground">
                   Milestone #{paymentDialog.sequence}: {paymentDialog.title}
                 </p>
               </div>
@@ -979,7 +979,7 @@ export default function LenderDrawdownPage() {
               Cancel
             </Button>
             <Button
-              className="bg-[#E86A33] hover:bg-[#d55a23]"
+              className="bg-primary hover:bg-primary/90"
               onClick={handleUploadPayment}
               disabled={paymentLoading}
             >

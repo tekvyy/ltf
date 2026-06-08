@@ -203,7 +203,7 @@ export default function ProjectDetailsPage() {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
@@ -215,9 +215,9 @@ export default function ProjectDetailsPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/dashboard/marketplace"
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-full border border-border hover:bg-muted transition-colors"
           >
-            <ArrowLeft className="h-4 w-4 text-gray-600" />
+            <ArrowLeft className="h-4 w-4 text-muted-foreground" />
           </Link>
           <h1 className="text-xl font-semibold">Project Details</h1>
         </div>
@@ -245,18 +245,18 @@ export default function ProjectDetailsPage() {
         <div className="flex items-center gap-3">
           <Link
             href="/dashboard/marketplace"
-            className="flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 hover:bg-gray-50 transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-full border border-border hover:bg-muted transition-colors"
           >
-            <ArrowLeft className="h-4 w-4 text-gray-600" />
+            <ArrowLeft className="h-4 w-4 text-muted-foreground" />
           </Link>
           <h1 className="text-xl font-semibold">Project Details</h1>
         </div>
 
         {/* Hero Image with Overlay Title */}
-        <div className="rounded-xl border-none bg-white">
+        <div className="rounded-xl border-none bg-card">
           <div className="relative overflow-hidden">
             {/* Main Image */}
-            <div className="relative aspect-[16/9] w-full bg-gray-100">
+            <div className="relative aspect-[16/9] w-full bg-muted">
               <Image
                 src={heroImage}
                 alt={project.title}
@@ -267,7 +267,7 @@ export default function ProjectDetailsPage() {
             </div>
 
             {/* Overlay Title at Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gray-200 p-2">
+            <div className="absolute bottom-0 left-0 right-0 bg-muted p-2">
               <h2 className="text-base font-bold">
                 {project.title} | {project.uuid?.slice(0, 8).toUpperCase() || `PRJ-${project.id}`} | {location}
               </h2>
@@ -275,22 +275,22 @@ export default function ProjectDetailsPage() {
           </div>
 
           {/* Project Stats Row */}
-          <div className="grid grid-cols-3 gap-4 p-4 border-b border-gray-200">
+          <div className="grid grid-cols-3 gap-4 p-4 border-b border-border">
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100">
-                <Play className="h-4 w-4 text-gray-500" />
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
+                <Play className="h-4 w-4 text-muted-foreground" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Construction Start</p>
+                <p className="text-xs text-muted-foreground">Construction Start</p>
                 <p className="text-sm font-medium">{formatDate(project.construction_start_date)}</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100">
-                <Calendar className="h-4 w-4 text-gray-500" />
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
+                <Calendar className="h-4 w-4 text-muted-foreground" />
               </div>
               <div>
-                <p className="text-xs text-gray-500">Construction Finish</p>
+                <p className="text-xs text-muted-foreground">Construction Finish</p>
                 <p className="text-sm font-medium">{formatDate(project.construction_end_date)}</p>
               </div>
             </div>
@@ -302,15 +302,15 @@ export default function ProjectDetailsPage() {
               {/* Stats */}
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                 {/*<div>*/}
-                {/*  <p className="text-xs text-gray-500 mb-1">Development Value</p>*/}
+                {/*  <p className="text-xs text-muted-foreground mb-1">Development Value</p>*/}
                 {/*  <p className="text-lg font-bold">${developmentValue.toLocaleString()}</p>*/}
                 {/*</div>*/}
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Loan Amount</p>
-                  <p className="text-lg font-bold text-[#E86A33]">${project.loan_amount.toLocaleString()}</p>
+                  <p className="text-xs text-muted-foreground mb-1">Loan Amount</p>
+                  <p className="text-lg font-bold text-primary">${project.loan_amount.toLocaleString()}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">Project Type</p>
+                  <p className="text-xs text-muted-foreground mb-1">Project Type</p>
                   <p className="text-lg font-bold">{project.project_type_label}</p>
                 </div>
               </div>
@@ -318,8 +318,8 @@ export default function ProjectDetailsPage() {
               {/* CTA Button or Status */}
               {isLoadingProposal ? (
                 <div className="flex items-center gap-2">
-                  <Loader2 className="h-4 w-4 animate-spin text-gray-400" />
-                  <span className="text-sm text-gray-500">Loading...</span>
+                  <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">Loading...</span>
                 </div>
               ) : (proposal?.status === "accepted_by_developer" || proposal?.status === "signed_by_developer" || proposal?.status === "signed_by_lender" || proposal?.status === "loan_term_fully_executed") ? (
                 <Link href="/dashboard/proposals" className="flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full hover:bg-green-100 transition-colors">
@@ -342,7 +342,7 @@ export default function ProjectDetailsPage() {
               ) : (
                 <Button
                   onClick={() => setShowLoanProposalModal(true)}
-                  className="bg-[#E86A33] hover:bg-[#d55a25] text-white px-6 h-10 text-sm font-medium whitespace-nowrap rounded-full cursor-pointer"
+                  className="bg-primary hover:bg-primary/90 text-white px-6 h-10 text-sm font-medium whitespace-nowrap rounded-full cursor-pointer"
                 >
                   Submit Loan Offer
                 </Button>
@@ -359,8 +359,8 @@ export default function ProjectDetailsPage() {
                 key={tab.id}
                 onClick={() => scrollToSection(tab.id, tab.ref)}
                 className={`py-4 cursor-pointer text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id
-                    ? "text-[#E86A33] border-[#E86A33]"
-                    : "text-gray-500 border-transparent hover:text-[#E86A33] hover:border-[#E86A33]"
+                    ? "text-primary border-primary"
+                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary"
                   }`}
               >
                 {tab.label}
@@ -375,7 +375,7 @@ export default function ProjectDetailsPage() {
         {/* About Project Section */}
         <div ref={aboutRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-6">About project</h3>
-          <div className="rounded-xl bg-white grid grid-cols-1 lg:grid-cols-2">
+          <div className="rounded-xl bg-card grid grid-cols-1 lg:grid-cols-2">
             {/* Left - Image Carousel */}
             <div className="space-y-3">
               {/* Main Image with Navigation */}
@@ -393,15 +393,15 @@ export default function ProjectDetailsPage() {
                     {/* Navigation Arrows */}
                     <button
                       onClick={prevAboutImage}
-                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-md cursor-pointer"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-md cursor-pointer"
                     >
-                      <ChevronLeft className="h-5 w-5 text-gray-700" />
+                      <ChevronLeft className="h-5 w-5 text-foreground" />
                     </button>
                     <button
                       onClick={nextAboutImage}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-md cursor-pointer"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-md cursor-pointer"
                     >
-                      <ChevronRight className="h-5 w-5 text-gray-700" />
+                      <ChevronRight className="h-5 w-5 text-foreground" />
                     </button>
                   </>
                 )}
@@ -409,7 +409,7 @@ export default function ProjectDetailsPage() {
 
               {/* Picture Title & Pagination */}
               <div className="flex items-center justify-between">
-                <p className="text-sm text-gray-600 p-2">{aboutGalleryImages[aboutImageIndex]?.title}</p>
+                <p className="text-sm text-muted-foreground p-2">{aboutGalleryImages[aboutImageIndex]?.title}</p>
                 <div className="flex items-center gap-2">
                   {/* Pagination dots */}
                   {aboutGalleryImages.length > 1 && (
@@ -418,15 +418,15 @@ export default function ProjectDetailsPage() {
                         <button
                           key={index}
                           onClick={() => setAboutImageIndex(index)}
-                          className={`w-2 h-2 rounded-full transition-colors ${index === aboutImageIndex ? "bg-gray-800" : "bg-gray-300"
+                          className={`w-2 h-2 rounded-full transition-colors ${index === aboutImageIndex ? "bg-foreground" : "bg-muted"
                             }`}
                         />
                       ))}
                     </div>
                   )}
                   {/* Fullscreen button */}
-                  {/*<button className="ml-2 p-1 hover:bg-gray-200 rounded transition-colors">*/}
-                  {/*  <Maximize2 className="h-4 w-4 text-gray-500" />*/}
+                  {/*<button className="ml-2 p-1 hover:bg-muted rounded transition-colors">*/}
+                  {/*  <Maximize2 className="h-4 w-4 text-muted-foreground" />*/}
                   {/*</button>*/}
                 </div>
               </div>
@@ -435,7 +435,7 @@ export default function ProjectDetailsPage() {
             {/* Right - Content */}
             <div className="space-y-4 p-4">
               <h4 className="text-lg font-semibold">About project</h4>
-              <div className="text-sm text-gray-600 leading-relaxed">
+              <div className="text-sm text-muted-foreground leading-relaxed">
                 {project.description ? (
                   <p className="whitespace-pre-wrap">{project.description}</p>
                 ) : (
@@ -446,20 +446,20 @@ export default function ProjectDetailsPage() {
               {/* Project Details */}
               <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                 <div>
-                  <p className="text-xs text-gray-500">Project Type</p>
+                  <p className="text-xs text-muted-foreground">Project Type</p>
                   <p className="text-sm font-medium capitalize">{project.project_type_label || project.project_type.replace("_", " ")}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Min Investment</p>
+                  <p className="text-xs text-muted-foreground">Min Investment</p>
                   <p className="text-sm font-medium">${Number(project.min_investment).toLocaleString()}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-500">Currency</p>
+                  <p className="text-xs text-muted-foreground">Currency</p>
                   <p className="text-sm font-medium">{project.currency}</p>
                 </div>
                 {project.amount_raised !== undefined && (
                   <div>
-                    <p className="text-xs text-gray-500">Amount Raised</p>
+                    <p className="text-xs text-muted-foreground">Amount Raised</p>
                     <p className="text-sm font-medium text-green-600">${project.amount_raised.toLocaleString()}</p>
                   </div>
                 )}
@@ -497,11 +497,11 @@ export default function ProjectDetailsPage() {
         {/* Developer Details Section */}
         <div ref={teamRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Developer Details</h3>
-          <div className="rounded-xl bg-white p-6">
+          <div className="rounded-xl bg-card p-6">
             {project.developer ? (
               <div className="flex items-start gap-4">
                 {/* Developer Avatar */}
-                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full bg-muted flex items-center justify-center overflow-hidden">
                   {project.developer.user?.avatar ? (
                     <Image
                       src={project.developer.user.avatar}
@@ -512,7 +512,7 @@ export default function ProjectDetailsPage() {
                       unoptimized
                     />
                   ) : (
-                    <User className="h-8 w-8 text-gray-400" />
+                    <User className="h-8 w-8 text-muted-foreground" />
                   )}
                 </div>
 
@@ -531,12 +531,12 @@ export default function ProjectDetailsPage() {
                   </div>
 
                   {project.developer.user?.name && project.developer.company_name && (
-                    <p className="text-sm text-gray-600 mb-2">
+                    <p className="text-sm text-muted-foreground mb-2">
                       Contact: {project.developer.user.name}
                     </p>
                   )}
 
-                  <div className="flex flex-wrap gap-4 text-sm text-gray-500">
+                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
                     {project.developer.user?.email && (
                       <div className="flex items-center gap-1">
                         <Mail className="h-4 w-4" />
@@ -552,22 +552,22 @@ export default function ProjectDetailsPage() {
                   </div>
 
                   {project.developer.address && (
-                    <div className="flex items-center gap-1 text-sm text-gray-500 mt-2">
+                    <div className="flex items-center gap-1 text-sm text-muted-foreground mt-2">
                       <MapPin className="h-4 w-4" />
                       <span>{project.developer.address}</span>
                     </div>
                   )}
 
                   {project.developer.company_registration_number && (
-                    <p className="text-xs text-gray-400 mt-2">
+                    <p className="text-xs text-muted-foreground mt-2">
                       Registration No: {project.developer.company_registration_number}
                     </p>
                   )}
                 </div>
               </div>
             ) : (
-              <div className="text-center py-4 text-gray-500">
-                <User className="h-12 w-12 text-gray-300 mx-auto mb-2" />
+              <div className="text-center py-4 text-muted-foreground">
+                <User className="h-12 w-12 text-muted-foreground/60 mx-auto mb-2" />
                 <p className="text-sm">Developer information not available</p>
               </div>
             )}
@@ -579,9 +579,9 @@ export default function ProjectDetailsPage() {
           <h3 className="text-lg font-semibold mb-4">Project gallery</h3>
 
           {/* Gallery Container */}
-          <div className="rounded-xl bg-white overflow-hidden">
+          <div className="rounded-xl bg-card overflow-hidden">
             {/* Main Image with Navigation */}
-            <div className="relative aspect-[16/9] w-full bg-gray-100">
+            <div className="relative aspect-[16/9] w-full bg-muted">
               <Image
                 src={aboutGalleryImages[progressImageIndex]?.src || "/images/house.png"}
                 alt={aboutGalleryImages[progressImageIndex]?.title || "Project image"}
@@ -595,30 +595,30 @@ export default function ProjectDetailsPage() {
                   {/* Navigation Arrows */}
                   <button
                     onClick={prevProgressImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-md cursor-pointer"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-md cursor-pointer"
                   >
-                    <ChevronLeft className="h-6 w-6 text-gray-700" />
+                    <ChevronLeft className="h-6 w-6 text-foreground" />
                   </button>
                   <button
                     onClick={nextProgressImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors shadow-md cursor-pointer"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-card/90 flex items-center justify-center hover:bg-card transition-colors shadow-md cursor-pointer"
                   >
-                    <ChevronRight className="h-6 w-6 text-gray-700" />
+                    <ChevronRight className="h-6 w-6 text-foreground" />
                   </button>
                 </>
               )}
             </div>
 
             {/* Bottom Bar - Title & Pagination */}
-            <div className="flex items-center justify-between p-3 border-t border-gray-100">
+            <div className="flex items-center justify-between p-3 border-t border-border">
               {/* Picture Title */}
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 {aboutGalleryImages[progressImageIndex]?.title}
               </p>
 
               {/* Pagination */}
               <div className="flex items-center gap-3">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-muted-foreground">
                   {progressImageIndex + 1}/{aboutGalleryImages.length}
                 </span>
               </div>
@@ -629,17 +629,17 @@ export default function ProjectDetailsPage() {
         {/* Location Section */}
         <div ref={locationRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Location</h3>
-          <div className="rounded-xl bg-white p-6 space-y-4">
+          <div className="rounded-xl bg-card p-6 space-y-4">
             {/* Address */}
             <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5 text-[#E86A33]" />
+              <MapPin className="h-5 w-5 text-primary" />
               <p className="text-sm font-medium">{fullAddress}</p>
             </div>
 
             {/* Two Maps Side by Side */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Left Map - Google Maps (Detailed View) */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
                 <iframe
                   className="absolute inset-0 w-full h-full border-none"
                   loading="lazy"
@@ -650,7 +650,7 @@ export default function ProjectDetailsPage() {
               </div>
 
               {/* Right Map - OpenStreetMap (Overview) */}
-              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-gray-100">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-muted">
                 <iframe
                   className="absolute inset-0 w-full h-full border-none"
                   loading="lazy"
@@ -662,7 +662,7 @@ export default function ProjectDetailsPage() {
             {/* Description and Button Row */}
             <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
               {/* Description */}
-              <p className="text-sm text-gray-600 leading-relaxed max-w-2xl">
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
                 {hardcodedData.locationDescription}
               </p>
 
@@ -685,23 +685,23 @@ export default function ProjectDetailsPage() {
         {/* Documentation Section */}
         <div ref={documentsRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Documentation</h3>
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
-            <h4 className="text-sm font-medium text-gray-700 mb-4">Project documents ({project.documents?.length || 0})</h4>
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
+            <h4 className="text-sm font-medium text-foreground mb-4">Project documents ({project.documents?.length || 0})</h4>
             {project.documents && project.documents.length > 0 ? (
               <div className="space-y-3">
                 {project.documents.map((doc) => (
                   <div key={doc.id} className="space-y-2">
-                    <div className="flex items-center gap-3 p-3 rounded-lg border border-gray-100 hover:bg-gray-50 transition-colors">
+                    <div className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted transition-colors">
                       {doc.verification_status === "approved" ? (
                         <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
                       ) : doc.verification_status === "rejected" ? (
                         <XCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
                       ) : (
-                        <Circle className="h-5 w-5 text-gray-300 flex-shrink-0" />
+                        <Circle className="h-5 w-5 text-muted-foreground/60 flex-shrink-0" />
                       )}
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium truncate">{doc.document_type_label}</p>
-                        <p className="text-xs text-gray-500">{doc.file_size_formatted}</p>
+                        <p className="text-xs text-muted-foreground">{doc.file_size_formatted}</p>
                       </div>
                       <div className="flex items-center gap-2">
                         <Button
@@ -742,8 +742,8 @@ export default function ProjectDetailsPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
-                <FileText className="h-12 w-12 text-gray-300 mx-auto mb-2" />
+              <div className="text-center py-8 text-muted-foreground">
+                <FileText className="h-12 w-12 text-muted-foreground/60 mx-auto mb-2" />
                 <p className="text-sm">No documents available for this project yet.</p>
               </div>
             )}
@@ -753,15 +753,15 @@ export default function ProjectDetailsPage() {
         {/* Milestones Section */}
         <div ref={milestonesRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Project Milestones {project.milestones_count > 0 && `(${project.milestones_count})`}</h3>
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
             {project.milestones && project.milestones.length > 0 ? (
               <div className="space-y-4">
                 {project.milestones.map((milestone, index) => (
                   <div
                     key={milestone.id}
-                    className="flex items-start gap-4 p-4 rounded-lg border border-gray-100"
+                    className="flex items-start gap-4 p-4 rounded-lg border border-border"
                   >
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#E86A33]/10 flex items-center justify-center text-[#E86A33] font-semibold text-sm">
+                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-semibold text-sm">
                       {milestone.sequence || index + 1}
                     </div>
                     <div className="flex-1">
@@ -770,15 +770,15 @@ export default function ProjectDetailsPage() {
                         <span className={`text-xs px-2 py-1 rounded-full ${milestone.status === "paid" ? "bg-green-100 text-green-700" :
                             milestone.status === "approved" ? "bg-blue-100 text-blue-700" :
                               milestone.status === "proof_submitted" ? "bg-amber-100 text-amber-700" :
-                                "bg-gray-100 text-gray-700"
+                                "bg-muted text-foreground"
                           }`}>
                           {milestone.status_label}
                         </span>
                       </div>
                       {milestone.description && (
-                        <p className="text-sm text-gray-600 mb-2">{milestone.description}</p>
+                        <p className="text-sm text-muted-foreground mb-2">{milestone.description}</p>
                       )}
-                      <div className="flex items-center gap-4 text-xs text-gray-500">
+                      <div className="flex items-center gap-4 text-xs text-muted-foreground">
                         <span>${Number(milestone.amount).toLocaleString()} ({milestone.percentage}%)</span>
                         {milestone.due_date && (
                           <span>Due: {formatDate(milestone.due_date)}</span>
@@ -789,8 +789,8 @@ export default function ProjectDetailsPage() {
                 ))}
               </div>
             ) : (
-              <div className="text-center py-8 text-gray-500">
-                <Calendar className="h-12 w-12 text-gray-300 mx-auto mb-2" />
+              <div className="text-center py-8 text-muted-foreground">
+                <Calendar className="h-12 w-12 text-muted-foreground/60 mx-auto mb-2" />
                 <p className="text-sm">No milestones available for this project yet.</p>
               </div>
             )}
@@ -801,15 +801,15 @@ export default function ProjectDetailsPage() {
       {/* VR Tour Modal */}
       {showVRTour && project.vr_tour_link && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="relative bg-white rounded-xl overflow-hidden max-w-4xl w-full mx-4">
+          <div className="relative bg-card rounded-xl overflow-hidden max-w-4xl w-full mx-4">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 border-b">
               <h3 className="text-lg font-semibold">VR Tour - 3D Walkthrough</h3>
               <button
                 onClick={() => setShowVRTour(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-colors"
               >
-                <X className="h-5 w-5 text-gray-500" />
+                <X className="h-5 w-5 text-muted-foreground" />
               </button>
             </div>
             {/* Iframe Content */}
@@ -829,15 +829,15 @@ export default function ProjectDetailsPage() {
       {/* Live Camera Modal */}
       {showLiveCamera && project.live_camera_link && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70">
-          <div className="relative bg-white rounded-xl overflow-hidden max-w-4xl w-full mx-4">
+          <div className="relative bg-card rounded-xl overflow-hidden max-w-4xl w-full mx-4">
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 border-b">
               <h3 className="text-lg font-semibold">Live Camera</h3>
               <button
                 onClick={() => setShowLiveCamera(false)}
-                className="p-2 hover:bg-gray-100 rounded-full transition-colors"
+                className="p-2 hover:bg-muted rounded-full transition-colors"
               >
-                <X className="h-5 w-5 text-gray-500" />
+                <X className="h-5 w-5 text-muted-foreground" />
               </button>
             </div>
             {/* Iframe Content */}

@@ -107,7 +107,7 @@ export function ProjectCard({ project, proposalStatus }: ProjectCardProps) {
 
         <div className="flex items-center justify-between">
           <span className="text-xs text-muted-foreground">Requested Loan Amount</span>
-          <span className="text-sm font-bold text-[#E86A33]">
+          <span className="text-sm font-bold text-primary">
             {formatPrice(project.loanValue)}
           </span>
         </div>
@@ -115,14 +115,14 @@ export function ProjectCard({ project, proposalStatus }: ProjectCardProps) {
         <div className="space-y-1 text-xs">
           <div className="flex justify-between">
             <span className="text-muted-foreground">Project Duration:</span>
-            <span className="font-medium text-[#E86A33]">
+            <span className="font-medium text-primary">
               {project.projectDuration} days
             </span>
           </div>
         </div>
 
         <Link href={`/dashboard/marketplace/${project.id}`} className="mt-auto">
-          <Button className="w-full bg-[#E86A33] hover:bg-[#d55a23] text-white text-sm">
+          <Button className="w-full bg-primary hover:bg-primary/90 text-white text-sm">
             View Details
           </Button>
         </Link>

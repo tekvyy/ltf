@@ -22,8 +22,8 @@ interface LenderDocumentUploadCardProps {
 
 const statusConfig = {
   not_uploaded: {
-    borderColor: "border-gray-200",
-    bgColor: "bg-white",
+    borderColor: "border-border",
+    bgColor: "bg-card",
   },
   staged: {
     borderColor: "border-orange-200",
@@ -99,16 +99,16 @@ export function LenderDocumentUploadCard({
         "rounded-xl border-2 border-dashed p-6 transition-colors",
         config.borderColor,
         config.bgColor,
-        isDragging && "border-[#E86A33] bg-orange-50"
+        isDragging && "border-primary bg-orange-50"
       )}
     >
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-gray-900">
+          <h3 className="font-semibold text-foreground">
             {title}
             {required && <span className="text-red-500 ml-1">*</span>}
           </h3>
-          <p className="text-sm text-gray-500 mt-1">{description}</p>
+          <p className="text-sm text-muted-foreground mt-1">{description}</p>
         </div>
         {status === "verified" && (
           <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
@@ -130,7 +130,7 @@ export function LenderDocumentUploadCard({
         <div
           className={cn(
             "border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors",
-            isDragging ? "border-[#E86A33] bg-orange-50" : "border-gray-300 hover:border-gray-400"
+            isDragging ? "border-primary bg-orange-50" : "border-border hover:border-border"
           )}
           onClick={handleClick}
           onDragOver={handleDragOver}
@@ -144,24 +144,24 @@ export function LenderDocumentUploadCard({
             accept=".pdf,.jpg,.jpeg,.png"
             onChange={handleFileChange}
           />
-          <Upload className="h-8 w-8 text-gray-400 mx-auto mb-3" />
-          <p className="text-sm text-gray-600 mb-1">
-            <span className="text-[#E86A33] font-medium">Click to upload</span> or drag and drop
+          <Upload className="h-8 w-8 text-muted-foreground mx-auto mb-3" />
+          <p className="text-sm text-muted-foreground mb-1">
+            <span className="text-primary font-medium">Click to upload</span> or drag and drop
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-muted-foreground">
             {acceptedFormats} (max {maxSize})
           </p>
         </div>
       ) : status === "uploading" ? (
-        <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
-          <Loader2 className="h-5 w-5 text-[#E86A33] animate-spin" />
+        <div className="flex items-center gap-4 p-4 bg-card rounded-lg border">
+          <Loader2 className="h-5 w-5 text-primary animate-spin" />
           <div className="flex-1">
             <p className="text-sm font-medium">Uploading...</p>
           </div>
         </div>
       ) : status === "staged" ? (
-        <div className="flex items-center gap-4 p-4 bg-white rounded-lg border border-orange-200">
-          <File className="h-8 w-8 text-[#E86A33]" />
+        <div className="flex items-center gap-4 p-4 bg-card rounded-lg border border-orange-200">
+          <File className="h-8 w-8 text-primary" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium truncate">{fileName}</p>
             <p className="text-xs text-orange-600">Ready to upload</p>
@@ -179,11 +179,11 @@ export function LenderDocumentUploadCard({
           </Button>
         </div>
       ) : (
-        <div className="flex items-center gap-4 p-4 bg-white rounded-lg border">
-          <File className="h-8 w-8 text-[#E86A33]" />
+        <div className="flex items-center gap-4 p-4 bg-card rounded-lg border">
+          <File className="h-8 w-8 text-primary" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium truncate">{fileName}</p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-muted-foreground">
               {status === "verified" ? "Verified" : "Pending verification"}
             </p>
           </div>

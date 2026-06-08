@@ -136,17 +136,17 @@ export default function DashboardPage() {
 
       <ConnectWallet />
 
-      <Separator className="my-4 bg-[#B9C2CA]" />
+      <Separator className="my-4" />
 
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6">
         <div className="space-y-5">
           {/* Tokenise Project Button */}
           {stats.approvedLoans > 0 && (
-            <div className="bg-gradient-to-r from-[#E86A33]/10 to-[#E86A33]/5 border border-[#E86A33]/20 rounded-xl p-4">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4">
               <div className="flex items-center justify-between">
                 <div className="space-y-1">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
-                    <Coins className="h-5 w-5 text-[#E86A33]" />
+                    <Coins className="h-5 w-5 text-primary" />
                     Tokenise Your Projects
                   </h3>
                   <p className="text-sm text-muted-foreground">
@@ -155,7 +155,7 @@ export default function DashboardPage() {
                 </div>
                 <Button
                   onClick={() => setShowTokenizeDialog(true)}
-                  className="bg-[#E86A33] hover:bg-[#d55a25]"
+                  className="bg-primary hover:bg-primary/90"
                 >
                   <Coins className="mr-2 h-4 w-4" />
                   Tokenise Project
@@ -195,17 +195,17 @@ export default function DashboardPage() {
         <div className="space-y-2">
           <h2 className="text-lg font-semibold">Latest Project</h2>
           {isLoading ? (
-            <div className="rounded-xl border bg-white p-8 flex items-center justify-center">
-              <Loader2 className="h-6 w-6 animate-spin text-[#E86A33]" />
+            <div className="rounded-xl border bg-card p-8 flex items-center justify-center">
+              <Loader2 className="h-6 w-6 animate-spin text-primary" />
             </div>
           ) : latestProject ? (
             <ProjectCard project={latestProject} />
           ) : (
-            <div className="rounded-xl border bg-white p-8 text-center">
-              <Building2 className="h-10 w-10 text-gray-300 mx-auto mb-3" />
-              <p className="text-sm text-gray-500 mb-4">No projects available yet</p>
+            <div className="rounded-xl border bg-card p-8 text-center">
+              <Building2 className="h-10 w-10 text-muted-foreground/60 mx-auto mb-3" />
+              <p className="text-sm text-muted-foreground mb-4">No projects available yet</p>
               <Link href="/dashboard/marketplace">
-                <Button size="sm" className="bg-[#E86A33] hover:bg-[#d55a25]">
+                <Button size="sm" className="bg-primary hover:bg-primary/90">
                   Browse Marketplace
                 </Button>
               </Link>

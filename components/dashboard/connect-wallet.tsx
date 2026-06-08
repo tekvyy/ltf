@@ -52,17 +52,17 @@ export function ConnectWallet() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-orange-50 border border-orange-200 rounded-xl p-4">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
-            <Fingerprint className="h-5 w-5 text-[#E86A33]" />
+            <Fingerprint className="h-5 w-5 text-primary" />
           </div>
           <div>
             <h2 className="text-lg font-semibold">Set up your XRPL wallet</h2>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               Create a secure wallet with passkeys to manage your investments.
             </p>
           </div>
         </div>
         <Button
-          className="bg-[#E86A33] hover:bg-[#d55a25] text-white shrink-0 px-6 rounded-full"
+          className="bg-primary hover:bg-primary/90 text-white shrink-0 px-6 rounded-full"
           onClick={() => setShowSetupModal(true)}
         >
           <Fingerprint className="mr-2 h-4 w-4" />

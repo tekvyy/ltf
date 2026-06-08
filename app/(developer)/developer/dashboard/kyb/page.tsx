@@ -285,7 +285,7 @@ export default function KybVerificationPage() {
       <div className="space-y-6">
         <DeveloperHeader title="KYB Verification" />
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -298,7 +298,7 @@ export default function KybVerificationPage() {
       {/* Back Link */}
       <Link
         href="/developer/dashboard"
-        className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4 mr-1" />
         Back to Dashboard
@@ -318,11 +318,11 @@ export default function KybVerificationPage() {
       )}
 
       {/* Status Card */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-lg font-semibold">Verification Status</h2>
-            <p className="text-sm text-gray-500 mt-1">
+            <p className="text-sm text-muted-foreground mt-1">
               Complete your business verification to start submitting projects
             </p>
           </div>
@@ -384,8 +384,8 @@ export default function KybVerificationPage() {
                       isCompleted
                         ? "bg-green-500 text-white"
                         : isCurrent
-                        ? "bg-[#E86A33] text-white"
-                        : "bg-gray-200 text-gray-500"
+                        ? "bg-primary text-white"
+                        : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {isCompleted ? (
@@ -399,8 +399,8 @@ export default function KybVerificationPage() {
                       isCompleted
                         ? "text-green-600 font-medium"
                         : isCurrent
-                        ? "text-[#E86A33] font-medium"
-                        : "text-gray-500"
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground"
                     }`}
                   >
                     {step.label}
@@ -410,10 +410,10 @@ export default function KybVerificationPage() {
             })}
           </div>
           {/* Progress Line */}
-          <div className="absolute top-4 left-0 right-0 h-0.5 bg-gray-200 -z-0 mx-16" />
+          <div className="absolute top-4 left-0 right-0 h-0.5 bg-muted -z-0 mx-16" />
           <div
             className={`absolute top-4 left-0 h-0.5 -z-0 mx-16 transition-all ${
-              kybStatus === "approved" ? "bg-green-500" : "bg-[#E86A33]"
+              kybStatus === "approved" ? "bg-green-500" : "bg-primary"
             }`}
             style={{
               width: kybStatus === "approved"
@@ -429,15 +429,15 @@ export default function KybVerificationPage() {
       {(kybStatus === "not_started" || kybStatus === "rejected") && (
         <>
           {/* Progress Summary */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg font-semibold">Upload Documents</h2>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 {uploadedCount} of {documents.length} uploaded
               </span>
             </div>
             <Progress value={progressPercentage} className="h-2" />
-            <p className="text-sm text-gray-500 mt-2">
+            <p className="text-sm text-muted-foreground mt-2">
               {allRequiredUploaded
                 ? "All required documents uploaded. You can now submit for verification."
                 : `Upload all required documents (${requiredCount - uploadedCount} remaining) to submit for verification.`}
@@ -466,7 +466,7 @@ export default function KybVerificationPage() {
             <Button
               onClick={handleSubmit}
               disabled={!allRequiredUploaded || isSubmitting}
-              className="bg-[#E86A33] hover:bg-[#d55a25] disabled:bg-gray-300"
+              className="bg-primary hover:bg-primary/90 disabled:bg-muted"
             >
               {isSubmitting ? (
                 <>
@@ -483,17 +483,17 @@ export default function KybVerificationPage() {
 
       {/* Pending/Under Review State */}
       {(kybStatus === "pending" || kybStatus === "under_review") && (
-        <div className="rounded-xl border bg-white p-8 shadow-sm text-center">
+        <div className="rounded-xl border bg-card p-8 shadow-sm text-center">
           <Clock className="h-16 w-16 text-blue-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold mb-2">
             {kybStatus === "pending" ? "Documents Submitted" : "Under Review"}
           </h2>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className="text-muted-foreground max-w-md mx-auto">
             {kybStatus === "pending"
               ? "Your documents have been submitted successfully. Our team will review them shortly."
               : "Our team is currently reviewing your documents. This usually takes 1-2 business days."}
           </p>
-          <p className="text-sm text-gray-400 mt-4">
+          <p className="text-sm text-muted-foreground mt-4">
             You will be notified once the review is complete.
           </p>
         </div>
@@ -510,7 +510,7 @@ export default function KybVerificationPage() {
             Congratulations! Your business has been verified. You can now create and submit projects for funding.
           </p>
           <Link href="/developer/dashboard/projects/new">
-            <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+            <Button className="bg-primary hover:bg-primary/90">
               Create Your First Project
             </Button>
           </Link>
@@ -519,7 +519,7 @@ export default function KybVerificationPage() {
 
       {/* Submitted Documents List */}
       {(kybStatus === "pending" || kybStatus === "under_review" || kybStatus === "approved") && (
-        <div className="rounded-xl border bg-white p-6 shadow-sm">
+        <div className="rounded-xl border bg-card p-6 shadow-sm">
           <h2 className="text-lg font-semibold mb-4">Submitted Documents</h2>
           <div className="space-y-3">
             {documents.map((doc) => (
@@ -537,7 +537,7 @@ export default function KybVerificationPage() {
                   )}
                   <div>
                     <p className="font-medium">{doc.title}</p>
-                    <p className="text-sm text-gray-500">{doc.fileName}</p>
+                    <p className="text-sm text-muted-foreground">{doc.fileName}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">

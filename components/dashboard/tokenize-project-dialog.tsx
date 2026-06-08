@@ -97,7 +97,7 @@ export function TokenizeProjectDialog({ open, onOpenChange, project }: TokenizeP
             <DialogContent className="sm:max-w-[500px] gap-0">
                 <DialogHeader>
                     <DialogTitle className="flex items-center gap-2">
-                        <Coins className="h-5 w-5 text-[#E86A33]" />
+                        <Coins className="h-5 w-5 text-primary" />
                         Tokenise Project
                     </DialogTitle>
                     <DialogDescription>
@@ -212,7 +212,7 @@ export function TokenizeProjectDialog({ open, onOpenChange, project }: TokenizeP
                             <Button
                                 type="submit"
                                 disabled={isSubmitting || !tokenAmount}
-                                className="bg-[#E86A33] hover:bg-[#d55a25]"
+                                className="bg-primary hover:bg-primary/90"
                             >
                                 {isSubmitting ? (
                                     <>

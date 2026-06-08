@@ -353,14 +353,14 @@ export default function CreateProjectPage() {
       {/* Back Link */}
       <Link
         href="/developer/dashboard/projects"
-        className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4 mr-1" />
         Back to Projects
       </Link>
 
       {/* Progress Steps */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <div className="flex justify-between">
           {steps.map((step, index) => {
             const isCompleted = currentStep > step.id;
@@ -380,7 +380,7 @@ export default function CreateProjectPage() {
                   <div
                     className={cn(
                       "absolute top-5 left-1/2 w-full h-0.5",
-                      isCompleted ? "bg-[#E86A33]" : "bg-gray-200"
+                      isCompleted ? "bg-primary" : "bg-muted"
                     )}
                   />
                 )}
@@ -390,10 +390,10 @@ export default function CreateProjectPage() {
                   className={cn(
                     "relative z-10 w-10 h-10 rounded-full flex items-center justify-center transition-colors",
                     isCompleted
-                      ? "bg-[#E86A33] text-white"
+                      ? "bg-primary text-white"
                       : isCurrent
-                      ? "bg-[#E86A33] text-white"
-                      : "bg-gray-200 text-gray-500"
+                      ? "bg-primary text-white"
+                      : "bg-muted text-muted-foreground"
                   )}
                 >
                   {isCompleted ? (
@@ -407,7 +407,7 @@ export default function CreateProjectPage() {
                 <span
                   className={cn(
                     "text-xs mt-2 text-center",
-                    isCurrent ? "text-[#E86A33] font-medium" : "text-gray-500"
+                    isCurrent ? "text-primary font-medium" : "text-muted-foreground"
                   )}
                 >
                   {step.title}
@@ -419,13 +419,13 @@ export default function CreateProjectPage() {
       </div>
 
       {/* Form Content */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         {/* Step 1: Basic Info */}
         {currentStep === 1 && (
           <div className="space-y-6">
             <div>
               <h2 className="text-lg font-semibold mb-1">Basic Information</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Provide the basic details about your project.
               </p>
             </div>
@@ -452,7 +452,7 @@ export default function CreateProjectPage() {
                   value={formData.projectType}
                   onChange={(e) => updateFormData("projectType", e.target.value)}
                   className={cn(
-                    "w-full px-3 py-2 border rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#E86A33]",
+                    "w-full px-3 py-2 border rounded-md text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary",
                     errors.projectType ? "border-red-500" : "border-input"
                   )}
                 >
@@ -515,7 +515,7 @@ export default function CreateProjectPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-lg font-semibold mb-1">Project Photos</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Upload photos of your project. The first photo will be used as the cover image.
               </p>
             </div>
@@ -533,8 +533,8 @@ export default function CreateProjectPage() {
                 className={cn(
                   "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors",
                   isDragging
-                    ? "border-[#E86A33] bg-orange-50"
-                    : "border-gray-300 hover:border-gray-400 bg-white"
+                    ? "border-primary bg-orange-50"
+                    : "border-border hover:border-border bg-card"
                 )}
                 onClick={() => document.getElementById("photo-input")?.click()}
                 onDragOver={handleDragOver}
@@ -549,12 +549,12 @@ export default function CreateProjectPage() {
                   multiple
                   onChange={handleFileSelect}
                 />
-                <ImageIcon className="h-10 w-10 text-gray-400 mx-auto mb-3" />
-                <p className="text-sm text-gray-600 mb-1">
-                  <span className="text-[#E86A33] font-medium">Click to upload</span> or
+                <ImageIcon className="h-10 w-10 text-muted-foreground mx-auto mb-3" />
+                <p className="text-sm text-muted-foreground mb-1">
+                  <span className="text-primary font-medium">Click to upload</span> or
                   drag and drop
                 </p>
-                <p className="text-xs text-gray-400">
+                <p className="text-xs text-muted-foreground">
                   JPG, PNG, WebP (max {MAX_SIZE_MB}MB each) - Up to {MAX_PHOTOS} photos
                 </p>
               </div>
@@ -564,7 +564,7 @@ export default function CreateProjectPage() {
             {pendingPhotos.length > 0 && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-muted-foreground">
                     {pendingPhotos.length}/{MAX_PHOTOS} photos selected
                   </span>
                   <Button
@@ -585,8 +585,8 @@ export default function CreateProjectPage() {
                     <div
                       key={photo.id}
                       className={cn(
-                        "relative rounded-lg border-2 overflow-hidden bg-gray-50",
-                        photo.is_featured ? "border-[#E86A33]" : "border-gray-200"
+                        "relative rounded-lg border-2 overflow-hidden bg-muted",
+                        photo.is_featured ? "border-primary" : "border-border"
                       )}
                     >
                       {/* Image preview */}
@@ -599,7 +599,7 @@ export default function CreateProjectPage() {
 
                         {/* Featured badge */}
                         {photo.is_featured && (
-                          <div className="absolute top-2 left-2 bg-[#E86A33] text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                          <div className="absolute top-2 left-2 bg-primary text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                             <Star className="h-3 w-3 fill-current" />
                             Cover
                           </div>
@@ -612,7 +612,7 @@ export default function CreateProjectPage() {
                               type="button"
                               variant="secondary"
                               size="icon"
-                              className="h-7 w-7 bg-white/90 hover:bg-white"
+                              className="h-7 w-7 bg-card/90 hover:bg-card"
                               onClick={() => setPhotoFeatured(photo.id)}
                               title="Set as cover photo"
                             >
@@ -623,7 +623,7 @@ export default function CreateProjectPage() {
                             type="button"
                             variant="secondary"
                             size="icon"
-                            className="h-7 w-7 bg-white/90 hover:bg-red-50 hover:text-red-600"
+                            className="h-7 w-7 bg-card/90 hover:bg-red-50 hover:text-red-600"
                             onClick={() => removePhoto(photo.id)}
                             title="Remove photo"
                           >
@@ -664,7 +664,7 @@ export default function CreateProjectPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-lg font-semibold mb-1">Project Location</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Where is your project located?
               </p>
             </div>
@@ -722,7 +722,7 @@ export default function CreateProjectPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-lg font-semibold mb-1">Financial Details</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Provide the financial information for your project.
               </p>
             </div>
@@ -766,7 +766,7 @@ export default function CreateProjectPage() {
                     value={formData.currency}
                     onChange={(e) => updateFormData("currency", e.target.value)}
                     className={cn(
-                      "w-full px-3 py-2 border rounded-md text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#E86A33]",
+                      "w-full px-3 py-2 border rounded-md text-sm bg-card focus:outline-none focus:ring-2 focus:ring-primary",
                       errors.currency ? "border-red-500" : "border-input"
                     )}
                   >
@@ -826,7 +826,7 @@ export default function CreateProjectPage() {
           <div className="space-y-6">
             <div>
               <h2 className="text-lg font-semibold mb-1">Review Your Project</h2>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 Please review all the information before saving.
               </p>
             </div>
@@ -836,7 +836,7 @@ export default function CreateProjectPage() {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-medium flex items-center gap-2">
-                    <Building2 className="h-4 w-4 text-[#E86A33]" />
+                    <Building2 className="h-4 w-4 text-primary" />
                     Basic Information
                   </h3>
                   <Button
@@ -849,26 +849,26 @@ export default function CreateProjectPage() {
                 </div>
                 <dl className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <dt className="text-gray-500">Title</dt>
+                    <dt className="text-muted-foreground">Title</dt>
                     <dd className="font-medium">{formData.title}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Type</dt>
+                    <dt className="text-muted-foreground">Type</dt>
                     <dd className="font-medium capitalize">{formData.projectType.replace("_", " ")}</dd>
                   </div>
                   <div className="col-span-2">
-                    <dt className="text-gray-500">Description</dt>
+                    <dt className="text-muted-foreground">Description</dt>
                     <dd className="font-medium">{formData.description}</dd>
                   </div>
                   {formData.vrTourLink && (
                     <div className="col-span-2">
-                      <dt className="text-gray-500">VR Tour Link</dt>
+                      <dt className="text-muted-foreground">VR Tour Link</dt>
                       <dd className="font-medium">{formData.vrTourLink}</dd>
                     </div>
                   )}
                   {formData.liveCameraLink && (
                     <div className="col-span-2">
-                      <dt className="text-gray-500">Live Camera Link</dt>
+                      <dt className="text-muted-foreground">Live Camera Link</dt>
                       <dd className="font-medium">{formData.liveCameraLink}</dd>
                     </div>
                   )}
@@ -879,7 +879,7 @@ export default function CreateProjectPage() {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-medium flex items-center gap-2">
-                    <ImageIcon className="h-4 w-4 text-[#E86A33]" />
+                    <ImageIcon className="h-4 w-4 text-primary" />
                     Project Photos
                   </h3>
                   <Button
@@ -897,7 +897,7 @@ export default function CreateProjectPage() {
                         key={photo.id}
                         className={cn(
                           "relative w-16 h-16 rounded-lg overflow-hidden",
-                          photo.is_featured && "ring-2 ring-[#E86A33]"
+                          photo.is_featured && "ring-2 ring-primary"
                         )}
                       >
                         <img
@@ -906,20 +906,20 @@ export default function CreateProjectPage() {
                           className="w-full h-full object-cover"
                         />
                         {photo.is_featured && (
-                          <div className="absolute bottom-0 left-0 right-0 bg-[#E86A33] text-white text-[8px] text-center py-0.5">
+                          <div className="absolute bottom-0 left-0 right-0 bg-primary text-white text-[8px] text-center py-0.5">
                             Cover
                           </div>
                         )}
                       </div>
                     ))}
                     {pendingPhotos.length > 4 && (
-                      <div className="w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center text-sm text-gray-500">
+                      <div className="w-16 h-16 rounded-lg bg-muted flex items-center justify-center text-sm text-muted-foreground">
                         +{pendingPhotos.length - 4}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <p className="text-sm text-gray-500">No photos added (optional)</p>
+                  <p className="text-sm text-muted-foreground">No photos added (optional)</p>
                 )}
               </div>
 
@@ -927,7 +927,7 @@ export default function CreateProjectPage() {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-medium flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-[#E86A33]" />
+                    <MapPin className="h-4 w-4 text-primary" />
                     Location
                   </h3>
                   <Button
@@ -940,15 +940,15 @@ export default function CreateProjectPage() {
                 </div>
                 <dl className="grid grid-cols-2 gap-4 text-sm">
                   <div className="col-span-2">
-                    <dt className="text-gray-500">Address</dt>
+                    <dt className="text-muted-foreground">Address</dt>
                     <dd className="font-medium">{formData.address}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">City</dt>
+                    <dt className="text-muted-foreground">City</dt>
                     <dd className="font-medium">{formData.city}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Country</dt>
+                    <dt className="text-muted-foreground">Country</dt>
                     <dd className="font-medium">{formData.country}</dd>
                   </div>
                 </dl>
@@ -958,7 +958,7 @@ export default function CreateProjectPage() {
               <div className="p-4 border rounded-lg">
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="font-medium flex items-center gap-2">
-                    <DollarSign className="h-4 w-4 text-[#E86A33]" />
+                    <DollarSign className="h-4 w-4 text-primary" />
                     Financial Details
                   </h3>
                   <Button
@@ -971,23 +971,23 @@ export default function CreateProjectPage() {
                 </div>
                 <dl className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
                   <div>
-                    <dt className="text-gray-500">Loan Amount</dt>
+                    <dt className="text-muted-foreground">Loan Amount</dt>
                     <dd className="font-medium">
                       {formData.currency} {Number(formData.loanAmount).toLocaleString()}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Min Investment</dt>
+                    <dt className="text-muted-foreground">Min Investment</dt>
                     <dd className="font-medium">
                       {formData.currency} {Number(formData.minInvestment).toLocaleString()}
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Currency</dt>
+                    <dt className="text-muted-foreground">Currency</dt>
                     <dd className="font-medium">{formData.currency}</dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Construction Start</dt>
+                    <dt className="text-muted-foreground">Construction Start</dt>
                     <dd className="font-medium">
                       {formData.constructionStartDate
                         ? new Date(formData.constructionStartDate).toLocaleDateString()
@@ -995,7 +995,7 @@ export default function CreateProjectPage() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-gray-500">Construction End</dt>
+                    <dt className="text-muted-foreground">Construction End</dt>
                     <dd className="font-medium">
                       {formData.constructionEndDate
                         ? new Date(formData.constructionEndDate).toLocaleDateString()
@@ -1044,7 +1044,7 @@ export default function CreateProjectPage() {
                 )}
               </Button>
               <Button
-                className="bg-[#E86A33] hover:bg-[#d55a25]"
+                className="bg-primary hover:bg-primary/90"
                 onClick={handleSubmit}
                 disabled={isSubmitting}
               >
@@ -1060,7 +1060,7 @@ export default function CreateProjectPage() {
             </>
           ) : (
             <Button
-              className="bg-[#E86A33] hover:bg-[#d55a25]"
+              className="bg-primary hover:bg-primary/90"
               onClick={handleNext}
             >
               Next

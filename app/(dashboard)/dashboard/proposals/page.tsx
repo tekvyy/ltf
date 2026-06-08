@@ -126,12 +126,12 @@ export default function MyProposalsPage() {
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold">My Proposals</h1>
-          <p className="text-gray-500 mt-1">
+          <p className="text-muted-foreground mt-1">
             Track all your submitted loan proposals
           </p>
         </div>
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -142,20 +142,20 @@ export default function MyProposalsPage() {
       {/* Header */}
       <div>
         <h1 className="text-2xl font-bold">My Proposals</h1>
-        <p className="text-gray-500 mt-1">
+        <p className="text-muted-foreground mt-1">
           Track all your submitted loan proposals
         </p>
       </div>
 
       {/* Stats Overview */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-          <FileText className="h-5 w-5 text-[#E86A33]" />
+          <FileText className="h-5 w-5 text-primary" />
           Proposal Overview
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-500">Total Submitted</p>
+          <div className="p-4 bg-muted rounded-lg">
+            <p className="text-sm text-muted-foreground">Total Submitted</p>
             <p className="text-2xl font-bold">{stats.total}</p>
           </div>
           <div className="p-4 bg-amber-50 rounded-lg">
@@ -184,8 +184,8 @@ export default function MyProposalsPage() {
 
       {/* Filter */}
       <div className="flex items-center gap-2 flex-wrap">
-        <Filter className="h-4 w-4 text-gray-500" />
-        <span className="text-sm text-gray-500">Filter:</span>
+        <Filter className="h-4 w-4 text-muted-foreground" />
+        <span className="text-sm text-muted-foreground">Filter:</span>
         {filterOptions.map((option) => (
           <Button
             key={option.value}
@@ -194,7 +194,7 @@ export default function MyProposalsPage() {
             onClick={() => setStatusFilter(option.value)}
             className={
               statusFilter === option.value
-                ? "bg-[#E86A33] hover:bg-[#d55a25]"
+                ? "bg-primary hover:bg-primary/90"
                 : ""
             }
           >
@@ -287,10 +287,10 @@ export default function MyProposalsPage() {
 
       {/* Empty State */}
       {proposals.length === 0 && (
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <FileText className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">No Proposals Yet</h3>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className="text-muted-foreground max-w-md mx-auto">
             {statusFilter === "all"
               ? "You haven't submitted any loan proposals yet. Browse the marketplace to find projects and submit your first proposal."
               : `No ${filterOptions.find((f) => f.value === statusFilter)?.label.toLowerCase()} proposals found.`}
@@ -317,7 +317,7 @@ export default function MyProposalsPage() {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <PenTool className="h-5 w-5 text-[#E86A33]" />
+              <PenTool className="h-5 w-5 text-primary" />
               Sign Loan Agreement
             </DialogTitle>
             <DialogDescription>
@@ -340,7 +340,7 @@ export default function MyProposalsPage() {
             <Button
               onClick={() => showSignDialog && handleSign(showSignDialog)}
               disabled={!!signingId}
-              className="bg-[#E86A33] hover:bg-[#d55a25] text-white"
+              className="bg-primary hover:bg-primary/90 text-white"
             >
               {signingId ? (
                 <>

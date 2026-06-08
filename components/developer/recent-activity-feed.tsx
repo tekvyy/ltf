@@ -148,7 +148,7 @@ export function RecentActivityFeed({ projects }: RecentActivityFeedProps) {
       case "completed":
         return <Sparkles className={`${iconClass} text-purple-500`} />;
       default:
-        return <FileText className={`${iconClass} text-gray-500`} />;
+        return <FileText className={`${iconClass} text-muted-foreground`} />;
     }
   };
 
@@ -169,7 +169,7 @@ export function RecentActivityFeed({ projects }: RecentActivityFeedProps) {
       case "completed":
         return "bg-purple-100 border-purple-200";
       default:
-        return "bg-gray-100 border-gray-200";
+        return "bg-muted border-border";
     }
   };
 
@@ -200,12 +200,12 @@ export function RecentActivityFeed({ projects }: RecentActivityFeedProps) {
 
   if (activities.length === 0) {
     return (
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
         <div className="flex flex-col items-center justify-center py-8 text-center">
-          <Clock className="h-12 w-12 text-gray-300 mb-3" />
-          <p className="text-gray-600 font-medium">No activity yet</p>
-          <p className="text-sm text-gray-500">
+          <Clock className="h-12 w-12 text-muted-foreground/60 mb-3" />
+          <p className="text-muted-foreground font-medium">No activity yet</p>
+          <p className="text-sm text-muted-foreground">
             Your project activities will appear here
           </p>
         </div>
@@ -214,19 +214,19 @@ export function RecentActivityFeed({ projects }: RecentActivityFeedProps) {
   }
 
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border bg-card p-6 shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Recent Activity</h2>
         <Link
           href="/developer/dashboard/projects"
-          className="text-sm text-[#E86A33] hover:underline"
+          className="text-sm text-primary hover:underline"
         >
           View all
         </Link>
       </div>
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-[15px] top-2 bottom-2 w-px bg-gray-200" />
+        <div className="absolute left-[15px] top-2 bottom-2 w-px bg-muted" />
 
         <div className="space-y-4">
           {activities.map((activity, index) => (
@@ -247,14 +247,14 @@ export function RecentActivityFeed({ projects }: RecentActivityFeedProps) {
               {/* Content */}
               <div className="flex-1 min-w-0 pb-4">
                 <div className="flex items-center justify-between gap-2">
-                  <p className="font-medium text-sm text-gray-900 group-hover:text-[#E86A33] transition-colors">
+                  <p className="font-medium text-sm text-foreground group-hover:text-primary transition-colors">
                     {activity.title}
                   </p>
-                  <span className="text-xs text-gray-500 whitespace-nowrap">
+                  <span className="text-xs text-muted-foreground whitespace-nowrap">
                     {formatTimeAgo(activity.timestamp)}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 truncate mt-0.5">
+                <p className="text-xs text-muted-foreground truncate mt-0.5">
                   {activity.description}
                 </p>
               </div>

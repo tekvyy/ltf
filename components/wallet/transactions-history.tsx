@@ -26,7 +26,7 @@ interface TransactionsHistoryProps {
 
 function SortableHeader({ children }: { children: React.ReactNode }) {
   return (
-    <button className="flex items-center gap-1 hover:text-gray-900 transition-colors">
+    <button className="flex items-center gap-1 hover:text-foreground transition-colors">
       {children}
       <ArrowUpDown className="h-3 w-3" />
     </button>
@@ -40,20 +40,20 @@ export function TransactionsHistory({ transactions }: TransactionsHistoryProps) 
       <div className="overflow-hidden rounded-xl">
         <Table>
           <TableHeader>
-            <TableRow className="border-b border-gray-200 hover:bg-transparent bg-white">
-              <TableHead className="py-4 font-medium text-gray-600">
+            <TableRow className="border-b border-border hover:bg-transparent bg-card">
+              <TableHead className="py-4 font-medium text-muted-foreground">
                 <SortableHeader>Type</SortableHeader>
               </TableHead>
-              <TableHead className="py-4 font-medium text-gray-600">
+              <TableHead className="py-4 font-medium text-muted-foreground">
                 <SortableHeader>Date</SortableHeader>
               </TableHead>
-              <TableHead className="py-4 font-medium text-gray-600">
+              <TableHead className="py-4 font-medium text-muted-foreground">
                 <SortableHeader>Time</SortableHeader>
               </TableHead>
-              <TableHead className="py-4 font-medium text-gray-600">
+              <TableHead className="py-4 font-medium text-muted-foreground">
                 <SortableHeader>Project</SortableHeader>
               </TableHead>
-              <TableHead className="py-4 text-center font-medium text-gray-600">
+              <TableHead className="py-4 text-center font-medium text-muted-foreground">
                 <SortableHeader>Value</SortableHeader>
               </TableHead>
             </TableRow>
@@ -61,9 +61,9 @@ export function TransactionsHistory({ transactions }: TransactionsHistoryProps) 
           <TableBody>
             {transactions.length === 0 ? (
               <>
-                <TableRow className="border-b border-gray-200 hover:bg-transparent">
+                <TableRow className="border-b border-border hover:bg-transparent">
                   <TableCell colSpan={6} className="py-8 text-center">
-                    <span className="text-base text-gray-600">
+                    <span className="text-base text-muted-foreground">
                       You don&apos;t have any transactions yet.
                     </span>
                   </TableCell>
@@ -74,7 +74,7 @@ export function TransactionsHistory({ transactions }: TransactionsHistoryProps) 
               </>
             ) : (
               transactions.map((transaction) => (
-                <TableRow key={transaction.id} className="border-b border-gray-200">
+                <TableRow key={transaction.id} className="border-b border-border">
                   <TableCell className="py-4 font-medium">{transaction.type}</TableCell>
                   <TableCell className="py-4">{transaction.date}</TableCell>
                   <TableCell className="py-4">{transaction.time}</TableCell>

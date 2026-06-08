@@ -131,19 +131,19 @@ export function PendingTasksWidget({ projects, kybStatus }: PendingTasksWidgetPr
 
   if (displayTasks.length === 0) {
     return (
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <h2 className="text-lg font-semibold mb-4">Pending Tasks</h2>
         <div className="flex flex-col items-center justify-center py-8 text-center">
           <CheckCircle2 className="h-12 w-12 text-green-500 mb-3" />
-          <p className="text-gray-600 font-medium">All caught up!</p>
-          <p className="text-sm text-gray-500">No pending tasks at the moment</p>
+          <p className="text-muted-foreground font-medium">All caught up!</p>
+          <p className="text-sm text-muted-foreground">No pending tasks at the moment</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-xl border bg-white p-6 shadow-sm">
+    <div className="rounded-xl border bg-card p-6 shadow-sm">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold">Pending Tasks</h2>
         <span className="text-xs font-medium px-2 py-1 rounded-full bg-orange-100 text-orange-600">
@@ -155,14 +155,14 @@ export function PendingTasksWidget({ projects, kybStatus }: PendingTasksWidgetPr
           <Link
             key={task.id}
             href={task.link}
-            className="flex items-start gap-3 p-3 rounded-lg border hover:bg-gray-50 transition-colors group"
+            className="flex items-start gap-3 p-3 rounded-lg border hover:bg-muted transition-colors group"
           >
             <div className="flex-shrink-0 mt-0.5">{task.icon}</div>
             <div className="flex-1 min-w-0">
-              <p className="font-medium text-sm text-gray-900 truncate">
+              <p className="font-medium text-sm text-foreground truncate">
                 {task.title}
               </p>
-              <p className="text-xs text-gray-500 truncate">{task.description}</p>
+              <p className="text-xs text-muted-foreground truncate">{task.description}</p>
             </div>
             <div className="flex items-center gap-2">
               <span
@@ -171,18 +171,18 @@ export function PendingTasksWidget({ projects, kybStatus }: PendingTasksWidgetPr
                     ? "bg-red-100 text-red-600"
                     : task.priority === "medium"
                     ? "bg-yellow-100 text-yellow-700"
-                    : "bg-gray-100 text-gray-600"
+                    : "bg-muted text-muted-foreground"
                 }`}
               >
                 {task.priority}
               </span>
-              <ChevronRight className="h-4 w-4 text-gray-400 group-hover:text-gray-600 transition-colors" />
+              <ChevronRight className="h-4 w-4 text-muted-foreground group-hover:text-muted-foreground transition-colors" />
             </div>
           </Link>
         ))}
       </div>
       {tasks.length > 5 && (
-        <p className="text-center text-sm text-gray-500 mt-4">
+        <p className="text-center text-sm text-muted-foreground mt-4">
           +{tasks.length - 5} more tasks
         </p>
       )}

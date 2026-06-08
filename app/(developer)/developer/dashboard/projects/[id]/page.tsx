@@ -531,7 +531,7 @@ export default function ProjectDetailsPage() {
       <div className="space-y-6">
         <DeveloperHeader title="Project Details" />
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -541,8 +541,8 @@ export default function ProjectDetailsPage() {
     return (
       <div className="space-y-6">
         <DeveloperHeader title="Project Details" />
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <AlertCircle className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <AlertCircle className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h2 className="text-lg font-semibold mb-2">Project not found</h2>
           <Link href="/developer/dashboard/projects">
             <Button variant="outline">Back to Projects</Button>
@@ -559,24 +559,24 @@ export default function ProjectDetailsPage() {
       {/* Back Link */}
       <Link
         href="/developer/dashboard/projects"
-        className="inline-flex items-center text-sm text-gray-500 hover:text-gray-700"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-foreground"
       >
         <ArrowLeft className="h-4 w-4 mr-1" />
         Back to Projects
       </Link>
 
       {/* Project Header */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               <ProjectStatusBadge status={project.status} />
-              <span className="text-sm text-gray-500 capitalize">
+              <span className="text-sm text-muted-foreground capitalize">
                 {project.project_type.replace("_", " ")}
               </span>
             </div>
             <h1 className="text-2xl font-bold mb-2">{project.title}</h1>
-            <div className="flex items-center gap-1 text-gray-500">
+            <div className="flex items-center gap-1 text-muted-foreground">
               <MapPin className="h-4 w-4" />
               <span>
                 {[project.address, project.city, project.country]
@@ -618,8 +618,8 @@ export default function ProjectDetailsPage() {
             onClick={() => setActiveTab("overview")}
             className={`pb-4 text-sm font-medium border-b-2 transition-colors ${
               activeTab === "overview"
-                ? "border-[#E86A33] text-[#E86A33]"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             Overview
@@ -628,13 +628,13 @@ export default function ProjectDetailsPage() {
             onClick={() => setActiveTab("photos")}
             className={`pb-4 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "photos"
-                ? "border-[#E86A33] text-[#E86A33]"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             Photos
             {photos.length > 0 && (
-              <span className="px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded-full">
+              <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-full">
                 {photos.length}
               </span>
             )}
@@ -643,13 +643,13 @@ export default function ProjectDetailsPage() {
             onClick={() => setActiveTab("milestones")}
             className={`pb-4 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "milestones"
-                ? "border-[#E86A33] text-[#E86A33]"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             Milestones
             {milestones.length > 0 && (
-              <span className="px-2 py-0.5 text-xs bg-gray-100 text-gray-600 rounded-full">
+              <span className="px-2 py-0.5 text-xs bg-muted text-muted-foreground rounded-full">
                 {milestones.length}
               </span>
             )}
@@ -658,8 +658,8 @@ export default function ProjectDetailsPage() {
             onClick={() => setActiveTab("documents")}
             className={`pb-4 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "documents"
-                ? "border-[#E86A33] text-[#E86A33]"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             Loan Documents
@@ -673,8 +673,8 @@ export default function ProjectDetailsPage() {
             onClick={() => setActiveTab("proposals")}
             className={`pb-4 text-sm font-medium border-b-2 transition-colors flex items-center gap-2 ${
               activeTab === "proposals"
-                ? "border-[#E86A33] text-[#E86A33]"
-                : "border-transparent text-gray-500 hover:text-gray-700"
+                ? "border-primary text-primary"
+                : "border-transparent text-muted-foreground hover:text-foreground"
             }`}
           >
             Loan Proposals
@@ -688,26 +688,26 @@ export default function ProjectDetailsPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
             {/* Description */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h2 className="text-lg font-semibold mb-4">About This Project</h2>
-              <p className="text-gray-600 whitespace-pre-wrap">
+              <p className="text-muted-foreground whitespace-pre-wrap">
                 {project.description || "No description provided."}
               </p>
             </div>
 
             {/* VR Tour & Live Camera Links */}
             {(project.vr_tour_link || project.live_camera_link) && (
-              <div className="rounded-xl border bg-white p-6 shadow-sm">
+              <div className="rounded-xl border bg-card p-6 shadow-sm">
                 <dl className="space-y-4">
                   {project.vr_tour_link && (
                     <div>
-                      <dt className="text-sm text-gray-500">VR Tour</dt>
+                      <dt className="text-sm text-muted-foreground">VR Tour</dt>
                       <dd className="font-medium text-sm break-all">{project.vr_tour_link}</dd>
                     </div>
                   )}
                   {project.live_camera_link && (
                     <div>
-                      <dt className="text-sm text-gray-500">Live Camera</dt>
+                      <dt className="text-sm text-muted-foreground">Live Camera</dt>
                       <dd className="font-medium text-sm break-all">{project.live_camera_link}</dd>
                     </div>
                   )}
@@ -716,22 +716,22 @@ export default function ProjectDetailsPage() {
             )}
 
             {/* Location Details */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-[#E86A33]" />
+                <MapPin className="h-5 w-5 text-primary" />
                 Location
               </h2>
               <dl className="grid grid-cols-2 gap-4">
                 <div>
-                  <dt className="text-sm text-gray-500">Address</dt>
+                  <dt className="text-sm text-muted-foreground">Address</dt>
                   <dd className="font-medium">{project.address || "-"}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-gray-500">City</dt>
+                  <dt className="text-sm text-muted-foreground">City</dt>
                   <dd className="font-medium">{project.city || "-"}</dd>
                 </div>
                 <div>
-                  <dt className="text-sm text-gray-500">Country</dt>
+                  <dt className="text-sm text-muted-foreground">Country</dt>
                   <dd className="font-medium">{project.country || "-"}</dd>
                 </div>
               </dl>
@@ -741,27 +741,27 @@ export default function ProjectDetailsPage() {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Financial Summary */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <DollarSign className="h-5 w-5 text-[#E86A33]" />
+                <DollarSign className="h-5 w-5 text-primary" />
                 Financial Details
               </h2>
               <dl className="space-y-4">
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Loan Amount</dt>
+                  <dt className="text-muted-foreground">Loan Amount</dt>
                   <dd className="font-semibold">${project.loan_amount.toLocaleString()}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Min Investment</dt>
+                  <dt className="text-muted-foreground">Min Investment</dt>
                   <dd className="font-medium">${project.min_investment.toLocaleString()}</dd>
                 </div>
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Currency</dt>
+                  <dt className="text-muted-foreground">Currency</dt>
                   <dd className="font-medium">{project.currency}</dd>
                 </div>
                 {project.construction_start_date && (
                   <div className="flex justify-between">
-                    <dt className="text-gray-500 flex items-center gap-1">
+                    <dt className="text-muted-foreground flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
                       Construction Start
                     </dt>
@@ -772,7 +772,7 @@ export default function ProjectDetailsPage() {
                 )}
                 {project.construction_end_date && (
                   <div className="flex justify-between">
-                    <dt className="text-gray-500 flex items-center gap-1">
+                    <dt className="text-muted-foreground flex items-center gap-1">
                       <Calendar className="h-3 w-3" />
                       Construction End
                     </dt>
@@ -785,21 +785,21 @@ export default function ProjectDetailsPage() {
             </div>
 
             {/* Project Info */}
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-[#E86A33]" />
+                <Calendar className="h-5 w-5 text-primary" />
                 Project Info
               </h2>
               <dl className="space-y-4">
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Created</dt>
+                  <dt className="text-muted-foreground">Created</dt>
                   <dd className="font-medium">
                     {new Date(project.created_at).toLocaleDateString()}
                   </dd>
                 </div>
                 {project.submitted_at && (
                   <div className="flex justify-between">
-                    <dt className="text-gray-500">Submitted</dt>
+                    <dt className="text-muted-foreground">Submitted</dt>
                     <dd className="font-medium">
                       {new Date(project.submitted_at).toLocaleDateString()}
                     </dd>
@@ -807,14 +807,14 @@ export default function ProjectDetailsPage() {
                 )}
                 {project.approved_at && (
                   <div className="flex justify-between">
-                    <dt className="text-gray-500">Approved</dt>
+                    <dt className="text-muted-foreground">Approved</dt>
                     <dd className="font-medium">
                       {new Date(project.approved_at).toLocaleDateString()}
                     </dd>
                   </div>
                 )}
                 <div className="flex justify-between">
-                  <dt className="text-gray-500">Status</dt>
+                  <dt className="text-muted-foreground">Status</dt>
                   <dd>
                     <ProjectStatusBadge status={project.status} />
                   </dd>
@@ -834,7 +834,7 @@ export default function ProjectDetailsPage() {
                     </p>
                     <Button
                       onClick={() => setActiveTab("documents")}
-                      className="bg-[#E86A33] hover:bg-[#d55a25]"
+                      className="bg-primary hover:bg-primary/90"
                     >
                       <Upload className="mr-2 h-4 w-4" />
                       Upload Documents
@@ -850,18 +850,18 @@ export default function ProjectDetailsPage() {
       {activeTab === "photos" && (
         <div className="space-y-6">
           {/* Photos Header */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-lg font-semibold flex items-center gap-2">
-                  <Image className="h-5 w-5 text-[#E86A33]" />
+                  <Image className="h-5 w-5 text-primary" />
                   Project Photos
                 </h2>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-muted-foreground mt-1">
                   Showcase your project with photos. The cover photo will be displayed prominently.
                 </p>
               </div>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 {photos.length}/10 photos
               </span>
             </div>
@@ -869,8 +869,8 @@ export default function ProjectDetailsPage() {
             {/* Cover Photo */}
             {photos.some((p) => p.is_featured) && (
               <div className="mb-6">
-                <h3 className="text-sm font-medium text-gray-700 mb-3">Cover Photo</h3>
-                <div className="relative aspect-video max-w-2xl rounded-xl overflow-hidden border-2 border-[#E86A33]">
+                <h3 className="text-sm font-medium text-foreground mb-3">Cover Photo</h3>
+                <div className="relative aspect-video max-w-2xl rounded-xl overflow-hidden border-2 border-primary">
                   <img
                     src={photos.find((p) => p.is_featured)?.file_url}
                     alt="Cover photo"
@@ -883,7 +883,7 @@ export default function ProjectDetailsPage() {
 
           {/* Existing Photos Gallery */}
           {photos.length > 0 && (
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h3 className="font-semibold mb-4">All Photos</h3>
               <ProjectPhotoGallery
                 photos={photos}
@@ -897,7 +897,7 @@ export default function ProjectDetailsPage() {
 
           {/* Upload New Photos */}
           {canEdit && photos.length < 10 && (
-            <div className="rounded-xl border bg-white p-6 shadow-sm">
+            <div className="rounded-xl border bg-card p-6 shadow-sm">
               <h3 className="font-semibold mb-4">Upload New Photos</h3>
               <ProjectPhotoUpload
                 maxPhotos={10}
@@ -910,14 +910,14 @@ export default function ProjectDetailsPage() {
 
           {/* Empty State */}
           {photos.length === 0 && (
-            <div className="rounded-xl border bg-white p-12 text-center">
-              <Image className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+            <div className="rounded-xl border bg-card p-12 text-center">
+              <Image className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No Photos Yet</h3>
-              <p className="text-gray-500 mb-4">
+              <p className="text-muted-foreground mb-4">
                 Add photos to showcase your project to potential lenders.
               </p>
               {canEdit && (
-                <p className="text-sm text-gray-400">
+                <p className="text-sm text-muted-foreground">
                   Use the upload section above to add photos.
                 </p>
               )}
@@ -940,14 +940,14 @@ export default function ProjectDetailsPage() {
       {activeTab === "milestones" && (
         <div className="space-y-6">
           {/* Milestone Stats */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-lg font-semibold flex items-center gap-2">
-                  <Milestone className="h-5 w-5 text-[#E86A33]" />
+                  <Milestone className="h-5 w-5 text-primary" />
                   Project Milestones
                 </h2>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-muted-foreground mt-1">
                   Define payment milestones for your project. Total must equal the funding goal.
                 </p>
               </div>
@@ -968,28 +968,28 @@ export default function ProjectDetailsPage() {
                 {milestoneStats.total_milestones > 0 && (
                   <div className="mb-4">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm text-gray-600">Overall Progress</span>
+                      <span className="text-sm text-muted-foreground">Overall Progress</span>
                       <span className="text-sm font-medium">{milestoneStats.progress_percentage}%</span>
                     </div>
                     <Progress value={milestoneStats.progress_percentage} className="h-3" />
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-gray-50 rounded-lg">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-muted rounded-lg">
                   <div>
-                    <p className="text-sm text-gray-500">Total Milestones</p>
+                    <p className="text-sm text-muted-foreground">Total Milestones</p>
                     <p className="text-lg font-semibold">{milestoneStats.total_milestones}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Completed</p>
+                    <p className="text-sm text-muted-foreground">Completed</p>
                     <p className="text-lg font-semibold text-green-600">{milestoneStats.completed_milestones}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Paid Amount</p>
+                    <p className="text-sm text-muted-foreground">Paid Amount</p>
                     <p className="text-lg font-semibold text-green-600">${milestoneStats.paid_amount.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-sm text-gray-500">Loan Amount</p>
+                    <p className="text-sm text-muted-foreground">Loan Amount</p>
                     <p className="text-lg font-semibold">${milestoneStats.loan_amount.toLocaleString()}</p>
                   </div>
                 </div>
@@ -1008,15 +1008,15 @@ export default function ProjectDetailsPage() {
 
           {/* Editing Mode */}
           {isEditingMilestones ? (
-            <div className="rounded-xl border bg-white p-6 shadow-sm space-y-6">
+            <div className="rounded-xl border bg-card p-6 shadow-sm space-y-6">
               <div className="flex items-center justify-between">
                 <h3 className="font-semibold">Edit Milestones</h3>
                 <div className="text-sm">
                   <span className={calculateMilestoneTotal() === project?.loan_amount ? "text-green-600" : "text-amber-600"}>
                     Total: ${calculateMilestoneTotal().toLocaleString()}
                   </span>
-                  <span className="text-gray-400 mx-2">/</span>
-                  <span className="text-gray-600">Loan: ${project?.loan_amount.toLocaleString()}</span>
+                  <span className="text-muted-foreground mx-2">/</span>
+                  <span className="text-muted-foreground">Loan: ${project?.loan_amount.toLocaleString()}</span>
                 </div>
               </div>
 
@@ -1024,8 +1024,8 @@ export default function ProjectDetailsPage() {
                 <div key={index} className="p-4 border rounded-lg space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <GripVertical className="h-5 w-5 text-gray-400" />
-                      <span className="text-sm font-medium text-gray-500">Milestone {index + 1}</span>
+                      <GripVertical className="h-5 w-5 text-muted-foreground" />
+                      <span className="text-sm font-medium text-muted-foreground">Milestone {index + 1}</span>
                     </div>
                     {editingMilestones.length > 1 && (
                       <Button
@@ -1099,7 +1099,7 @@ export default function ProjectDetailsPage() {
                   Cancel
                 </Button>
                 <Button
-                  className="bg-[#E86A33] hover:bg-[#d55a25]"
+                  className="bg-primary hover:bg-primary/90"
                   onClick={saveMilestones}
                   disabled={isSavingMilestones}
                 >
@@ -1127,7 +1127,7 @@ export default function ProjectDetailsPage() {
                     return (
                       <div
                         key={milestone.id}
-                        className="rounded-xl border bg-white shadow-sm overflow-hidden"
+                        className="rounded-xl border bg-card shadow-sm overflow-hidden"
                       >
                         <div className="p-6">
                           <div className="flex items-start justify-between">
@@ -1139,7 +1139,7 @@ export default function ProjectDetailsPage() {
                                   ? "bg-amber-100 text-amber-700"
                                   : milestone.status === "rejected"
                                   ? "bg-red-100 text-red-700"
-                                  : "bg-gray-100 text-gray-600"
+                                  : "bg-muted text-muted-foreground"
                               }`}>
                                 {milestone.status === "paid" || milestone.status === "approved" ? (
                                   <CheckCircle2 className="h-5 w-5" />
@@ -1153,17 +1153,17 @@ export default function ProjectDetailsPage() {
                                   <MilestoneStatusBadge status={milestone.status} />
                                 </div>
                                 {milestone.description && (
-                                  <p className="text-sm text-gray-600 mb-3">{milestone.description}</p>
+                                  <p className="text-sm text-muted-foreground mb-3">{milestone.description}</p>
                                 )}
                                 <div className="flex flex-wrap gap-4 text-sm">
                                   <div>
-                                    <span className="text-gray-500">Amount:</span>{" "}
+                                    <span className="text-muted-foreground">Amount:</span>{" "}
                                     <span className="font-medium">${milestone.amount.toLocaleString()}</span>
-                                    <span className="text-gray-400 ml-1">({milestone.percentage}%)</span>
+                                    <span className="text-muted-foreground ml-1">({milestone.percentage}%)</span>
                                   </div>
                                   {milestone.due_date && (
                                     <div>
-                                      <span className="text-gray-500">Due:</span>{" "}
+                                      <span className="text-muted-foreground">Due:</span>{" "}
                                       <span className="font-medium">
                                         {new Date(milestone.due_date).toLocaleDateString()}
                                       </span>
@@ -1198,7 +1198,7 @@ export default function ProjectDetailsPage() {
                                 <Button
                                   size="sm"
                                   onClick={() => setShowCompleteDialog(milestone.id)}
-                                  className="bg-[#E86A33] hover:bg-[#d55a25]"
+                                  className="bg-primary hover:bg-primary/90"
                                 >
                                   <CheckCircle2 className="h-4 w-4 mr-1" />
                                   Complete Milestone
@@ -1220,11 +1220,11 @@ export default function ProjectDetailsPage() {
 
                         {/* Complete Milestone Dialog */}
                         {showCompleteDialog === milestone.id && (
-                          <div className="border-t bg-gray-50 p-6">
+                          <div className="border-t bg-muted p-6">
                             <div className="flex items-center justify-between mb-4">
                               <div>
                                 <h4 className="font-medium">Complete Milestone</h4>
-                                <p className="text-sm text-gray-500">Upload proof(s) of completion to mark this milestone as done</p>
+                                <p className="text-sm text-muted-foreground">Upload proof(s) of completion to mark this milestone as done</p>
                               </div>
                               <Button
                                 variant="ghost"
@@ -1238,9 +1238,9 @@ export default function ProjectDetailsPage() {
                             {/* Proofs List */}
                             <div className="space-y-4">
                               {proofsList.map((proof, idx) => (
-                                <div key={idx} className="p-4 bg-white border rounded-lg">
+                                <div key={idx} className="p-4 bg-card border rounded-lg">
                                   <div className="flex items-center justify-between mb-3">
-                                    <span className="text-sm font-medium text-gray-600">Proof {idx + 1}</span>
+                                    <span className="text-sm font-medium text-muted-foreground">Proof {idx + 1}</span>
                                     {proofsList.length > 1 && (
                                       <Button
                                         variant="ghost"
@@ -1258,7 +1258,7 @@ export default function ProjectDetailsPage() {
                                       <select
                                         value={proof.proof_type}
                                         onChange={(e) => updateProofInList(idx, "proof_type", e.target.value)}
-                                        className="w-full px-3 py-2 border rounded-md text-sm bg-white"
+                                        className="w-full px-3 py-2 border rounded-md text-sm bg-card"
                                       >
                                         {proofTypeOptions.map((opt) => (
                                           <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -1316,7 +1316,7 @@ export default function ProjectDetailsPage() {
                               <Button
                                 onClick={() => handleCompleteMilestone(milestone.id)}
                                 disabled={completingMilestone === milestone.id}
-                                className="bg-[#E86A33] hover:bg-[#d55a25]"
+                                className="bg-primary hover:bg-primary/90"
                               >
                                 {completingMilestone === milestone.id ? (
                                   <>
@@ -1332,7 +1332,7 @@ export default function ProjectDetailsPage() {
                               </Button>
                             </div>
 
-                            <p className="text-xs text-gray-500 mt-4">
+                            <p className="text-xs text-muted-foreground mt-4">
                               PDF, JPG, PNG, DOC, DOCX files accepted (max 10MB each)
                             </p>
                           </div>
@@ -1340,30 +1340,30 @@ export default function ProjectDetailsPage() {
 
                         {/* Proofs List */}
                         {isExpanded && (
-                          <div className="border-t bg-gray-50 p-6">
+                          <div className="border-t bg-muted p-6">
                             <h4 className="font-medium mb-4">Submitted Proofs</h4>
                             {isLoadingThisProofs ? (
                               <div className="flex items-center justify-center py-8">
-                                <Loader2 className="h-6 w-6 animate-spin text-[#E86A33]" />
+                                <Loader2 className="h-6 w-6 animate-spin text-primary" />
                               </div>
                             ) : proofs.length > 0 ? (
                               <div className="space-y-3">
                                 {proofs.map((proof) => (
                                   <div
                                     key={proof.id}
-                                    className="flex items-center justify-between p-4 bg-white rounded-lg border"
+                                    className="flex items-center justify-between p-4 bg-card rounded-lg border"
                                   >
                                     <div className="flex items-center gap-3">
-                                      <div className="p-2 bg-gray-100 rounded">
-                                        <Image className="h-5 w-5 text-gray-600" />
+                                      <div className="p-2 bg-muted rounded">
+                                        <Image className="h-5 w-5 text-muted-foreground" />
                                       </div>
                                       <div>
                                         <p className="font-medium text-sm">{proof.title}</p>
-                                        <p className="text-xs text-gray-500">
+                                        <p className="text-xs text-muted-foreground">
                                           {proof.proof_type_label} • {proof.file_name}
                                         </p>
                                         {proof.description && (
-                                          <p className="text-xs text-gray-400 mt-1">{proof.description}</p>
+                                          <p className="text-xs text-muted-foreground mt-1">{proof.description}</p>
                                         )}
                                       </div>
                                     </div>
@@ -1379,7 +1379,7 @@ export default function ProjectDetailsPage() {
                                 ))}
                               </div>
                             ) : (
-                              <p className="text-sm text-gray-500 text-center py-4">No proofs submitted yet</p>
+                              <p className="text-sm text-muted-foreground text-center py-4">No proofs submitted yet</p>
                             )}
                           </div>
                         )}
@@ -1388,14 +1388,14 @@ export default function ProjectDetailsPage() {
                   })}
                 </div>
               ) : (
-                <div className="rounded-xl border bg-white p-12 text-center">
-                  <Milestone className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+                <div className="rounded-xl border bg-card p-12 text-center">
+                  <Milestone className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
                   <h3 className="text-lg font-semibold mb-2">No Milestones Defined</h3>
-                  <p className="text-gray-500 mb-4">
+                  <p className="text-muted-foreground mb-4">
                     Define payment milestones to track project progress and receive payments.
                   </p>
                   {canEdit && (
-                    <Button onClick={startEditingMilestones} className="bg-[#E86A33] hover:bg-[#d55a25]">
+                    <Button onClick={startEditingMilestones} className="bg-primary hover:bg-primary/90">
                       <Plus className="mr-2 h-4 w-4" />
                       Add Milestones
                     </Button>
@@ -1421,15 +1421,15 @@ export default function ProjectDetailsPage() {
       {activeTab === "documents" && (
         <div className="space-y-6">
           {/* Document Progress */}
-          <div className="rounded-xl border bg-white p-6 shadow-sm">
+          <div className="rounded-xl border bg-card p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h2 className="text-lg font-semibold">Loan Application Documents</h2>
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-muted-foreground mt-1">
                   Upload the required documents to submit your project for review
                 </p>
               </div>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 {uploadedCount} of {checklist.length} uploaded
               </span>
             </div>
@@ -1443,7 +1443,7 @@ export default function ProjectDetailsPage() {
                 </p>
               </div>
             ) : (
-              <p className="text-sm text-gray-500 mt-4">
+              <p className="text-sm text-muted-foreground mt-4">
                 {requiredRemaining} required documents remaining
               </p>
             )}
@@ -1467,8 +1467,8 @@ export default function ProjectDetailsPage() {
               return (
                 <div key={item.type} className="relative">
                   {isDeleting && (
-                    <div className="absolute inset-0 bg-white/50 flex items-center justify-center z-10 rounded-xl">
-                      <Loader2 className="h-6 w-6 animate-spin text-[#E86A33]" />
+                    <div className="absolute inset-0 bg-card/50 flex items-center justify-center z-10 rounded-xl">
+                      <Loader2 className="h-6 w-6 animate-spin text-primary" />
                     </div>
                   )}
                   <DocumentUploadCard
@@ -1493,7 +1493,7 @@ export default function ProjectDetailsPage() {
               <Button
                 onClick={handleSubmitForReview}
                 disabled={!allRequiredUploaded || isSubmitting}
-                className="bg-[#E86A33] hover:bg-[#d55a25] disabled:bg-gray-300"
+                className="bg-primary hover:bg-primary/90 disabled:bg-muted"
               >
                 {isSubmitting ? (
                   <>

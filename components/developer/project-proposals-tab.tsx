@@ -148,7 +148,7 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
   if (isLoading) {
     return (
       <div className="flex items-center justify-center py-12">
-        <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
   }
@@ -156,14 +156,14 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
   return (
     <div className="space-y-6">
       {/* Stats Overview */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
-          <FileText className="h-5 w-5 text-[#E86A33]" />
+          <FileText className="h-5 w-5 text-primary" />
           Loan Proposals
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <p className="text-sm text-gray-500">Total Received</p>
+          <div className="p-4 bg-muted rounded-lg">
+            <p className="text-sm text-muted-foreground">Total Received</p>
             <p className="text-2xl font-bold">{stats.total}</p>
           </div>
           <div className="p-4 bg-amber-50 rounded-lg">
@@ -204,7 +204,7 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
       {/* Pending Proposals */}
       {pendingProposals.length > 0 && (
         <div>
-          <h3 className="text-sm font-medium text-gray-500 mb-3 uppercase tracking-wide">
+          <h3 className="text-sm font-medium text-muted-foreground mb-3 uppercase tracking-wide">
             Pending Review ({pendingProposals.length})
           </h3>
           <div className="space-y-4">
@@ -239,10 +239,10 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
 
       {/* Empty State */}
       {proposals.length === 0 && (
-        <div className="rounded-xl border bg-white p-12 text-center">
-          <FileText className="h-12 w-12 text-gray-300 mx-auto mb-4" />
+        <div className="rounded-xl border bg-card p-12 text-center">
+          <FileText className="h-12 w-12 text-muted-foreground/60 mx-auto mb-4" />
           <h3 className="text-lg font-semibold mb-2">No Proposals Yet</h3>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className="text-muted-foreground max-w-md mx-auto">
             Once your project is approved and listed in the marketplace, lenders will be able to
             submit loan proposals. You&apos;ll see them here.
           </p>
@@ -275,7 +275,7 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
               Are you sure you want to accept this proposal? This action will:
             </DialogDescription>
           </DialogHeader>
-          <ul className="text-sm text-gray-600 list-disc list-inside space-y-1 my-4 px-6">
+          <ul className="text-sm text-muted-foreground list-disc list-inside space-y-1 my-4 px-6">
             <li>Accept the selected proposal</li>
             <li>Automatically reject all other pending proposals</li>
             <li>Notify the lender about acceptance</li>
@@ -364,7 +364,7 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
         <DialogContent className="max-w-md">
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
-              <PenTool className="h-5 w-5 text-[#E86A33]" />
+              <PenTool className="h-5 w-5 text-primary" />
               Sign Loan Agreement
             </DialogTitle>
             <DialogDescription>
@@ -387,7 +387,7 @@ export function ProjectProposalsTab({ projectId }: ProjectProposalsTabProps) {
             <Button
               onClick={() => showSignDialog && handleSign(showSignDialog)}
               disabled={!!signingId}
-              className="bg-[#E86A33] hover:bg-[#d55a25] text-white"
+              className="bg-primary hover:bg-primary/90 text-white"
             >
               {signingId ? (
                 <>

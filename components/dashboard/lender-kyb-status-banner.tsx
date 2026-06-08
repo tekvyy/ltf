@@ -82,8 +82,8 @@ export function LenderKybStatusBanner({ status, rejectionReason }: LenderKybStat
           <Icon className="h-8 w-8" />
         </div>
         <div className="flex-1">
-          <h3 className="font-semibold text-gray-900">{config.title}</h3>
-          <p className="text-sm text-gray-600 mt-1">
+          <h3 className="font-semibold text-foreground">{config.title}</h3>
+          <p className="text-sm text-muted-foreground mt-1">
             {status === "rejected" && rejectionReason
               ? `${config.description} Reason: ${rejectionReason}`
               : config.description}
@@ -93,7 +93,7 @@ export function LenderKybStatusBanner({ status, rejectionReason }: LenderKybStat
           <div className="flex-shrink-0">
             {(status === "not_started" || status === "rejected") && (
               <Link href="/dashboard/kyb">
-                <Button className="bg-[#E86A33] hover:bg-[#d55a25]">
+                <Button className="bg-primary hover:bg-primary/90">
                   {config.ctaText}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

@@ -16,8 +16,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Libelit",
-  description: "Libelit App",
+  title: "Credelit — Real-estate debt, tokenized",
+  description:
+    "Credelit connects developers and lenders for transparent, on-chain real-estate financing.",
 };
 
 export default function RootLayout({

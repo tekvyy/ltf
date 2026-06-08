@@ -60,8 +60,8 @@ const kybStatusConfig: Record<
   not_started: {
     label: "Not Started",
     icon: AlertCircle,
-    className: "text-gray-600",
-    bgClass: "bg-gray-100",
+    className: "text-muted-foreground",
+    bgClass: "bg-muted",
   },
   pending: {
     label: "Pending",
@@ -195,11 +195,11 @@ export default function LenderSettingsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-          <p className="text-gray-600 mt-1">Manage your account settings</p>
+          <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+          <p className="text-muted-foreground mt-1">Manage your account settings</p>
         </div>
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -212,8 +212,8 @@ export default function LenderSettingsPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-        <p className="text-gray-600 mt-1">Manage your account settings</p>
+        <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+        <p className="text-muted-foreground mt-1">Manage your account settings</p>
       </div>
 
       {/* Account Status Cards */}
@@ -221,7 +221,7 @@ export default function LenderSettingsPage() {
         <div className={cn("rounded-xl p-5 border", kybConfig.bgClass)}>
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500">KYB Status</p>
+              <p className="text-sm font-medium text-muted-foreground">KYB Status</p>
               <p className={cn("text-lg font-semibold mt-1", kybConfig.className)}>
                 {kybConfig.label}
               </p>
@@ -235,7 +235,7 @@ export default function LenderSettingsPage() {
         <div className="rounded-xl p-5 border bg-blue-50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500">Lender Type</p>
+              <p className="text-sm font-medium text-muted-foreground">Lender Type</p>
               <p className="text-lg font-semibold mt-1 text-blue-600 capitalize">
                 {profile?.lender_type?.replace("_", " ") || "Not Set"}
               </p>
@@ -249,7 +249,7 @@ export default function LenderSettingsPage() {
         <div className="rounded-xl p-5 border bg-purple-50">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500">Account</p>
+              <p className="text-sm font-medium text-muted-foreground">Account</p>
               <p className="text-lg font-semibold mt-1 text-purple-600">
                 {profile?.is_active ? "Active" : "Inactive"}
               </p>
@@ -260,11 +260,11 @@ export default function LenderSettingsPage() {
           </div>
         </div>
 
-        <div className="rounded-xl p-5 border bg-gray-50">
+        <div className="rounded-xl p-5 border bg-muted">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-500">Member Since</p>
-              <p className="text-lg font-semibold mt-1 text-gray-700">
+              <p className="text-sm font-medium text-muted-foreground">Member Since</p>
+              <p className="text-lg font-semibold mt-1 text-foreground">
                 {profile?.created_at
                   ? new Date(profile.created_at).toLocaleDateString("en-US", {
                       month: "short",
@@ -273,8 +273,8 @@ export default function LenderSettingsPage() {
                   : "N/A"}
               </p>
             </div>
-            <div className="h-12 w-12 rounded-full bg-gray-200 flex items-center justify-center">
-              <Clock className="h-6 w-6 text-gray-600" />
+            <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center">
+              <Clock className="h-6 w-6 text-muted-foreground" />
             </div>
           </div>
         </div>
@@ -284,15 +284,15 @@ export default function LenderSettingsPage() {
       <form onSubmit={profileForm.handleSubmit(onProfileSubmit)}>
         <div className="grid gap-6 lg:grid-cols-2">
           {/* Personal Information */}
-          <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
-            <div className="px-6 py-5 border-b bg-gray-50/50">
+          <div className="rounded-xl border bg-card shadow-sm overflow-hidden">
+            <div className="px-6 py-5 border-b bg-muted/50">
               <div className="flex items-center gap-3">
-                <div className="h-10 w-10 rounded-lg bg-[#E86A33]/10 flex items-center justify-center">
-                  <User className="h-5 w-5 text-[#E86A33]" />
+                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <User className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-900">Personal Information</h2>
-                  <p className="text-sm text-gray-500">Update your personal details</p>
+                  <h2 className="text-lg font-semibold text-foreground">Personal Information</h2>
+                  <p className="text-sm text-muted-foreground">Update your personal details</p>
                 </div>
               </div>
             </div>
@@ -302,7 +302,7 @@ export default function LenderSettingsPage() {
                   Full Name
                 </Label>
                 <div className="relative">
-                  <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="name"
                     {...profileForm.register("name")}
@@ -320,7 +320,7 @@ export default function LenderSettingsPage() {
                   Phone Number
                 </Label>
                 <div className="relative">
-                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="phone"
                     {...profileForm.register("phone")}
@@ -335,29 +335,29 @@ export default function LenderSettingsPage() {
                   Email Address
                 </Label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="email"
                     value={profile?.user?.email || ""}
                     disabled
-                    className="pl-10 bg-gray-50 text-gray-500"
+                    className="pl-10 bg-muted text-muted-foreground"
                   />
                 </div>
-                <p className="text-xs text-gray-400">Email address cannot be changed</p>
+                <p className="text-xs text-muted-foreground">Email address cannot be changed</p>
               </div>
             </div>
           </div>
 
           {/* Company Information */}
-          <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
-            <div className="px-6 py-5 border-b bg-gray-50/50">
+          <div className="rounded-xl border bg-card shadow-sm overflow-hidden">
+            <div className="px-6 py-5 border-b bg-muted/50">
               <div className="flex items-center gap-3">
                 <div className="h-10 w-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
                   <Building2 className="h-5 w-5 text-blue-500" />
                 </div>
                 <div>
-                  <h2 className="text-lg font-semibold text-gray-900">Company Information</h2>
-                  <p className="text-sm text-gray-500">Update your company details</p>
+                  <h2 className="text-lg font-semibold text-foreground">Company Information</h2>
+                  <p className="text-sm text-muted-foreground">Update your company details</p>
                 </div>
               </div>
             </div>
@@ -367,7 +367,7 @@ export default function LenderSettingsPage() {
                   Company Name
                 </Label>
                 <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="company_name"
                     {...profileForm.register("company_name")}
@@ -382,7 +382,7 @@ export default function LenderSettingsPage() {
                   Business Address
                 </Label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     id="address"
                     {...profileForm.register("address")}
@@ -400,7 +400,7 @@ export default function LenderSettingsPage() {
           <Button
             type="submit"
             disabled={isSavingProfile}
-            className="bg-[#E86A33] hover:bg-[#d55a25]"
+            className="bg-primary hover:bg-primary/90"
           >
             {isSavingProfile ? (
               <>
@@ -418,15 +418,15 @@ export default function LenderSettingsPage() {
       </form>
 
       {/* Change Password - Full Width */}
-      <div className="rounded-xl border bg-white shadow-sm overflow-hidden">
-        <div className="px-6 py-5 border-b bg-gray-50/50">
+      <div className="rounded-xl border bg-card shadow-sm overflow-hidden">
+        <div className="px-6 py-5 border-b bg-muted/50">
           <div className="flex items-center gap-3">
             <div className="h-10 w-10 rounded-lg bg-amber-500/10 flex items-center justify-center">
               <Lock className="h-5 w-5 text-amber-500" />
             </div>
             <div>
-              <h2 className="text-lg font-semibold text-gray-900">Change Password</h2>
-              <p className="text-sm text-gray-500">Update your password to keep your account secure</p>
+              <h2 className="text-lg font-semibold text-foreground">Change Password</h2>
+              <p className="text-sm text-muted-foreground">Update your password to keep your account secure</p>
             </div>
           </div>
         </div>
@@ -437,7 +437,7 @@ export default function LenderSettingsPage() {
                 Current Password
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="current_password"
                   type={showCurrentPassword ? "text" : "password"}
@@ -448,7 +448,7 @@ export default function LenderSettingsPage() {
                 <button
                   type="button"
                   onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showCurrentPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -465,7 +465,7 @@ export default function LenderSettingsPage() {
                 New Password
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="password"
                   type={showNewPassword ? "text" : "password"}
@@ -476,7 +476,7 @@ export default function LenderSettingsPage() {
                 <button
                   type="button"
                   onClick={() => setShowNewPassword(!showNewPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>
@@ -491,7 +491,7 @@ export default function LenderSettingsPage() {
                 Confirm New Password
               </Label>
               <div className="relative">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   id="password_confirmation"
                   type={showConfirmPassword ? "text" : "password"}
@@ -502,7 +502,7 @@ export default function LenderSettingsPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                 >
                   {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 </button>

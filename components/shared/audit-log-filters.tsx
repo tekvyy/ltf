@@ -51,17 +51,17 @@ export function AuditLogFilters({ onFilterChange }: AuditLogFiltersProps) {
         filters.date_range !== "all";
 
     return (
-        <div className="rounded-xl border bg-white p-4 mb-4">
+        <div className="rounded-xl border bg-card p-4 mb-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* Date Range Filter */}
                 <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                         Time Period
                     </label>
                     <select
                         value={filters.date_range}
                         onChange={(e) => handleFilterChange("date_range", e.target.value)}
-                        className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#E86A33] focus:border-transparent"
+                        className="w-full rounded-lg border border-border bg-card px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
                     >
                         {dateRanges.map((range) => (
                             <option key={range.value} value={range.value}>
@@ -73,11 +73,11 @@ export function AuditLogFilters({ onFilterChange }: AuditLogFiltersProps) {
 
                 {/* Search Filter */}
                 <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                         Search
                     </label>
                     <div className="relative">
-                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input
                             type="text"
                             placeholder="Search by description or transaction hash..."
@@ -88,7 +88,7 @@ export function AuditLogFilters({ onFilterChange }: AuditLogFiltersProps) {
                         {filters.search && (
                             <button
                                 onClick={() => handleFilterChange("search", "")}
-                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-muted-foreground"
                             >
                                 <X className="h-4 w-4" />
                             </button>

@@ -204,7 +204,7 @@ export function RegisterForm() {
                 className="mt-1 shrink-0"
               />
               <label htmlFor="acceptTerms" className="text-sm leading-relaxed cursor-pointer">
-                I understand Libelit AU&apos;s{" "}
+                I understand Credelit AU&apos;s{" "}
                 <Link href="/terms" className="font-medium underline underline-offset-2 hover:text-primary">
                   Terms & Conditions
                 </Link>

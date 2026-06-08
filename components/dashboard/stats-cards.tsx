@@ -1,28 +1,42 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Clock, FileText, Gavel, CircleDollarSign } from "lucide-react";
-import Image from "next/image";
+import { Wallet, FileText, CheckCircle2 } from "lucide-react";
 
 interface StatCardProps {
   title: string;
   value: string | number;
   icon: React.ReactNode;
-  valueColor?: string;
+  accent?: boolean;
+  hint?: string;
 }
 
-function StatCard({ title, value, icon, valueColor = "text-black" }: StatCardProps) {
+function StatCard({ title, value, icon, accent = false, hint }: StatCardProps) {
   return (
-    <Card className=" bg-white shadow-none border-none">
-      <CardContent className="p-3 space-y-4">
-        <div className="flex items-center gap-2">
+    <div className="group relative overflow-hidden rounded-xl border border-border/70 bg-card p-5 shadow-elevated transition-shadow hover:shadow-elevated-lg">
+      <div className="flex items-start justify-between">
+        <span className="text-sm font-medium text-muted-foreground">{title}</span>
+        <span
+          className={
+            "flex h-9 w-9 items-center justify-center rounded-lg " +
+            (accent ? "bg-primary/12 text-primary" : "bg-muted text-muted-foreground")
+          }
+        >
           {icon}
-          <span className="text-base">{title}</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <CircleDollarSign className={`h-5 w-5 ${valueColor === "text-[#E86A33]" ? "text-[#E86A33]" : "text-gray-400"}`} />
-          <span className={`text-2xl font-bold ${valueColor}`}>{value}</span>
-        </div>
-      </CardContent>
-    </Card>
+        </span>
+      </div>
+      <div className="mt-4 flex items-baseline gap-2">
+        <span
+          className={
+            "tnum text-3xl font-semibold tracking-tight " +
+            (accent ? "text-primary" : "text-foreground")
+          }
+        >
+          {value}
+        </span>
+      </div>
+      {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
+      {accent && (
+        <span className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-primary/60 to-primary/0" />
+      )}
+    </div>
   );
 }
 
@@ -31,6 +45,13 @@ interface StatsCardsProps {
   submittedBids: number;
   approvedLoans: number;
 }
+
+const usd = (n: number) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(n);
 
 export function StatsCards({
   totalBalance,
@@ -41,19 +62,22 @@ export function StatsCards({
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <StatCard
         title="Total balance"
-        value={totalBalance}
-        icon={<Image src="/images/pie-chart.png" alt="Libelit" width={23} height={23} />}
+        value={usd(totalBalance)}
+        icon={<Wallet className="h-[18px] w-[18px]" />}
+        hint="Across active loans"
       />
       <StatCard
-        title="Submitted Bids"
+        title="Submitted bids"
         value={submittedBids}
-        icon={<Image src="/images/bid-logo.png" alt="Libelit" width={25} height={25} />}
+        icon={<FileText className="h-[18px] w-[18px]" />}
+        hint="Awaiting developer review"
       />
       <StatCard
-        title="Approved Loans"
+        title="Approved loans"
         value={approvedLoans}
-        icon={<Image src="/images/auction.png" alt="Libelit" width={23} height={23} />}
-        valueColor="text-[#E86A33]"
+        icon={<CheckCircle2 className="h-[18px] w-[18px]" />}
+        accent
+        hint="Funded & executed"
       />
     </div>
   );

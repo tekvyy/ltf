@@ -11,7 +11,7 @@ interface MilestoneStatusBadgeProps {
 const statusConfig: Record<MilestoneStatus, { label: string; className: string }> = {
   pending: {
     label: "Pending",
-    className: "bg-gray-100 text-gray-700",
+    className: "bg-muted text-foreground",
   },
   proof_submitted: {
     label: "Awaiting Review",

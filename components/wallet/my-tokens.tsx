@@ -64,16 +64,16 @@ export function MyTokens() {
         <div className="space-y-4">
             <div className="flex items-center justify-between">
                 <h2 className="text-lg font-semibold flex items-center gap-2">
-                    <Coins className="h-5 w-5 text-[#E86A33]" />
+                    <Coins className="h-5 w-5 text-primary" />
                     My Tokens
                 </h2>
             </div>
 
-            <Separator className="my-4 bg-[#B9C2CA]" />
+            <Separator className="my-4" />
 
             {isLoading ? (
                 <div className="flex items-center justify-center py-8">
-                    <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
+                    <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
                 </div>
             ) : error ? (
                 <div className="flex items-start gap-2 p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -82,11 +82,11 @@ export function MyTokens() {
                 </div>
             ) : issuances.length === 0 ? (
                 <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Coins className="h-8 w-8 text-gray-400" />
+                    <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                        <Coins className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-sm text-gray-500 mb-2">No tokens issued yet</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-sm text-muted-foreground mb-2">No tokens issued yet</p>
+                    <p className="text-xs text-muted-foreground">
                         Create your first MPT from the dashboard
                     </p>
                 </div>
@@ -95,7 +95,7 @@ export function MyTokens() {
                     {issuances.map((issuance) => (
                         <div
                             key={issuance.id}
-                            className="border rounded-lg p-4 hover:border-[#E86A33]/30 transition-colors"
+                            className="border rounded-lg p-4 hover:border-primary/30 transition-colors"
                         >
                             <div className="flex items-start justify-between">
                                 <div className="flex-1">
@@ -108,39 +108,39 @@ export function MyTokens() {
                                         </span>
                                     </div>
 
-                                    <p className="text-sm text-gray-600 mb-3">
+                                    <p className="text-sm text-muted-foreground mb-3">
                                         {issuance.metadata?.name || issuance.metadata?.n || 'Development Token'}
                                     </p>
 
                                     <div className="grid grid-cols-2 gap-3 text-xs">
                                         <div>
-                                            <span className="text-gray-500">Max Supply:</span>
-                                            <p className="font-medium text-gray-900">
+                                            <span className="text-muted-foreground">Max Supply:</span>
+                                            <p className="font-medium text-foreground">
                                                 {parseInt(issuance.maxAmount).toLocaleString()}
                                             </p>
                                         </div>
                                         <div>
-                                            <span className="text-gray-500">Outstanding:</span>
-                                            <p className="font-medium text-gray-900">
+                                            <span className="text-muted-foreground">Outstanding:</span>
+                                            <p className="font-medium text-foreground">
                                                 {parseInt(issuance.outstandingAmount || '0').toLocaleString()}
                                             </p>
                                         </div>
                                         <div>
-                                            <span className="text-gray-500">Asset Class:</span>
-                                            <p className="font-medium text-gray-900 uppercase">
+                                            <span className="text-muted-foreground">Asset Class:</span>
+                                            <p className="font-medium text-foreground uppercase">
                                                 {issuance.metadata?.asset_class || issuance.metadata?.ac || 'RWA'}
                                             </p>
                                         </div>
                                         <div>
-                                            <span className="text-gray-500">Transfer Fee:</span>
-                                            <p className="font-medium text-gray-900">
+                                            <span className="text-muted-foreground">Transfer Fee:</span>
+                                            <p className="font-medium text-foreground">
                                                 {issuance.transferFee / 1000}%
                                             </p>
                                         </div>
                                     </div>
 
                                     {issuance.metadata?.desc || issuance.metadata?.d ? (
-                                        <p className="text-xs text-gray-500 mt-3 line-clamp-2">
+                                        <p className="text-xs text-muted-foreground mt-3 line-clamp-2">
                                             {issuance.metadata.desc || issuance.metadata.d}
                                         </p>
                                     ) : null}
@@ -158,8 +158,8 @@ export function MyTokens() {
 
                             <div className="mt-3 pt-3 border-t">
                                 <div className="flex items-center justify-between text-xs">
-                                    <span className="text-gray-500">Issuance ID:</span>
-                                    <code className="text-gray-600 font-mono text-[10px]">
+                                    <span className="text-muted-foreground">Issuance ID:</span>
+                                    <code className="text-muted-foreground font-mono text-[10px]">
                                         {issuance.id.substring(0, 16)}...
                                     </code>
                                 </div>

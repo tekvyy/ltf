@@ -11,17 +11,17 @@ export default function WalletPage() {
       <WalletHeader title="Wallet" />
 
       {/* My Wallet Section */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <MyWallet />
       </div>
 
       {/* My Tokens Section */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <MyTokens />
       </div>
 
       {/* Transactions History */}
-      <div className="rounded-xl border bg-white p-6 shadow-sm">
+      <div className="rounded-xl border bg-card p-6 shadow-sm">
         <TransactionsHistory transactions={[]} />
       </div>
     </div>

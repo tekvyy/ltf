@@ -130,7 +130,7 @@ function DealCard({
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="flex">
         {/* Project Image */}
-        <div className="w-24 h-full min-h-[140px] bg-gray-100 flex-shrink-0 relative">
+        <div className="w-24 h-full min-h-[140px] bg-muted flex-shrink-0 relative">
           {proposal.project.cover_photo_url ? (
             <Image
               src={proposal.project.cover_photo_url}
@@ -141,7 +141,7 @@ function DealCard({
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Building2 className="h-8 w-8 text-gray-300" />
+              <Building2 className="h-8 w-8 text-muted-foreground/60" />
             </div>
           )}
         </div>
@@ -150,10 +150,10 @@ function DealCard({
         <div className="flex-1 p-4">
           <div className="flex items-start justify-between gap-2 mb-2">
             <div>
-              <h3 className="font-semibold text-gray-900 line-clamp-1">
+              <h3 className="font-semibold text-foreground line-clamp-1">
                 {proposal.project.title}
               </h3>
-              <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
+              <p className="text-xs text-muted-foreground flex items-center gap-1 mt-0.5">
                 <MapPin className="h-3 w-3" />
                 {proposal.project.country || "Location N/A"}
               </p>
@@ -164,24 +164,24 @@ function DealCard({
           {/* Details Grid */}
           <div className="grid grid-cols-2 gap-2 mt-3 text-sm">
             <div>
-              <p className="text-gray-500 text-xs">Asset Type</p>
+              <p className="text-muted-foreground text-xs">Asset Type</p>
               <p className="font-medium capitalize">
                 {proposal.project.project_type_label ||
                   proposal.project.project_type.replace("_", " ")}
               </p>
             </div>
             <div>
-              <p className="text-gray-500 text-xs">Loan Amount</p>
-              <p className="font-semibold text-[#E86A33]">
+              <p className="text-muted-foreground text-xs">Loan Amount</p>
+              <p className="font-semibold text-primary">
                 {formatCurrency(proposal.loan_amount_offered, proposal.currency)}
               </p>
             </div>
             <div>
-              <p className="text-gray-500 text-xs">Interest Rate</p>
+              <p className="text-muted-foreground text-xs">Interest Rate</p>
               <p className="font-medium">{proposal.interest_rate}%</p>
             </div>
             <div>
-              <p className="text-gray-500 text-xs">Maturity</p>
+              <p className="text-muted-foreground text-xs">Maturity</p>
               <p className="font-medium">{formatDate(proposal.loan_maturity_date)}</p>
             </div>
           </div>
@@ -191,7 +191,7 @@ function DealCard({
             variant="ghost"
             size="sm"
             onClick={onView}
-            className="mt-3 w-full text-[#E86A33] hover:text-[#d55a25] hover:bg-orange-50"
+            className="mt-3 w-full text-primary hover:text-primary/90 hover:bg-orange-50"
           >
             View Project
             <ArrowRight className="h-4 w-4 ml-1" />
@@ -258,13 +258,13 @@ export default function DealsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Deals</h1>
-          <p className="text-gray-600 mt-1">
+          <h1 className="text-2xl font-bold text-foreground">Deals</h1>
+          <p className="text-muted-foreground mt-1">
             Projects you&apos;ve submitted proposals for
           </p>
         </div>
         <div className="flex items-center justify-center py-12">
-          <Loader2 className="h-8 w-8 animate-spin text-[#E86A33]" />
+          <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       </div>
     );
@@ -274,15 +274,15 @@ export default function DealsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900">Deals</h1>
-        <p className="text-gray-600 mt-1">
+        <h1 className="text-2xl font-bold text-foreground">Deals</h1>
+        <p className="text-muted-foreground mt-1">
           Projects you&apos;ve submitted proposals for
         </p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="w-full sm:w-64">
-          <label className="text-sm font-medium text-gray-700 mb-1.5 block">
+          <label className="text-sm font-medium text-foreground mb-1.5 block">
             Filter by Status
           </label>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
@@ -307,7 +307,7 @@ export default function DealsPage() {
           <Card className="hidden lg:block">
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-lg">
-                <Briefcase className="h-5 w-5 text-[#E86A33]" />
+                <Briefcase className="h-5 w-5 text-primary" />
                 Your Deals ({filteredProposals.length})
               </CardTitle>
             </CardHeader>
@@ -315,44 +315,44 @@ export default function DealsPage() {
               <div className="overflow-x-auto">
                 <Table>
                   <TableHeader>
-                    <TableRow className="bg-gray-50/80 hover:bg-gray-50/80">
-                      <TableHead className="font-semibold text-gray-700 pl-6">
+                    <TableRow className="bg-muted/80 hover:bg-muted/80">
+                      <TableHead className="font-semibold text-foreground pl-6">
                         Project
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         <div className="flex items-center gap-1.5">
-                          <Building2 className="h-4 w-4 text-gray-400" />
+                          <Building2 className="h-4 w-4 text-muted-foreground" />
                           Asset Type
                         </div>
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         <div className="flex items-center gap-1.5">
-                          <MapPin className="h-4 w-4 text-gray-400" />
+                          <MapPin className="h-4 w-4 text-muted-foreground" />
                           Location
                         </div>
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         <div className="flex items-center gap-1.5">
-                          <DollarSign className="h-4 w-4 text-gray-400" />
+                          <DollarSign className="h-4 w-4 text-muted-foreground" />
                           Loan Amount
                         </div>
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         <div className="flex items-center gap-1.5">
-                          <Percent className="h-4 w-4 text-gray-400" />
+                          <Percent className="h-4 w-4 text-muted-foreground" />
                           Rate
                         </div>
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         <div className="flex items-center gap-1.5">
-                          <Calendar className="h-4 w-4 text-gray-400" />
+                          <Calendar className="h-4 w-4 text-muted-foreground" />
                           Maturity
                         </div>
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700">
+                      <TableHead className="font-semibold text-foreground">
                         Status
                       </TableHead>
-                      <TableHead className="font-semibold text-gray-700 text-right pr-6">
+                      <TableHead className="font-semibold text-foreground text-right pr-6">
                         Actions
                       </TableHead>
                     </TableRow>
@@ -366,7 +366,7 @@ export default function DealsPage() {
                       >
                         <TableCell className="pl-6">
                           <div className="flex items-center gap-3">
-                            <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0 relative">
+                            <div className="w-12 h-12 rounded-lg overflow-hidden bg-muted flex-shrink-0 relative">
                               {proposal.project.cover_photo_url ? (
                                 <Image
                                   src={proposal.project.cover_photo_url}
@@ -377,31 +377,31 @@ export default function DealsPage() {
                                 />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center">
-                                  <Building2 className="h-5 w-5 text-gray-300" />
+                                  <Building2 className="h-5 w-5 text-muted-foreground/60" />
                                 </div>
                               )}
                             </div>
                             <div>
-                              <p className="font-semibold text-gray-900 group-hover:text-[#E86A33] transition-colors">
+                              <p className="font-semibold text-foreground group-hover:text-primary transition-colors">
                                 {proposal.project.title}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-muted-foreground">
                                 Submitted {formatDate(proposal.created_at)}
                               </p>
                             </div>
                           </div>
                         </TableCell>
                         <TableCell>
-                          <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-gray-100 text-xs font-medium text-gray-700 capitalize">
+                          <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-muted text-xs font-medium text-foreground capitalize">
                             {proposal.project.project_type_label ||
                               proposal.project.project_type.replace("_", " ")}
                           </span>
                         </TableCell>
-                        <TableCell className="text-gray-600">
+                        <TableCell className="text-muted-foreground">
                           {proposal.project.country || "—"}
                         </TableCell>
                         <TableCell>
-                          <span className="font-semibold text-[#E86A33]">
+                          <span className="font-semibold text-primary">
                             {formatCurrency(
                               proposal.loan_amount_offered,
                               proposal.currency
@@ -413,7 +413,7 @@ export default function DealsPage() {
                             {proposal.interest_rate}%
                           </span>
                         </TableCell>
-                        <TableCell className="text-gray-600">
+                        <TableCell className="text-muted-foreground">
                           {formatDate(proposal.loan_maturity_date)}
                         </TableCell>
                         <TableCell>
@@ -427,7 +427,7 @@ export default function DealsPage() {
                               e.stopPropagation();
                               handleViewProject(proposal.project.id);
                             }}
-                            className="text-[#E86A33] hover:text-[#d55a25] hover:bg-orange-100"
+                            className="text-primary hover:text-primary/90 hover:bg-orange-100"
                           >
                             <Eye className="h-4 w-4 mr-1.5" />
                             View
@@ -443,8 +443,8 @@ export default function DealsPage() {
 
           {/* Mobile Cards - Hidden on desktop */}
           <div className="lg:hidden space-y-4">
-            <h3 className="font-semibold text-gray-900 flex items-center gap-2">
-              <Briefcase className="h-5 w-5 text-[#E86A33]" />
+            <h3 className="font-semibold text-foreground flex items-center gap-2">
+              <Briefcase className="h-5 w-5 text-primary" />
               Your Deals ({filteredProposals.length})
             </h3>
             {filteredProposals.map((proposal) => (
@@ -459,11 +459,11 @@ export default function DealsPage() {
       ) : (
         /* Empty State */
         <Card className="p-12 text-center">
-          <Briefcase className="h-16 w-16 text-gray-200 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
+          <Briefcase className="h-16 w-16 text-muted-foreground/50 mx-auto mb-4" />
+          <h3 className="text-xl font-semibold text-foreground mb-2">
             No Deals Found
           </h3>
-          <p className="text-gray-500 max-w-md mx-auto mb-6">
+          <p className="text-muted-foreground max-w-md mx-auto mb-6">
             {statusFilter === "all"
               ? "You haven't submitted any proposals yet. Browse the marketplace to find projects and start making deals."
               : "No deals match the selected filter."}
@@ -471,7 +471,7 @@ export default function DealsPage() {
           {statusFilter === "all" && (
             <Button
               onClick={() => router.push("/dashboard/marketplace")}
-              className="bg-[#E86A33] hover:bg-[#d55a25] text-white"
+              className="bg-primary hover:bg-primary/90 text-white"
             >
               <Building2 className="h-4 w-4 mr-2" />
               Browse Marketplace
