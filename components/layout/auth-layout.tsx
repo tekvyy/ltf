@@ -40,10 +40,10 @@ export function AuthLayout({ children, imageSrc }: AuthLayoutProps) {
           </div>
 
           <div className="max-w-md space-y-6">
-            <h2 className="text-3xl font-semibold leading-tight tracking-tight">
+            <h2 className="text-display text-[34px] font-medium leading-[1.15] tracking-tight">
               Real-estate debt,
               <br />
-              transparently financed.
+              <span className="italic text-white/90">transparently</span> financed.
             </h2>
             <ul className="space-y-3">
               {proofPoints.map((p) => (

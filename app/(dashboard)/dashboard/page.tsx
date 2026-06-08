@@ -8,7 +8,6 @@ import { LoansChart } from "@/components/dashboard/loans-chart";
 import { PortfolioTable } from "@/components/dashboard/portfolio-table";
 import { ProjectCard, Project as CardProject } from "@/components/dashboard/project-card";
 import { TokenizeProjectDialog } from "@/components/dashboard/tokenize-project-dialog";
-import { Separator } from "@/components/ui/separator";
 import { lenderProjectsService, lenderProposalsService } from "@/lib/api";
 import type { LenderProject, LenderLoanProposal } from "@/lib/types/lender";
 import { Building2, Loader2, Coins } from "lucide-react";
@@ -131,55 +130,57 @@ export default function DashboardPage() {
   }, [fetchDashboardData]);
 
   return (
-    <div className="space-y-6">
-      <DashboardHeader title="Lender Dashboard" subtitle="Superfund" />
+    <div className="space-y-7">
+      <div className="animate-reveal flex flex-wrap items-end justify-between gap-4">
+        <DashboardHeader title="Lender Dashboard" subtitle="Superfund · Lender workspace" />
+      </div>
 
-      <ConnectWallet />
+      <div className="animate-reveal delay-1">
+        <ConnectWallet />
+      </div>
 
-      <Separator className="my-4" />
-
-      <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-6">
-        <div className="space-y-5">
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[2fr_1fr]">
+        <div className="space-y-6">
           {/* Tokenise Project Button */}
           {stats.approvedLoans > 0 && (
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-4">
-              <div className="flex items-center justify-between">
+            <div className="grain animate-reveal delay-2 relative overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/12 to-primary/[0.04] p-5">
+              <div className="relative flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                 <div className="space-y-1">
-                  <h3 className="font-semibold text-lg flex items-center gap-2">
+                  <h3 className="flex items-center gap-2 text-lg font-semibold">
                     <Coins className="h-5 w-5 text-primary" />
-                    Tokenise Your Projects
+                    Tokenise your projects
                   </h3>
                   <p className="text-sm text-muted-foreground">
                     Create Multi-Purpose Tokens for fractional ownership and secondary markets
                   </p>
                 </div>
-                <Button
-                  onClick={() => setShowTokenizeDialog(true)}
-                  className="bg-primary hover:bg-primary/90"
-                >
-                  <Coins className="mr-2 h-4 w-4" />
+                <Button onClick={() => setShowTokenizeDialog(true)} className="shrink-0">
+                  <Coins className="h-4 w-4" />
                   Tokenise Project
                 </Button>
               </div>
             </div>
           )}
 
-          {/* Stats Card */}
-          <div className="space-y-2">
-            <h2 className="text-lg font-semibold">Loans value</h2>
+          {/* Metric band */}
+          <div className="animate-reveal delay-2 space-y-3">
+            <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+              Loans value
+            </h2>
             <StatsCards
               totalBalance={stats.totalBalance}
               submittedBids={stats.submittedBids}
               approvedLoans={stats.approvedLoans}
             />
           </div>
+
           {/* Loan Chart */}
-          <div className="">
+          <div className="animate-reveal delay-3">
             <LoansChart data={chartData} />
           </div>
+
           {/* Portfolio Table */}
-          <div className="space-y-2">
-            {/*<h2 className="text-lg font-semibold">Portfolio summary</h2>*/}
+          <div className="animate-reveal delay-4">
             <PortfolioTable projects={loanProposals.filter(p =>
               ["accepted_by_developer", "signed_by_developer", "signed_by_lender", "loan_term_fully_executed"].includes(p.status)
             ).map(p => ({
@@ -192,22 +193,23 @@ export default function DashboardPage() {
             }))} />
           </div>
         </div>
-        <div className="space-y-2">
-          <h2 className="text-lg font-semibold">Latest Project</h2>
+
+        <div className="animate-reveal delay-3 space-y-3">
+          <h2 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+            Latest project
+          </h2>
           {isLoading ? (
-            <div className="rounded-xl border bg-card p-8 flex items-center justify-center">
+            <div className="flex items-center justify-center rounded-2xl border border-border/70 bg-card p-8 shadow-elevated">
               <Loader2 className="h-6 w-6 animate-spin text-primary" />
             </div>
           ) : latestProject ? (
             <ProjectCard project={latestProject} />
           ) : (
-            <div className="rounded-xl border bg-card p-8 text-center">
-              <Building2 className="h-10 w-10 text-muted-foreground/60 mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground mb-4">No projects available yet</p>
+            <div className="bg-dots rounded-2xl border border-border/70 bg-card p-10 text-center shadow-elevated">
+              <Building2 className="mx-auto mb-3 h-10 w-10 text-muted-foreground/50" />
+              <p className="mb-4 text-sm text-muted-foreground">No projects available yet</p>
               <Link href="/dashboard/marketplace">
-                <Button size="sm" className="bg-primary hover:bg-primary/90">
-                  Browse Marketplace
-                </Button>
+                <Button size="sm">Browse Marketplace</Button>
               </Link>
             </div>
           )}

@@ -13,9 +13,9 @@ export function DashboardHeader({ title, subtitle }: DashboardHeaderProps) {
       <div className="flex items-center gap-4">
         <MobileSidebar />
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground">{title}</h1>
+          <h1 className="text-display text-[30px] font-semibold leading-tight text-foreground">{title}</h1>
           {subtitle && (
-            <p className="text-sm text-muted-foreground">{subtitle}</p>
+            <p className="mt-0.5 text-sm text-muted-foreground">{subtitle}</p>
           )}
         </div>
       </div>

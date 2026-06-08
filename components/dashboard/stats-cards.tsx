@@ -1,43 +1,11 @@
 import { Wallet, FileText, CheckCircle2 } from "lucide-react";
 
-interface StatCardProps {
+interface Metric {
   title: string;
-  value: string | number;
+  value: string;
   icon: React.ReactNode;
+  hint: string;
   accent?: boolean;
-  hint?: string;
-}
-
-function StatCard({ title, value, icon, accent = false, hint }: StatCardProps) {
-  return (
-    <div className="group relative overflow-hidden rounded-xl border border-border/70 bg-card p-5 shadow-elevated transition-shadow hover:shadow-elevated-lg">
-      <div className="flex items-start justify-between">
-        <span className="text-sm font-medium text-muted-foreground">{title}</span>
-        <span
-          className={
-            "flex h-9 w-9 items-center justify-center rounded-lg " +
-            (accent ? "bg-primary/12 text-primary" : "bg-muted text-muted-foreground")
-          }
-        >
-          {icon}
-        </span>
-      </div>
-      <div className="mt-4 flex items-baseline gap-2">
-        <span
-          className={
-            "tnum text-3xl font-semibold tracking-tight " +
-            (accent ? "text-primary" : "text-foreground")
-          }
-        >
-          {value}
-        </span>
-      </div>
-      {hint && <p className="mt-1 text-xs text-muted-foreground">{hint}</p>}
-      {accent && (
-        <span className="pointer-events-none absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-primary/60 to-primary/0" />
-      )}
-    </div>
-  );
 }
 
 interface StatsCardsProps {
@@ -58,27 +26,61 @@ export function StatsCards({
   submittedBids,
   approvedLoans,
 }: StatsCardsProps) {
+  const metrics: Metric[] = [
+    {
+      title: "Total balance",
+      value: usd(totalBalance),
+      icon: <Wallet className="h-[18px] w-[18px]" />,
+      hint: "Across active loans",
+      accent: true,
+    },
+    {
+      title: "Submitted bids",
+      value: String(submittedBids),
+      icon: <FileText className="h-[18px] w-[18px]" />,
+      hint: "Awaiting developer review",
+    },
+    {
+      title: "Approved loans",
+      value: String(approvedLoans),
+      icon: <CheckCircle2 className="h-[18px] w-[18px]" />,
+      hint: "Funded & executed",
+    },
+  ];
+
   return (
-    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <StatCard
-        title="Total balance"
-        value={usd(totalBalance)}
-        icon={<Wallet className="h-[18px] w-[18px]" />}
-        hint="Across active loans"
-      />
-      <StatCard
-        title="Submitted bids"
-        value={submittedBids}
-        icon={<FileText className="h-[18px] w-[18px]" />}
-        hint="Awaiting developer review"
-      />
-      <StatCard
-        title="Approved loans"
-        value={approvedLoans}
-        icon={<CheckCircle2 className="h-[18px] w-[18px]" />}
-        accent
-        hint="Funded & executed"
-      />
+    <div className="grain relative overflow-hidden rounded-2xl border border-border/70 bg-card shadow-elevated">
+      {/* Atmosphere */}
+      <div className="glow-coral pointer-events-none absolute inset-x-0 top-0 h-40" />
+
+      <div className="relative grid grid-cols-1 divide-y divide-border/70 sm:grid-cols-3 sm:divide-x sm:divide-y-0">
+        {metrics.map((m) => (
+          <div key={m.title} className="flex flex-col gap-4 p-6">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-muted-foreground">{m.title}</span>
+              <span
+                className={
+                  "flex h-9 w-9 items-center justify-center rounded-lg " +
+                  (m.accent ? "bg-primary/12 text-primary" : "bg-muted text-muted-foreground")
+                }
+              >
+                {m.icon}
+              </span>
+            </div>
+            <div>
+              <p
+                className={
+                  "text-display tnum text-4xl font-semibold leading-none " +
+                  (m.accent ? "text-primary" : "text-foreground")
+                }
+              >
+                {m.value}
+              </p>
+              <p className="mt-2 text-xs text-muted-foreground">{m.hint}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

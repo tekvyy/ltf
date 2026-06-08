@@ -5,6 +5,8 @@ interface LogoProps {
   showText?: boolean;
   width?: number;
   height?: number;
+  /** Tailwind text color class for the wordmark (e.g. "text-white" on dark surfaces). */
+  wordmarkClassName?: string;
 }
 
 /** Credelit brand mark — single-path coral glyph, inherits color via currentColor. */
@@ -37,12 +39,23 @@ export function CredelitMark({
   );
 }
 
-export function Logo({ className, showText = false, width = 32, height = 32 }: LogoProps) {
+export function Logo({
+  className,
+  showText = false,
+  width = 32,
+  height = 32,
+  wordmarkClassName,
+}: LogoProps) {
   return (
     <div className={cn("flex items-center gap-2.5", className)}>
       <CredelitMark width={width} height={height} />
       {showText && (
-        <span className="text-xl font-semibold tracking-tight text-foreground">
+        <span
+          className={cn(
+            "text-xl font-semibold tracking-tight text-foreground",
+            wordmarkClassName
+          )}
+        >
           Credelit
         </span>
       )}
