@@ -87,16 +87,14 @@ function KybBlockedMessage({ kybStatus }: { kybStatus: KybStatus }) {
     <div className="space-y-6">
       <DashboardHeader title="Marketplace" subtitle="Browse investment opportunities" />
 
-      <div className="rounded-xl border bg-card p-8 shadow-sm text-center max-w-lg mx-auto mt-12">
-        <div className="w-16 h-16 rounded-full bg-orange-100 flex items-center justify-center mx-auto mb-4">
+      <div className="mx-auto mt-12 max-w-lg rounded-xl border border-border/70 bg-card p-8 text-center shadow-elevated">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
           <AlertCircle className="h-8 w-8 text-primary" />
         </div>
-        <h2 className="text-xl font-semibold mb-2">{message.title}</h2>
-        <p className="text-muted-foreground mb-6">{message.description}</p>
+        <h2 className="mb-2 text-xl font-semibold tracking-tight">{message.title}</h2>
+        <p className="mb-6 text-muted-foreground">{message.description}</p>
         <Link href="/dashboard/kyb">
-          <Button className="bg-primary hover:bg-primary/90">
-            {message.buttonText}
-          </Button>
+          <Button>{message.buttonText}</Button>
         </Link>
       </div>
     </div>
@@ -216,8 +214,8 @@ export default function MarketplacePage() {
     return (
       <div className="space-y-6">
         <DashboardHeader title="Marketplace" subtitle="Browse investment opportunities" />
-        <div className="rounded-xl border border-red-200 bg-red-50 p-4">
-          <p className="text-red-600 text-sm">{error}</p>
+        <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-4">
+          <p className="text-sm text-destructive">{error}</p>
         </div>
       </div>
     );
@@ -271,14 +269,13 @@ export default function MarketplacePage() {
           <Loader2 className="h-8 w-8 animate-spin text-primary" />
         </div>
       ) : cardProjects.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {cardProjects.map((project) => (
-            <div key={project.id} className="bg-card rounded-xl border p-4 shadow-sm">
-              <ProjectCard
-                project={project}
-                proposalStatus={proposalStatuses[project.id] || null}
-              />
-            </div>
+            <ProjectCard
+              key={project.id}
+              project={project}
+              proposalStatus={proposalStatuses[project.id] || null}
+            />
           ))}
         </div>
       ) : searchQuery ? (

@@ -4,7 +4,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, Building2, Calendar, User, MapPin, FileText, CheckCircle2, Circle, Play, ChevronLeft, ChevronRight, ArrowRight, X, XCircle, Loader2, ExternalLink, BadgeCheck, Mail, Phone, Sparkles } from "lucide-react";
+import { ArrowLeft, Building2, Calendar, User, MapPin, FileText, CheckCircle2, Circle, ChevronLeft, ChevronRight, ArrowRight, X, XCircle, Loader2, ExternalLink, BadgeCheck, Mail, Phone, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LoanProposalModal, LoanProposalFormData } from "@/components/dashboard/loan-proposal-modal";
 import { DocumentAISummary } from "@/components/shared/document-ai-summary";
@@ -221,9 +221,9 @@ export default function ProjectDetailsPage() {
           </Link>
           <h1 className="text-xl font-semibold">Project Details</h1>
         </div>
-        <div className="rounded-xl border border-red-200 bg-red-50 p-8 text-center">
-          <Building2 className="h-12 w-12 text-red-300 mx-auto mb-4" />
-          <p className="text-red-600 mb-4">{error || "Project not found"}</p>
+        <div className="rounded-xl border border-destructive/20 bg-destructive/5 p-8 text-center">
+          <Building2 className="mx-auto mb-4 h-12 w-12 text-destructive/40" />
+          <p className="mb-4 text-destructive">{error || "Project not found"}</p>
           <Button onClick={() => router.push("/dashboard/marketplace")} variant="outline">
             Back to Marketplace
           </Button>
@@ -235,7 +235,6 @@ export default function ProjectDetailsPage() {
   // Derived values from project
   const location = [project.city, project.country].filter(Boolean).join(", ") || "Location not set";
   const fullAddress = [project.address, project.city, project.country].filter(Boolean).join(", ") || location;
-  const developmentValue = Math.round(project.loan_amount * 1.25); // Estimate
   const heroImage = project.cover_photo_url || (project.photos?.[0]?.file_url) || "/images/house.png";
 
   return (
@@ -252,97 +251,89 @@ export default function ProjectDetailsPage() {
           <h1 className="text-xl font-semibold">Project Details</h1>
         </div>
 
-        {/* Hero Image with Overlay Title */}
-        <div className="rounded-xl border-none bg-card">
-          <div className="relative overflow-hidden">
-            {/* Main Image */}
-            <div className="relative aspect-[16/9] w-full bg-muted">
-              <Image
-                src={heroImage}
-                alt={project.title}
-                fill
-                className="object-cover"
-                unoptimized
-              />
+        {/* Hero */}
+        <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-elevated">
+          <div className="relative aspect-[16/9] w-full bg-muted">
+            <Image
+              src={heroImage}
+              alt={project.title}
+              fill
+              className="object-cover"
+              unoptimized
+            />
+            {/* Gradient scrim */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent" />
+
+            {/* Reference chip */}
+            <div className="absolute left-4 top-4">
+              <span className="rounded-md bg-black/40 px-2.5 py-1 font-mono text-xs font-medium text-white backdrop-blur-sm">
+                {project.uuid?.slice(0, 8).toUpperCase() || `PRJ-${project.id}`}
+              </span>
             </div>
 
-            {/* Overlay Title at Bottom */}
-            <div className="absolute bottom-0 left-0 right-0 bg-muted p-2">
-              <h2 className="text-base font-bold">
-                {project.title} | {project.uuid?.slice(0, 8).toUpperCase() || `PRJ-${project.id}`} | {location}
+            {/* Title */}
+            <div className="absolute inset-x-0 bottom-0 p-5">
+              <h2 className="text-xl font-semibold tracking-tight text-white sm:text-2xl">
+                {project.title}
               </h2>
+              <p className="mt-1 flex items-center gap-1.5 text-sm text-white/80">
+                <MapPin className="h-4 w-4" />
+                {location}
+              </p>
             </div>
           </div>
 
-          {/* Project Stats Row */}
-          <div className="grid grid-cols-3 gap-4 p-4 border-b border-border">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
-                <Play className="h-4 w-4 text-muted-foreground" />
+          {/* Stats + CTA */}
+          <div className="flex flex-col gap-6 p-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="grid flex-1 grid-cols-2 gap-x-8 gap-y-5 sm:grid-cols-4">
+              <div>
+                <p className="text-xs text-muted-foreground">Loan amount</p>
+                <p className="tnum mt-1 text-lg font-semibold text-primary">${project.loan_amount.toLocaleString()}</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Construction Start</p>
-                <p className="text-sm font-medium">{formatDate(project.construction_start_date)}</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-muted">
-                <Calendar className="h-4 w-4 text-muted-foreground" />
+                <p className="text-xs text-muted-foreground">Project type</p>
+                <p className="mt-1 text-lg font-semibold">{project.project_type_label}</p>
               </div>
               <div>
-                <p className="text-xs text-muted-foreground">Construction Finish</p>
-                <p className="text-sm font-medium">{formatDate(project.construction_end_date)}</p>
+                <p className="text-xs text-muted-foreground">Construction start</p>
+                <p className="mt-1 text-sm font-medium">{formatDate(project.construction_start_date)}</p>
+              </div>
+              <div>
+                <p className="text-xs text-muted-foreground">Construction finish</p>
+                <p className="mt-1 text-sm font-medium">{formatDate(project.construction_end_date)}</p>
               </div>
             </div>
-          </div>
 
-          {/* Investment Stats Card */}
-          <div className="p-5">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              {/* Stats */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                {/*<div>*/}
-                {/*  <p className="text-xs text-muted-foreground mb-1">Development Value</p>*/}
-                {/*  <p className="text-lg font-bold">${developmentValue.toLocaleString()}</p>*/}
-                {/*</div>*/}
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Loan Amount</p>
-                  <p className="text-lg font-bold text-primary">${project.loan_amount.toLocaleString()}</p>
-                </div>
-                <div>
-                  <p className="text-xs text-muted-foreground mb-1">Project Type</p>
-                  <p className="text-lg font-bold">{project.project_type_label}</p>
-                </div>
-              </div>
-
-              {/* CTA Button or Status */}
+            {/* CTA Button or Status */}
+            <div className="shrink-0">
               {isLoadingProposal ? (
                 <div className="flex items-center gap-2">
                   <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
                   <span className="text-sm text-muted-foreground">Loading...</span>
                 </div>
               ) : (proposal?.status === "accepted_by_developer" || proposal?.status === "signed_by_developer" || proposal?.status === "signed_by_lender" || proposal?.status === "loan_term_fully_executed") ? (
-                <Link href="/dashboard/proposals" className="flex items-center gap-2 px-4 py-2 bg-green-50 border border-green-200 rounded-full hover:bg-green-100 transition-colors">
-                  <CheckCircle2 className="h-4 w-4 text-green-600" />
-                  <span className="text-sm font-medium text-green-700">Proposal Accepted</span>
-                  <ExternalLink className="h-3.5 w-3.5 text-green-600" />
+                <Link href="/dashboard/proposals" className="flex items-center gap-2 rounded-full border border-emerald-600/20 bg-emerald-500/12 px-4 py-2 transition-colors hover:bg-emerald-500/20">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                  <span className="text-sm font-medium text-emerald-700">Proposal Accepted</span>
+                  <ExternalLink className="h-3.5 w-3.5 text-emerald-600" />
                 </Link>
               ) : proposal?.status === "rejected_by_developer" ? (
-                <Link href="/dashboard/proposals" className="flex items-center gap-2 px-4 py-2 bg-red-50 border border-red-200 rounded-full hover:bg-red-100 transition-colors">
-                  <XCircle className="h-4 w-4 text-red-600" />
-                  <span className="text-sm font-medium text-red-700">Proposal Rejected</span>
-                  <ExternalLink className="h-3.5 w-3.5 text-red-600" />
+                <Link href="/dashboard/proposals" className="flex items-center gap-2 rounded-full border border-destructive/20 bg-destructive/10 px-4 py-2 transition-colors hover:bg-destructive/15">
+                  <XCircle className="h-4 w-4 text-destructive" />
+                  <span className="text-sm font-medium text-destructive">Proposal Rejected</span>
+                  <ExternalLink className="h-3.5 w-3.5 text-destructive" />
                 </Link>
               ) : proposalSubmitted ? (
-                <Link href="/dashboard/proposals" className="flex items-center gap-2 px-4 py-2 bg-amber-50 border border-amber-200 rounded-full hover:bg-amber-100 transition-colors">
-                  <div className="w-2 h-2 bg-amber-500 rounded-full animate-pulse" />
+                <Link href="/dashboard/proposals" className="flex items-center gap-2 rounded-full border border-amber-500/25 bg-amber-400/15 px-4 py-2 transition-colors hover:bg-amber-400/25">
+                  <div className="h-2 w-2 animate-pulse rounded-full bg-amber-500" />
                   <span className="text-sm font-medium text-amber-700">Submitted for Review</span>
                   <ExternalLink className="h-3.5 w-3.5 text-amber-600" />
                 </Link>
               ) : (
                 <Button
                   onClick={() => setShowLoanProposalModal(true)}
-                  className="bg-primary hover:bg-primary/90 text-white px-6 h-10 text-sm font-medium whitespace-nowrap rounded-full cursor-pointer"
+                  size="lg"
+                  className="h-11 whitespace-nowrap rounded-full px-7 text-sm font-medium"
                 >
                   Submit Loan Offer
                 </Button>
@@ -352,15 +343,15 @@ export default function ProjectDetailsPage() {
         </div>
 
         {/* Tab Navigation - Sticky */}
-        <div className="flex justify-center sticky top-0 z-10">
-          <nav className="flex gap-8">
+        <div className="sticky top-0 z-10 -mx-4 border-b border-border/70 bg-background/85 px-4 backdrop-blur-md">
+          <nav className="flex gap-6 overflow-x-auto sm:justify-center sm:gap-8">
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => scrollToSection(tab.id, tab.ref)}
-                className={`py-4 cursor-pointer text-sm font-medium border-b-2 transition-colors ${activeTab === tab.id
-                    ? "text-primary border-primary"
-                    : "text-muted-foreground border-transparent hover:text-primary hover:border-primary"
+                className={`whitespace-nowrap border-b-2 py-3.5 text-sm font-medium transition-colors cursor-pointer ${activeTab === tab.id
+                    ? "border-primary text-primary"
+                    : "border-transparent text-muted-foreground hover:text-foreground"
                   }`}
               >
                 {tab.label}
@@ -375,7 +366,7 @@ export default function ProjectDetailsPage() {
         {/* About Project Section */}
         <div ref={aboutRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-6">About project</h3>
-          <div className="rounded-xl bg-card grid grid-cols-1 lg:grid-cols-2">
+          <div className="grid grid-cols-1 overflow-hidden rounded-xl border border-border/70 bg-card shadow-elevated lg:grid-cols-2">
             {/* Left - Image Carousel */}
             <div className="space-y-3">
               {/* Main Image with Navigation */}
@@ -433,8 +424,7 @@ export default function ProjectDetailsPage() {
             </div>
 
             {/* Right - Content */}
-            <div className="space-y-4 p-4">
-              <h4 className="text-lg font-semibold">About project</h4>
+            <div className="space-y-4 p-6">
               <div className="text-sm text-muted-foreground leading-relaxed">
                 {project.description ? (
                   <p className="whitespace-pre-wrap">{project.description}</p>
@@ -460,7 +450,7 @@ export default function ProjectDetailsPage() {
                 {project.amount_raised !== undefined && (
                   <div>
                     <p className="text-xs text-muted-foreground">Amount Raised</p>
-                    <p className="text-sm font-medium text-green-600">${project.amount_raised.toLocaleString()}</p>
+                    <p className="text-sm font-medium text-emerald-600">${project.amount_raised.toLocaleString()}</p>
                   </div>
                 )}
               </div>
@@ -497,7 +487,7 @@ export default function ProjectDetailsPage() {
         {/* Developer Details Section */}
         <div ref={teamRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Developer Details</h3>
-          <div className="rounded-xl bg-card p-6">
+          <div className="rounded-xl border border-border/70 bg-card p-6 shadow-elevated">
             {project.developer ? (
               <div className="flex items-start gap-4">
                 {/* Developer Avatar */}
@@ -523,7 +513,7 @@ export default function ProjectDetailsPage() {
                       {project.developer.company_name || project.developer.user?.name || "Developer"}
                     </h4>
                     {project.developer.kyb_status === "approved" && (
-                      <div className="flex items-center gap-1 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+                      <div className="flex items-center gap-1 rounded-full border border-emerald-600/20 bg-emerald-500/12 px-2 py-0.5 text-xs font-medium text-emerald-700">
                         <BadgeCheck className="h-3 w-3" />
                         Verified
                       </div>
@@ -579,7 +569,7 @@ export default function ProjectDetailsPage() {
           <h3 className="text-lg font-semibold mb-4">Project gallery</h3>
 
           {/* Gallery Container */}
-          <div className="rounded-xl bg-card overflow-hidden">
+          <div className="overflow-hidden rounded-xl border border-border/70 bg-card shadow-elevated">
             {/* Main Image with Navigation */}
             <div className="relative aspect-[16/9] w-full bg-muted">
               <Image
@@ -629,7 +619,7 @@ export default function ProjectDetailsPage() {
         {/* Location Section */}
         <div ref={locationRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Location</h3>
-          <div className="rounded-xl bg-card p-6 space-y-4">
+          <div className="space-y-4 rounded-xl border border-border/70 bg-card p-6 shadow-elevated">
             {/* Address */}
             <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
@@ -685,7 +675,7 @@ export default function ProjectDetailsPage() {
         {/* Documentation Section */}
         <div ref={documentsRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Documentation</h3>
-          <div className="rounded-xl border bg-card p-6 shadow-sm">
+          <div className="rounded-xl border border-border/70 bg-card p-6 shadow-elevated">
             <h4 className="text-sm font-medium text-foreground mb-4">Project documents ({project.documents?.length || 0})</h4>
             {project.documents && project.documents.length > 0 ? (
               <div className="space-y-3">
@@ -693,9 +683,9 @@ export default function ProjectDetailsPage() {
                   <div key={doc.id} className="space-y-2">
                     <div className="flex items-center gap-3 p-3 rounded-lg border border-border hover:bg-muted transition-colors">
                       {doc.verification_status === "approved" ? (
-                        <CheckCircle2 className="h-5 w-5 text-green-500 flex-shrink-0" />
+                        <CheckCircle2 className="h-5 w-5 text-emerald-600 flex-shrink-0" />
                       ) : doc.verification_status === "rejected" ? (
-                        <XCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                        <XCircle className="h-5 w-5 text-destructive flex-shrink-0" />
                       ) : (
                         <Circle className="h-5 w-5 text-muted-foreground/60 flex-shrink-0" />
                       )}
@@ -753,7 +743,7 @@ export default function ProjectDetailsPage() {
         {/* Milestones Section */}
         <div ref={milestonesRef} className="scroll-mt-20">
           <h3 className="text-lg font-semibold mb-4">Project Milestones {project.milestones_count > 0 && `(${project.milestones_count})`}</h3>
-          <div className="rounded-xl border bg-card p-6 shadow-sm">
+          <div className="rounded-xl border border-border/70 bg-card p-6 shadow-elevated">
             {project.milestones && project.milestones.length > 0 ? (
               <div className="space-y-4">
                 {project.milestones.map((milestone, index) => (
@@ -767,10 +757,10 @@ export default function ProjectDetailsPage() {
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
                         <h4 className="font-medium">{milestone.title}</h4>
-                        <span className={`text-xs px-2 py-1 rounded-full ${milestone.status === "paid" ? "bg-green-100 text-green-700" :
-                            milestone.status === "approved" ? "bg-blue-100 text-blue-700" :
-                              milestone.status === "proof_submitted" ? "bg-amber-100 text-amber-700" :
-                                "bg-muted text-foreground"
+                        <span className={`rounded-full border px-2 py-0.5 text-xs font-medium ${milestone.status === "paid" ? "border-emerald-600/20 bg-emerald-500/12 text-emerald-700" :
+                            milestone.status === "approved" ? "border-sky-500/20 bg-sky-500/12 text-sky-700" :
+                              milestone.status === "proof_submitted" ? "border-amber-500/25 bg-amber-400/15 text-amber-700" :
+                                "border-border bg-muted text-muted-foreground"
                           }`}>
                           {milestone.status_label}
                         </span>

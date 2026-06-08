@@ -11,6 +11,9 @@ import { navigationConfig } from "@/config/navigation";
 import { useState } from "react";
 import { useAuth } from "@/components/auth";
 
+// Index route is a prefix of every sub-route, so it must match exactly.
+const ROOT_HREF = "/dashboard";
+
 function NavGroup({
   items,
   onItemClick,
@@ -24,7 +27,8 @@ function NavGroup({
     <div className="flex flex-col gap-0.5">
       {items.map((item) => {
         const isActive =
-          pathname === item.href || pathname.startsWith(item.href + "/");
+          pathname === item.href ||
+          (item.href !== ROOT_HREF && pathname.startsWith(item.href + "/"));
         return (
           <Link
             key={item.href}
