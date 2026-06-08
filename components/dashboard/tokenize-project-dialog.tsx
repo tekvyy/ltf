@@ -69,7 +69,6 @@ export function TokenizeProjectDialog({ open, onOpenChange, project }: TokenizeP
 
             if (result.success && result.transactionHash) {
                 setTxHash(result.transactionHash);
-                console.log("MPToken created successfully:", result);
             } else {
                 throw new Error(result.error || "Failed to create MPToken");
             }

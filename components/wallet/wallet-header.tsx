@@ -11,7 +11,7 @@ export function WalletHeader({ title }: WalletHeaderProps) {
     <header className="flex items-center justify-between">
       <div className="flex items-center gap-4">
         <MobileSidebar />
-        <h1 className="text-2xl font-bold">{title}</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">{title}</h1>
       </div>
     </header>
   );

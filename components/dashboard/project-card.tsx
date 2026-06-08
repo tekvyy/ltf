@@ -21,7 +21,6 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, proposalStatus }: ProjectCardProps) {
-  console.log('project-card',project);
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",

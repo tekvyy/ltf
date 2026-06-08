@@ -120,7 +120,7 @@ export default function DeveloperDashboardPage() {
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Active Projects</p>
-              <p className="text-2xl font-bold">{stats.activeProjects}</p>
+              <p className="text-2xl font-semibold tracking-tight">{stats.activeProjects}</p>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@ export default function DeveloperDashboardPage() {
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Total Funding</p>
-              <p className="text-2xl font-bold">${stats.totalFunding.toLocaleString()}</p>
+              <p className="text-2xl font-semibold tracking-tight">${stats.totalFunding.toLocaleString()}</p>
             </div>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function DeveloperDashboardPage() {
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">Pending Requests</p>
-              <p className="text-2xl font-bold text-primary">{stats.pendingRequests}</p>
+              <p className="text-2xl font-semibold tracking-tight text-primary">{stats.pendingRequests}</p>
             </div>
           </div>
         </div>

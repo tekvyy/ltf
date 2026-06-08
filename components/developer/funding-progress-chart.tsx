@@ -105,7 +105,7 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
           <p className="text-sm text-muted-foreground">Cumulative funding over time</p>
         </div>
         <div className="text-right">
-          <p className="text-2xl font-bold text-primary">{formatCurrency(totalFunding)}</p>
+          <p className="text-2xl font-semibold tracking-tight text-primary">{formatCurrency(totalFunding)}</p>
           <p className="text-sm text-muted-foreground">
             of {formatCurrency(totalTarget)} target ({fundingPercentage}%)
           </p>
@@ -198,7 +198,7 @@ export function FundingProgressChart({ projects }: FundingProgressChartProps) {
           <span className="text-muted-foreground">Amount Raised</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-blue-500" />
+          <div className="h-3 w-3 rounded-full" style={{ backgroundColor: "var(--chart-3)" }} />
           <span className="text-muted-foreground">Target Amount</span>
         </div>
       </div>

@@ -135,7 +135,7 @@ export default function DeveloperDrawdownPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Progress Payments</h1>
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Progress Payments</h1>
         <p className="text-muted-foreground mt-1">
           Track your submitted invoices and payment status
         </p>
@@ -151,7 +151,7 @@ export default function DeveloperDrawdownPage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Pending Review
                   </p>
-                  <p className="text-2xl font-bold text-amber-600">
+                  <p className="text-2xl font-semibold tracking-tight text-amber-600">
                     {statistics.pending_review}
                   </p>
                 </div>
@@ -170,7 +170,7 @@ export default function DeveloperDrawdownPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Approved</p>
-                  <p className="text-2xl font-bold text-green-600">
+                  <p className="text-2xl font-semibold tracking-tight text-green-600">
                     {statistics.approved_milestones}
                   </p>
                 </div>
@@ -189,7 +189,7 @@ export default function DeveloperDrawdownPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Paid</p>
-                  <p className="text-2xl font-bold text-emerald-600">
+                  <p className="text-2xl font-semibold tracking-tight text-emerald-600">
                     {statistics.paid_milestones}
                   </p>
                 </div>
@@ -208,7 +208,7 @@ export default function DeveloperDrawdownPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Rejected</p>
-                  <p className="text-2xl font-bold text-red-600">
+                  <p className="text-2xl font-semibold tracking-tight text-red-600">
                     {statistics.rejected_milestones}
                   </p>
                 </div>
@@ -466,7 +466,7 @@ export default function DeveloperDrawdownPage() {
                   </span>
                   <MilestoneStatusBadge status={viewProofsDialog.status} />
                 </div>
-                <div className="text-2xl font-bold text-primary">
+                <div className="text-2xl font-semibold tracking-tight text-primary">
                   {formatCurrency(Number(viewProofsDialog.amount))}
                 </div>
               </div>

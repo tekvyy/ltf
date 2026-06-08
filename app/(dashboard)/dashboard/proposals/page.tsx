@@ -125,7 +125,7 @@ export default function MyProposalsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold">My Proposals</h1>
+          <h1 className="text-2xl font-semibold tracking-tight">My Proposals</h1>
           <p className="text-muted-foreground mt-1">
             Track all your submitted loan proposals
           </p>
@@ -141,7 +141,7 @@ export default function MyProposalsPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold">My Proposals</h1>
+        <h1 className="text-2xl font-semibold tracking-tight">My Proposals</h1>
         <p className="text-muted-foreground mt-1">
           Track all your submitted loan proposals
         </p>
@@ -156,28 +156,28 @@ export default function MyProposalsPage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="p-4 bg-muted rounded-lg">
             <p className="text-sm text-muted-foreground">Total Submitted</p>
-            <p className="text-2xl font-bold">{stats.total}</p>
+            <p className="text-2xl font-semibold tracking-tight">{stats.total}</p>
           </div>
           <div className="p-4 bg-amber-50 rounded-lg">
             <div className="flex items-center gap-2 mb-1">
               <Clock className="h-4 w-4 text-amber-500" />
               <p className="text-sm text-amber-600">Pending Review</p>
             </div>
-            <p className="text-2xl font-bold text-amber-700">{stats.pending}</p>
+            <p className="text-2xl font-semibold tracking-tight text-amber-700">{stats.pending}</p>
           </div>
           <div className="p-4 bg-green-50 rounded-lg">
             <div className="flex items-center gap-2 mb-1">
               <CheckCircle2 className="h-4 w-4 text-green-500" />
               <p className="text-sm text-green-600">Accepted</p>
             </div>
-            <p className="text-2xl font-bold text-green-700">{stats.accepted}</p>
+            <p className="text-2xl font-semibold tracking-tight text-green-700">{stats.accepted}</p>
           </div>
           <div className="p-4 bg-red-50 rounded-lg">
             <div className="flex items-center gap-2 mb-1">
               <XCircle className="h-4 w-4 text-red-500" />
               <p className="text-sm text-red-600">Rejected</p>
             </div>
-            <p className="text-2xl font-bold text-red-700">{stats.rejected}</p>
+            <p className="text-2xl font-semibold tracking-tight text-red-700">{stats.rejected}</p>
           </div>
         </div>
       </div>

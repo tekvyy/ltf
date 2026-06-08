@@ -195,7 +195,7 @@ export default function DeveloperSettingsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Projects</p>
-                <p className="mt-1 text-2xl font-bold text-foreground">
+                <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
                   {profile?.total_projects_completed || 0}
                 </p>
               </div>
@@ -211,7 +211,7 @@ export default function DeveloperSettingsPage() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Years in Business</p>
-                <p className="mt-1 text-2xl font-bold text-foreground">
+                <p className="mt-1 text-2xl font-semibold tracking-tight text-foreground">
                   {profile?.years_in_business || 0}
                 </p>
               </div>

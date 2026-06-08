@@ -195,7 +195,7 @@ export default function LenderSettingsPage() {
     return (
       <div className="space-y-6">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+          <h1 className="text-2xl font-semibold tracking-tight text-foreground">Settings</h1>
           <p className="text-muted-foreground mt-1">Manage your account settings</p>
         </div>
         <div className="flex items-center justify-center py-20">
@@ -212,7 +212,7 @@ export default function LenderSettingsPage() {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Settings</h1>
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Settings</h1>
         <p className="text-muted-foreground mt-1">Manage your account settings</p>
       </div>
 

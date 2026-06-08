@@ -240,23 +240,23 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 rounded-lg bg-muted">
               <p className="text-sm text-muted-foreground">Total Projects</p>
-              <p className="text-2xl font-bold">{projects.length}</p>
+              <p className="text-2xl font-semibold tracking-tight">{projects.length}</p>
             </div>
             <div className="p-4 rounded-lg bg-yellow-50">
               <p className="text-sm text-muted-foreground">Pending Review</p>
-              <p className="text-2xl font-bold text-yellow-600">
+              <p className="text-2xl font-semibold tracking-tight text-yellow-600">
                 {projects.filter((p) => p.status === "submitted" || p.status === "under_review").length}
               </p>
             </div>
             <div className="p-4 rounded-lg bg-green-50">
               <p className="text-sm text-muted-foreground">Approved</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-2xl font-semibold tracking-tight text-green-600">
                 {projects.filter((p) => ["approved", "funded", "completed"].includes(p.status)).length}
               </p>
             </div>
             <div className="p-4 rounded-lg bg-blue-50">
               <p className="text-sm text-muted-foreground">Total Loan Amount</p>
-              <p className="text-2xl font-bold text-blue-600">
+              <p className="text-2xl font-semibold tracking-tight text-blue-600">
                 ${projects.reduce((sum, p) => sum + p.loan_amount, 0).toLocaleString()}
               </p>
             </div>

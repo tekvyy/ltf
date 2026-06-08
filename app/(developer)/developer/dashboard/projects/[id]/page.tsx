@@ -575,7 +575,7 @@ export default function ProjectDetailsPage() {
                 {project.project_type.replace("_", " ")}
               </span>
             </div>
-            <h1 className="text-2xl font-bold mb-2">{project.title}</h1>
+            <h1 className="text-2xl font-semibold tracking-tight mb-2">{project.title}</h1>
             <div className="flex items-center gap-1 text-muted-foreground">
               <MapPin className="h-4 w-4" />
               <span>

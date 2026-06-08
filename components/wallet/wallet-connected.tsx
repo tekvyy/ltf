@@ -93,7 +93,7 @@ export function WalletConnected() {
         <div className="mb-4">
           <p className="text-sm text-muted-foreground mb-1">Balance</p>
           <div className="flex items-center gap-2">
-            <p className="text-2xl font-bold">{balance} XRP</p>
+            <p className="text-2xl font-semibold tracking-tight">{balance} XRP</p>
             <button
               onClick={fetchBalance}
               disabled={isLoadingBalance}

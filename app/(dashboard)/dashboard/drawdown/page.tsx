@@ -398,7 +398,7 @@ export default function LenderDrawdownPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">Progress Payments</h1>
+        <h1 className="text-2xl font-semibold tracking-tight text-foreground">Progress Payments</h1>
         <p className="text-muted-foreground mt-1">
           Review milestone invoices and confirm payments
         </p>
@@ -414,7 +414,7 @@ export default function LenderDrawdownPage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Pending Review
                   </p>
-                  <p className="text-2xl font-bold text-amber-600">
+                  <p className="text-2xl font-semibold tracking-tight text-amber-600">
                     {statistics.pending_review}
                   </p>
                 </div>
@@ -435,7 +435,7 @@ export default function LenderDrawdownPage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Approved
                   </p>
-                  <p className="text-2xl font-bold text-green-600">
+                  <p className="text-2xl font-semibold tracking-tight text-green-600">
                     {statistics.approved}
                   </p>
                 </div>
@@ -454,7 +454,7 @@ export default function LenderDrawdownPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">Paid</p>
-                  <p className="text-2xl font-bold text-emerald-600">
+                  <p className="text-2xl font-semibold tracking-tight text-emerald-600">
                     {statistics.paid}
                   </p>
                 </div>
@@ -475,7 +475,7 @@ export default function LenderDrawdownPage() {
                   <p className="text-sm font-medium text-muted-foreground">
                     Total Amount
                   </p>
-                  <p className="text-2xl font-bold text-foreground">
+                  <p className="text-2xl font-semibold tracking-tight text-foreground">
                     {formatCurrency(statistics.total_amount)}
                   </p>
                 </div>
